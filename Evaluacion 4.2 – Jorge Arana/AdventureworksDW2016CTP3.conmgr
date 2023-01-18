@@ -1,0 +1,12 @@
+﻿<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="Origen-AdventureWorksDW2016CTP3"
+  DTS:DTSID="{E9E34653-22EA-4605-887D-BAEF1E4DC6CB}"
+  DTS:CreationName="OLEDB">
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectRetryCount="1"
+      DTS:ConnectRetryInterval="5"
+      DTS:ConnectionString="Data Source=jarana\local;Initial Catalog=AdventureworksDW2016CTP3;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;Application Name=SSIS-Evaluacion 4.2 – Instructor-{E9E34653-22EA-4605-887D-BAEF1E4DC6CB}jarana\local.AdventureworksDW2016CTP3;" />
+  </DTS:ObjectData>
+</DTS:ConnectionManager>

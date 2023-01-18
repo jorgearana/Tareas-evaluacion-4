@@ -1,0 +1,1939 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="1/17/2023 10:46:39 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="JARANA"
+  DTS:CreatorName="JARANA\jorge"
+  DTS:DTSID="{B8780DF6-CAC0-48A8-A1C0-49A5795F41A3}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.948.0"
+  DTS:LocaleID="10250"
+  DTS:ObjectName="Package"
+  DTS:PackageType="5"
+  DTS:VersionBuild="5"
+  DTS:VersionGUID="{5E8DD177-8861-45A9-820A-36F3C8D784BB}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Despachos de planta]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{68B0D056-3C27-47FD-B98F-6DB8DF812B10}"
+      DTS:ObjectName="Despachos de planta">
+      <DTS:PropertyExpression
+        DTS:Name="ConnectionString">@[User::varTerritoryFile]</DTS:PropertyExpression>
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="10250"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:ColumnNamesInFirstDataRow="True"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x0022_"
+          DTS:CodePage="1252">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="IdPlanta"
+              DTS:DTSID="{1E176CDD-74C1-4419-9EAA-EE8D6EF6A22C}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="IdProducto"
+              DTS:DTSID="{2475E5FB-98EF-436D-B1B7-54FD1D551012}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="IdCliente"
+              DTS:DTSID="{6A3B7255-5893-447B-88E9-CF0564BB18B6}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000D__x000A_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Cantidad"
+              DTS:DTSID="{327BA94C-CF59-45A7-837F-C2E95A73F570}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Destiono-NEPTUNO]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{AA3EDD1D-3612-4BC2-9594-0BD8432AD174}"
+      DTS:ObjectName="Destiono-NEPTUNO">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=jarana\local;Initial Catalog=NEPTUNO;Provider=SQLNCLI11.1;Integrated Security=SSPI;Application Name=SSIS-Package-{AA3EDD1D-3612-4BC2-9594-0BD8432AD174}jarana\local.NEPTUNO;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Origen Internacionales]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{9D4818EB-6EB5-4906-B505-09623B2D1D92}"
+      DTS:ObjectName="Origen Internacionales">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="10250"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:ColumnNamesInFirstDataRow="True"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x003C_none_x003E_"
+          DTS:CodePage="1252"
+          DTS:ConnectionString="C:\jorge\Maestria\SSIS\08 Recursos\04 Enunciado de Laboratorio  4.5\15102007Int.txt">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="codigo"
+              DTS:DTSID="{10DAE603-ABD9-47ED-9952-161FA72DE302}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="nombre"
+              DTS:DTSID="{A47C9EBB-8A59-4791-BEEC-6275021ACA13}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="ciudad"
+              DTS:DTSID="{E875B2A1-41AA-4DD4-9FB4-7004AEB7E41A}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000D__x000A_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="pais"
+              DTS:DTSID="{4D5D08B6-D113-41FD-B432-2EC1B54CA396}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Origen Nacionales]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{70587AB7-9D99-4E65-A07C-D7FBB2F100C1}"
+      DTS:ObjectName="Origen Nacionales">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="10250"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:ColumnNamesInFirstDataRow="True"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x003C_none_x003E_"
+          DTS:CodePage="1252"
+          DTS:ConnectionString="C:\jorge\Maestria\SSIS\08 Recursos\04 Enunciado de Laboratorio  4.5\12122008Nac.txt">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="codigo"
+              DTS:DTSID="{39F2A607-7E56-472E-8E0C-9DF89EBB7B4F}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="nombre"
+              DTS:DTSID="{9EE690D9-E624-463E-8810-98BF53F96692}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000D__x000A_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="ciudad"
+              DTS:DTSID="{958AAF55-2B76-4BD9-9A16-497C7F2A9C6A}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{D7A7C330-10C6-42F3-9B29-1C126C02FFF9}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="varFileName">
+      <DTS:VariableValue
+        DTS:DataType="8"
+        xml:space="preserve"></DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{1E2FEF53-D5B9-4E3A-8659-B0997AA68972}"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="varFilenationality">
+      <DTS:VariableValue
+        DTS:DataType="8"
+        xml:space="preserve"></DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Borrar datos anteriores"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Tarea Ejecutar SQL"
+      DTS:DTSID="{9E0B883A-92A0-44F9-A9FD-4B7C7E035E4C}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Borrar datos anteriores"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Contenedor de bucles Foreach"
+      DTS:CreationName="STOCK:FOREACHLOOP"
+      DTS:Description="Contenedor de bucles Foreach"
+      DTS:DTSID="{D3B3B820-7764-4A0C-BD22-06966E43FD75}"
+      DTS:ExecutableType="STOCK:FOREACHLOOP"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Contenedor de bucles Foreach">
+      <DTS:ForEachEnumerator
+        DTS:CreationName="Microsoft.ForEachFileEnumerator"
+        DTS:DTSID="{E26A1A28-9CF0-404C-BBD3-EA18DDE11938}"
+        DTS:ObjectName="{E26A1A28-9CF0-404C-BBD3-EA18DDE11938}">
+        <DTS:ObjectData>
+          <ForEachFileEnumeratorProperties>
+            <FEFEProperty
+              Folder="C:\jorge\Maestria\SSIS\08 Recursos\04 Enunciado de Laboratorio  4.5" />
+            <FEFEProperty
+              FileSpec="*.*" />
+            <FEFEProperty
+              FileNameRetrievalType="0" />
+            <FEFEProperty
+              Recurse="0" />
+          </ForEachFileEnumeratorProperties>
+        </DTS:ObjectData>
+      </DTS:ForEachEnumerator>
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Contenedor de bucles Foreach\Clientes Internacionales"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{6F69DFE9-980A-455D-95CB-59AC6994493C}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Clientes Internacionales"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\Contenedor de bucles Foreach\Clientes Internacionales\Destino-Neptuno"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="Destino-Neptuno"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[Cliente]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">CREATE TABLE [dbo].[TablaClientes](
+[Id] [varchar](20) NULL,
+[Nombre] [varchar](50) NULL,
+[Ciudad] [varchar](50) NULL,
+[Pais] [varchar](50) NULL
+) ON [PRIMARY]</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">0</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Contenedor de bucles Foreach\Clientes Internacionales\Destino-Neptuno.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[Destiono-NEPTUNO]"
+                      connectionManagerRefId="Package.ConnectionManagers[Destiono-NEPTUNO]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Contenedor de bucles Foreach\Clientes Internacionales\Destino-Neptuno.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Contenedor de bucles Foreach\Clientes Internacionales\Destino-Neptuno.Inputs[OLE DB Destination Input].ExternalColumns[CustomerID]"
+                          dataType="wstr"
+                          length="5"
+                          name="CustomerID" />
+                        <externalMetadataColumn
+                          refId="Package\Contenedor de bucles Foreach\Clientes Internacionales\Destino-Neptuno.Inputs[OLE DB Destination Input].ExternalColumns[CompanyName]"
+                          dataType="wstr"
+                          length="40"
+                          name="CompanyName" />
+                        <externalMetadataColumn
+                          refId="Package\Contenedor de bucles Foreach\Clientes Internacionales\Destino-Neptuno.Inputs[OLE DB Destination Input].ExternalColumns[ContactName]"
+                          dataType="wstr"
+                          length="30"
+                          name="ContactName" />
+                        <externalMetadataColumn
+                          refId="Package\Contenedor de bucles Foreach\Clientes Internacionales\Destino-Neptuno.Inputs[OLE DB Destination Input].ExternalColumns[ContactTitle]"
+                          dataType="wstr"
+                          length="30"
+                          name="ContactTitle" />
+                        <externalMetadataColumn
+                          refId="Package\Contenedor de bucles Foreach\Clientes Internacionales\Destino-Neptuno.Inputs[OLE DB Destination Input].ExternalColumns[Address]"
+                          dataType="wstr"
+                          length="60"
+                          name="Address" />
+                        <externalMetadataColumn
+                          refId="Package\Contenedor de bucles Foreach\Clientes Internacionales\Destino-Neptuno.Inputs[OLE DB Destination Input].ExternalColumns[City]"
+                          dataType="wstr"
+                          length="15"
+                          name="City" />
+                        <externalMetadataColumn
+                          refId="Package\Contenedor de bucles Foreach\Clientes Internacionales\Destino-Neptuno.Inputs[OLE DB Destination Input].ExternalColumns[Region]"
+                          dataType="wstr"
+                          length="15"
+                          name="Region" />
+                        <externalMetadataColumn
+                          refId="Package\Contenedor de bucles Foreach\Clientes Internacionales\Destino-Neptuno.Inputs[OLE DB Destination Input].ExternalColumns[PostalCode]"
+                          dataType="wstr"
+                          length="10"
+                          name="PostalCode" />
+                        <externalMetadataColumn
+                          refId="Package\Contenedor de bucles Foreach\Clientes Internacionales\Destino-Neptuno.Inputs[OLE DB Destination Input].ExternalColumns[Country]"
+                          dataType="wstr"
+                          length="15"
+                          name="Country" />
+                        <externalMetadataColumn
+                          refId="Package\Contenedor de bucles Foreach\Clientes Internacionales\Destino-Neptuno.Inputs[OLE DB Destination Input].ExternalColumns[Phone]"
+                          dataType="wstr"
+                          length="24"
+                          name="Phone" />
+                        <externalMetadataColumn
+                          refId="Package\Contenedor de bucles Foreach\Clientes Internacionales\Destino-Neptuno.Inputs[OLE DB Destination Input].ExternalColumns[Fax]"
+                          dataType="wstr"
+                          length="24"
+                          name="Fax" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Contenedor de bucles Foreach\Clientes Internacionales\Destino-Neptuno.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\Contenedor de bucles Foreach\Clientes Internacionales\Destino-Neptuno.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Contenedor de bucles Foreach\Clientes Internacionales\Destino-Neptuno.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Contenedor de bucles Foreach\Clientes Internacionales\Destino-Neptuno.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Contenedor de bucles Foreach\Clientes Internacionales\Destino-Neptuno.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Contenedor de bucles Foreach\Clientes Internacionales\Destino-Neptuno.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Contenedor de bucles Foreach\Clientes Internacionales\Origen - Clientes Internacionales"
+                  componentClassID="Microsoft.FlatFileSource"
+                  contactInfo="Flat File Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+                  description="Flat File Source"
+                  localeId="10250"
+                  name="Origen - Clientes Internacionales"
+                  usesDispositions="true"
+                  version="1">
+                  <properties>
+                    <property
+                      dataType="System.Boolean"
+                      description="Specifies whether zero-length columns are treated as null."
+                      name="RetainNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of an output column containing the file name. If no name is specified, no output column containing the file name will be generated."
+                      name="FileNameColumnName"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Contenedor de bucles Foreach\Clientes Internacionales\Origen - Clientes Internacionales.Connections[FlatFileConnection]"
+                      connectionManagerID="Package.ConnectionManagers[Origen Internacionales]"
+                      connectionManagerRefId="Package.ConnectionManagers[Origen Internacionales]"
+                      name="FlatFileConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\Contenedor de bucles Foreach\Clientes Internacionales\Origen - Clientes Internacionales.Outputs[Flat File Source Output]"
+                      name="Flat File Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Contenedor de bucles Foreach\Clientes Internacionales\Origen - Clientes Internacionales.Outputs[Flat File Source Output].Columns[codigo]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Contenedor de bucles Foreach\Clientes Internacionales\Origen - Clientes Internacionales.Outputs[Flat File Source Output].ExternalColumns[codigo]"
+                          length="50"
+                          lineageId="Package\Contenedor de bucles Foreach\Clientes Internacionales\Origen - Clientes Internacionales.Outputs[Flat File Source Output].Columns[codigo]"
+                          name="codigo"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Contenedor de bucles Foreach\Clientes Internacionales\Origen - Clientes Internacionales.Outputs[Flat File Source Output].Columns[nombre]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Contenedor de bucles Foreach\Clientes Internacionales\Origen - Clientes Internacionales.Outputs[Flat File Source Output].ExternalColumns[nombre]"
+                          length="50"
+                          lineageId="Package\Contenedor de bucles Foreach\Clientes Internacionales\Origen - Clientes Internacionales.Outputs[Flat File Source Output].Columns[nombre]"
+                          name="nombre"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Contenedor de bucles Foreach\Clientes Internacionales\Origen - Clientes Internacionales.Outputs[Flat File Source Output].Columns[ciudad]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Contenedor de bucles Foreach\Clientes Internacionales\Origen - Clientes Internacionales.Outputs[Flat File Source Output].ExternalColumns[ciudad]"
+                          length="50"
+                          lineageId="Package\Contenedor de bucles Foreach\Clientes Internacionales\Origen - Clientes Internacionales.Outputs[Flat File Source Output].Columns[ciudad]"
+                          name="ciudad"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Contenedor de bucles Foreach\Clientes Internacionales\Origen - Clientes Internacionales.Outputs[Flat File Source Output].Columns[pais]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Contenedor de bucles Foreach\Clientes Internacionales\Origen - Clientes Internacionales.Outputs[Flat File Source Output].ExternalColumns[pais]"
+                          length="50"
+                          lineageId="Package\Contenedor de bucles Foreach\Clientes Internacionales\Origen - Clientes Internacionales.Outputs[Flat File Source Output].Columns[pais]"
+                          name="pais"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Contenedor de bucles Foreach\Clientes Internacionales\Origen - Clientes Internacionales.Outputs[Flat File Source Output].ExternalColumns[codigo]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="codigo" />
+                        <externalMetadataColumn
+                          refId="Package\Contenedor de bucles Foreach\Clientes Internacionales\Origen - Clientes Internacionales.Outputs[Flat File Source Output].ExternalColumns[nombre]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="nombre" />
+                        <externalMetadataColumn
+                          refId="Package\Contenedor de bucles Foreach\Clientes Internacionales\Origen - Clientes Internacionales.Outputs[Flat File Source Output].ExternalColumns[ciudad]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="ciudad" />
+                        <externalMetadataColumn
+                          refId="Package\Contenedor de bucles Foreach\Clientes Internacionales\Origen - Clientes Internacionales.Outputs[Flat File Source Output].ExternalColumns[pais]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="pais" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\Contenedor de bucles Foreach\Clientes Internacionales\Origen - Clientes Internacionales.Outputs[Flat File Source Error Output]"
+                      isErrorOut="true"
+                      name="Flat File Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Contenedor de bucles Foreach\Clientes Internacionales\Origen - Clientes Internacionales.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                          codePage="1252"
+                          dataType="text"
+                          description="Flat File Source Error Output Column"
+                          lineageId="Package\Contenedor de bucles Foreach\Clientes Internacionales\Origen - Clientes Internacionales.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                          name="Flat File Source Error Output Column" />
+                        <outputColumn
+                          refId="Package\Contenedor de bucles Foreach\Clientes Internacionales\Origen - Clientes Internacionales.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Contenedor de bucles Foreach\Clientes Internacionales\Origen - Clientes Internacionales.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Contenedor de bucles Foreach\Clientes Internacionales\Origen - Clientes Internacionales.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Contenedor de bucles Foreach\Clientes Internacionales\Origen - Clientes Internacionales.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\Contenedor de bucles Foreach\Clientes Internacionales.Paths[Flat File Source Output]"
+                  endId="Package\Contenedor de bucles Foreach\Clientes Internacionales\Destino-Neptuno.Inputs[OLE DB Destination Input]"
+                  name="Flat File Source Output"
+                  startId="Package\Contenedor de bucles Foreach\Clientes Internacionales\Origen - Clientes Internacionales.Outputs[Flat File Source Output]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Contenedor de bucles Foreach\Clientes Nacionales"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{F8207158-ACB5-4EB6-A28A-F6FD3204F297}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Clientes Nacionales"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\Contenedor de bucles Foreach\Clientes Nacionales\Destino  Neptuno"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="Destino  Neptuno"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[TablaClientes]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Contenedor de bucles Foreach\Clientes Nacionales\Destino  Neptuno.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[Destiono-NEPTUNO]"
+                      connectionManagerRefId="Package.ConnectionManagers[Destiono-NEPTUNO]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Contenedor de bucles Foreach\Clientes Nacionales\Destino  Neptuno.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Contenedor de bucles Foreach\Clientes Nacionales\Destino  Neptuno.Inputs[OLE DB Destination Input].Columns[nombre]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="nombre"
+                          externalMetadataColumnId="Package\Contenedor de bucles Foreach\Clientes Nacionales\Destino  Neptuno.Inputs[OLE DB Destination Input].ExternalColumns[Nombre]"
+                          lineageId="Package\Contenedor de bucles Foreach\Clientes Nacionales\Origen - Clientes Nacionales.Outputs[Flat File Source Output].Columns[nombre]" />
+                        <inputColumn
+                          refId="Package\Contenedor de bucles Foreach\Clientes Nacionales\Destino  Neptuno.Inputs[OLE DB Destination Input].Columns[ciudad]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="ciudad"
+                          externalMetadataColumnId="Package\Contenedor de bucles Foreach\Clientes Nacionales\Destino  Neptuno.Inputs[OLE DB Destination Input].ExternalColumns[Ciudad]"
+                          lineageId="Package\Contenedor de bucles Foreach\Clientes Nacionales\Origen - Clientes Nacionales.Outputs[Flat File Source Output].Columns[ciudad]" />
+                        <inputColumn
+                          refId="Package\Contenedor de bucles Foreach\Clientes Nacionales\Destino  Neptuno.Inputs[OLE DB Destination Input].Columns[codigo]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="codigo"
+                          externalMetadataColumnId="Package\Contenedor de bucles Foreach\Clientes Nacionales\Destino  Neptuno.Inputs[OLE DB Destination Input].ExternalColumns[Id]"
+                          lineageId="Package\Contenedor de bucles Foreach\Clientes Nacionales\Origen - Clientes Nacionales.Outputs[Flat File Source Output].Columns[codigo]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Contenedor de bucles Foreach\Clientes Nacionales\Destino  Neptuno.Inputs[OLE DB Destination Input].ExternalColumns[Id]"
+                          codePage="1252"
+                          dataType="str"
+                          length="20"
+                          name="Id" />
+                        <externalMetadataColumn
+                          refId="Package\Contenedor de bucles Foreach\Clientes Nacionales\Destino  Neptuno.Inputs[OLE DB Destination Input].ExternalColumns[Nombre]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="Nombre" />
+                        <externalMetadataColumn
+                          refId="Package\Contenedor de bucles Foreach\Clientes Nacionales\Destino  Neptuno.Inputs[OLE DB Destination Input].ExternalColumns[Ciudad]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="Ciudad" />
+                        <externalMetadataColumn
+                          refId="Package\Contenedor de bucles Foreach\Clientes Nacionales\Destino  Neptuno.Inputs[OLE DB Destination Input].ExternalColumns[Pais]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="Pais" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Contenedor de bucles Foreach\Clientes Nacionales\Destino  Neptuno.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\Contenedor de bucles Foreach\Clientes Nacionales\Destino  Neptuno.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Contenedor de bucles Foreach\Clientes Nacionales\Destino  Neptuno.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Contenedor de bucles Foreach\Clientes Nacionales\Destino  Neptuno.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Contenedor de bucles Foreach\Clientes Nacionales\Destino  Neptuno.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Contenedor de bucles Foreach\Clientes Nacionales\Destino  Neptuno.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Contenedor de bucles Foreach\Clientes Nacionales\Origen - Clientes Nacionales"
+                  componentClassID="Microsoft.FlatFileSource"
+                  contactInfo="Flat File Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+                  description="Flat File Source"
+                  localeId="10250"
+                  name="Origen - Clientes Nacionales"
+                  usesDispositions="true"
+                  version="1">
+                  <properties>
+                    <property
+                      dataType="System.Boolean"
+                      description="Specifies whether zero-length columns are treated as null."
+                      name="RetainNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of an output column containing the file name. If no name is specified, no output column containing the file name will be generated."
+                      name="FileNameColumnName"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Contenedor de bucles Foreach\Clientes Nacionales\Origen - Clientes Nacionales.Connections[FlatFileConnection]"
+                      connectionManagerID="Package.ConnectionManagers[Origen Nacionales]"
+                      connectionManagerRefId="Package.ConnectionManagers[Origen Nacionales]"
+                      name="FlatFileConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\Contenedor de bucles Foreach\Clientes Nacionales\Origen - Clientes Nacionales.Outputs[Flat File Source Output]"
+                      name="Flat File Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Contenedor de bucles Foreach\Clientes Nacionales\Origen - Clientes Nacionales.Outputs[Flat File Source Output].Columns[codigo]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Contenedor de bucles Foreach\Clientes Nacionales\Origen - Clientes Nacionales.Outputs[Flat File Source Output].ExternalColumns[codigo]"
+                          length="50"
+                          lineageId="Package\Contenedor de bucles Foreach\Clientes Nacionales\Origen - Clientes Nacionales.Outputs[Flat File Source Output].Columns[codigo]"
+                          name="codigo"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Contenedor de bucles Foreach\Clientes Nacionales\Origen - Clientes Nacionales.Outputs[Flat File Source Output].Columns[nombre]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Contenedor de bucles Foreach\Clientes Nacionales\Origen - Clientes Nacionales.Outputs[Flat File Source Output].ExternalColumns[nombre]"
+                          length="50"
+                          lineageId="Package\Contenedor de bucles Foreach\Clientes Nacionales\Origen - Clientes Nacionales.Outputs[Flat File Source Output].Columns[nombre]"
+                          name="nombre"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Contenedor de bucles Foreach\Clientes Nacionales\Origen - Clientes Nacionales.Outputs[Flat File Source Output].Columns[ciudad]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Contenedor de bucles Foreach\Clientes Nacionales\Origen - Clientes Nacionales.Outputs[Flat File Source Output].ExternalColumns[ciudad]"
+                          length="50"
+                          lineageId="Package\Contenedor de bucles Foreach\Clientes Nacionales\Origen - Clientes Nacionales.Outputs[Flat File Source Output].Columns[ciudad]"
+                          name="ciudad"
+                          truncationRowDisposition="FailComponent">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                              name="FastParse">false</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Indicates whether the data is in binary format."
+                              name="UseBinaryFormat">false</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Contenedor de bucles Foreach\Clientes Nacionales\Origen - Clientes Nacionales.Outputs[Flat File Source Output].ExternalColumns[codigo]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="codigo" />
+                        <externalMetadataColumn
+                          refId="Package\Contenedor de bucles Foreach\Clientes Nacionales\Origen - Clientes Nacionales.Outputs[Flat File Source Output].ExternalColumns[nombre]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="nombre" />
+                        <externalMetadataColumn
+                          refId="Package\Contenedor de bucles Foreach\Clientes Nacionales\Origen - Clientes Nacionales.Outputs[Flat File Source Output].ExternalColumns[ciudad]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="ciudad" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\Contenedor de bucles Foreach\Clientes Nacionales\Origen - Clientes Nacionales.Outputs[Flat File Source Error Output]"
+                      isErrorOut="true"
+                      name="Flat File Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Contenedor de bucles Foreach\Clientes Nacionales\Origen - Clientes Nacionales.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                          codePage="1252"
+                          dataType="text"
+                          description="Flat File Source Error Output Column"
+                          lineageId="Package\Contenedor de bucles Foreach\Clientes Nacionales\Origen - Clientes Nacionales.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                          name="Flat File Source Error Output Column" />
+                        <outputColumn
+                          refId="Package\Contenedor de bucles Foreach\Clientes Nacionales\Origen - Clientes Nacionales.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Contenedor de bucles Foreach\Clientes Nacionales\Origen - Clientes Nacionales.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Contenedor de bucles Foreach\Clientes Nacionales\Origen - Clientes Nacionales.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Contenedor de bucles Foreach\Clientes Nacionales\Origen - Clientes Nacionales.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\Contenedor de bucles Foreach\Clientes Nacionales.Paths[Flat File Source Output]"
+                  endId="Package\Contenedor de bucles Foreach\Clientes Nacionales\Destino  Neptuno.Inputs[OLE DB Destination Input]"
+                  name="Flat File Source Output"
+                  startId="Package\Contenedor de bucles Foreach\Clientes Nacionales\Origen - Clientes Nacionales.Outputs[Flat File Source Output]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Contenedor de bucles Foreach\Obtener Ambito Cliente"
+          DTS:CreationName="Microsoft.ScriptTask"
+          DTS:Description="Tarea Script"
+          DTS:DTSID="{778DA3C8-7010-4794-BCB3-DDF62FE28760}"
+          DTS:ExecutableType="Microsoft.ScriptTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Obtener Ambito Cliente"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <ScriptProject
+              Name="ST_bb774c3c8bfe45f8a45bacdf56b40710"
+              VSTAMajorVersion="15"
+              VSTAMinorVersion="0"
+              Language="VisualBasic">
+              <ProjectItem
+                Name="ScriptMain.vb"
+                Encoding="UTF8"><![CDATA[#Region "Help:  Introduction to the script task"
+'The Script Task allows you to perform virtually any operation that can be accomplished in
+'a .Net application within the context of an Integration Services control flow. 
+
+'Expand the other regions which have "Help" prefixes for examples of specific ways to use
+'Integration Services features within this script task.
+#End Region
+
+
+#Region "Imports"
+Imports System
+Imports System.Data
+Imports System.Math
+Imports Microsoft.SqlServer.Dts.Runtime
+#End Region
+
+'ScriptMain is the entry point class of the script.  Do not change the name, attributes,
+'or parent of this class.
+<Microsoft.SqlServer.Dts.Tasks.ScriptTask.SSISScriptTaskEntryPointAttribute()> _
+<System.CLSCompliantAttribute(False)> _
+Partial Public Class ScriptMain
+    Inherits Microsoft.SqlServer.Dts.Tasks.ScriptTask.VSTARTScriptObjectModelBase
+
+#Region "Help:  Using Integration Services variables and parameters in a script"
+    'To use a variable in this script, first ensure that the variable has been added to 
+    'either the list contained in the ReadOnlyVariables property or the list contained in 
+    'the ReadWriteVariables property of this script task, according to whether or not your
+    'code needs to write to the variable.  To add the variable, save this script, close this instance of
+    'Visual Studio, and update the ReadOnlyVariables and 
+    'ReadWriteVariables properties in the Script Transformation Editor window.
+    'To use a parameter in this script, follow the same steps. Parameters are always read-only.
+
+    'Example of reading from a variable:
+    ' startTime = Dts.Variables("System::StartTime").Value
+
+    'Example of writing to a variable:
+    ' Dts.Variables("User::myStringVariable").Value = "new value"
+
+    'Example of reading from a package parameter:
+    ' batchId = Dts.Variables("$Package::batchId").Value
+
+    'Example of reading from a project parameter:
+    ' batchId = Dts.Variables("$Project::batchId").Value
+
+    'Example of reading from a sensitive project parameter:
+    ' batchId = Dts.Variables("$Project::batchId").GetSensitiveValue()
+#End Region
+
+#Region "Help:  Firing Integration Services events from a script"
+    'This script task can fire events for logging purposes.
+
+    'Example of firing an error event:
+    ' Dts.Events.FireError(18, "Process Values", "Bad value", "", 0)
+
+    'Example of firing an information event:
+    ' Dts.Events.FireInformation(3, "Process Values", "Processing has started", "", 0, fireAgain)
+
+    'Example of firing a warning event:
+    ' Dts.Events.FireWarning(14, "Process Values", "No values received for input", "", 0)
+#End Region
+
+#Region "Help:  Using Integration Services connection managers in a script"
+    'Some types of connection managers can be used in this script task.  See the topic 
+    '"Working with Connection Managers Programatically" for details.
+
+    'Example of using an ADO.Net connection manager:
+    ' Dim rawConnection As Object = Dts.Connections("Sales DB").AcquireConnection(Dts.Transaction)
+    ' Dim myADONETConnection As SqlConnection = CType(rawConnection, SqlConnection)
+    ' <Use the connection in some code here, then release the connection>
+    ' Dts.Connections("Sales DB").ReleaseConnection(rawConnection)
+
+    'Example of using a File connection manager
+    ' Dim rawConnection As Object = Dts.Connections("Prices.zip").AcquireConnection(Dts.Transaction)
+    ' Dim filePath As String = CType(rawConnection, String)
+    ' <Use the connection in some code here, then release the connection>
+    ' Dts.Connections("Prices.zip").ReleaseConnection(rawConnection)
+#End Region
+
+    'This method is called when this script task executes in the control flow.
+    'Before returning from this method, set the value of Dts.TaskResult to indicate success or failure.
+    'To open Help, press F1.
+
+    Public Sub Main()
+        Dim vars As Variables
+        Dim FileNationality As String
+        Dim varsNationality As Variables
+        Dts.VariableDispenser.LockOneForRead("User::VarFileName", vars)
+        FileNationality = vars("VarFileName").Value.ToString.Substring(vars("VarFileName").Value.ToString.Length - 7, 3)
+        Dts.VariableDispenser.LockOneForWrite("VarFileNationality", varsNationality)
+        varsNationality("VarFileNationality").Value = FileNationality
+    End Sub
+
+#Region "ScriptResults declaration"
+    'This enum provides a convenient shorthand within the scope of this class for setting the
+    'result of the script.
+
+    'This code was generated automatically.
+    Enum ScriptResults
+        Success = Microsoft.SqlServer.Dts.Runtime.DTSExecResult.Success
+        Failure = Microsoft.SqlServer.Dts.Runtime.DTSExecResult.Failure
+    End Enum
+
+#End Region
+
+End Class]]></ProjectItem>
+              <ProjectItem
+                Name="My Project\Settings.settings"
+                Encoding="UTF8"><![CDATA[<?xml version='1.0' encoding='iso-8859-1'?>
+<SettingsFile xmlns="uri:settings" CurrentProfile="(Default)" GeneratedClassNamespace="$safeprojectname" GeneratedClassName="MySettings">
+  <Profiles>
+    <Profile Name="(Default)" />
+  </Profiles>
+  <Settings />
+</SettingsFile>]]></ProjectItem>
+              <ProjectItem
+                Name="My Project\AssemblyInfo.vb"
+                Encoding="UTF8"><![CDATA[Imports System
+Imports System.Reflection
+Imports System.Runtime.InteropServices
+
+' General Information about an assembly is controlled through the following 
+' set of attributes. Change these attribute values to modify the information
+' associated with an assembly.
+
+' Review the values of the assembly attributes
+
+<Assembly: AssemblyTitle("ST_bb774c3c8bfe45f8a45bacdf56b40710")> 
+<Assembly: AssemblyDescription("")> 
+<Assembly: AssemblyCompany("HP Inc.")> 
+<Assembly: AssemblyProduct("ST_bb774c3c8bfe45f8a45bacdf56b40710")> 
+<Assembly: AssemblyCopyright("Copyright @ HP Inc. 2023")> 
+<Assembly: AssemblyTrademark("")> 
+<Assembly: CLSCompliant(True)> 
+
+<Assembly: ComVisible(False)> 
+
+'The following GUID is for the ID of the typelib if this project is exposed to COM
+<Assembly: Guid("65d50cfa-a531-445e-a5e6-e3edaba672a9")> 
+
+' Version information for an assembly consists of the following four values:
+'
+'      Major Version
+'      Minor Version 
+'      Build Number
+'      Revision
+'
+' You can specify all the values or you can default the Build and Revision Numbers 
+' by using the '*' as shown below:
+' <Assembly: AssemblyVersion("1.0.*")>
+
+<Assembly: AssemblyVersion("1.0.0.0")> 
+<Assembly: AssemblyFileVersion("1.0.0.0")> ]]></ProjectItem>
+              <ProjectItem
+                Name="My Project\Settings.Designer.vb"
+                Encoding="UTF8"><![CDATA['------------------------------------------------------------------------------
+' <autogenerated>
+'     This code was generated by a tool.
+'
+'     Changes to this file may cause incorrect behavior and will be lost if
+'     the code is regenerated.
+' </autogenerated>
+'------------------------------------------------------------------------------
+
+Option Strict Off
+Option Explicit On
+
+
+
+Partial Friend NotInheritable Class MySettings
+    Inherits System.Configuration.ApplicationSettingsBase
+
+    Private Shared m_Value As MySettings
+
+    Private Shared m_SyncObject As Object = New Object
+
+    <System.Diagnostics.DebuggerNonUserCode()> _
+    Public Shared ReadOnly Property Value() As MySettings
+        Get
+            If (MySettings.m_Value Is Nothing) Then
+                System.Threading.Monitor.Enter(MySettings.m_SyncObject)
+                If (MySettings.m_Value Is Nothing) Then
+                    Try
+                        MySettings.m_Value = New MySettings
+                    Finally
+                        System.Threading.Monitor.Exit(MySettings.m_SyncObject)
+                    End Try
+                End If
+            End If
+            Return MySettings.m_Value
+        End Get
+    End Property
+End Class]]></ProjectItem>
+              <ProjectItem
+                Name="Project"
+                Encoding="UTF16LE"><![CDATA[<?xml version="1.0" encoding="UTF-16" standalone="yes"?>
+<c:Project xmlns:c="http://schemas.microsoft.com/codeprojectml/2010/08/main" xmlns:msb="http://schemas.microsoft.com/developer/msbuild/2003" runtimeVersion="3.0" schemaVersion="1.0">
+  <msb:PropertyGroup>
+    <msb:Language>msBuild</msb:Language>
+    <msb:CodeName>ST_bb774c3c8bfe45f8a45bacdf56b40710</msb:CodeName>
+    <msb:DisplayName>ST_bb774c3c8bfe45f8a45bacdf56b40710</msb:DisplayName>
+    <msb:ProjectId>{847A2DAB-A2B7-4C87-9D65-B2D79F0F80C1}</msb:ProjectId>
+  </msb:PropertyGroup>
+  <msb:ItemGroup>
+    <msb:Project Include="ST_bb774c3c8bfe45f8a45bacdf56b40710.vbproj" />
+    <msb:File Include="My Project\AssemblyInfo.vb" />
+    <msb:File Include="ScriptMain.vb" />
+    <msb:File Include="My Project\Resources.resx" />
+    <msb:File Include="My Project\Resources.Designer.vb" />
+    <msb:File Include="My Project\Settings.settings" />
+    <msb:File Include="My Project\Settings.Designer.vb" />
+  </msb:ItemGroup>
+</c:Project>]]></ProjectItem>
+              <ProjectItem
+                Name="My Project\Resources.resx"
+                Encoding="UTF8"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+</root>]]></ProjectItem>
+              <ProjectItem
+                Name="ST_bb774c3c8bfe45f8a45bacdf56b40710.vbproj"
+                Encoding="UTF8"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectTypeGuids>{30D016F9-3734-4E33-A861-5E7D899E18F3};{F184B08F-C81C-45F6-A57F-5ABD9991F28F}</ProjectTypeGuids>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{477a7a60-8a31-4895-b92b-b55e2a5b2cc8}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>My Project</AppDesignerFolder>
+    <RootNamespace>ST_bb774c3c8bfe45f8a45bacdf56b40710</RootNamespace>
+    <AssemblyName>ST_bb774c3c8bfe45f8a45bacdf56b40710</AssemblyName>
+    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ResolveAssemblyReferenceIgnoreTargetFrameworkAttributeVersionMismatch>true</ResolveAssemblyReferenceIgnoreTargetFrameworkAttributeVersionMismatch>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>.\bin\Debug\</OutputPath>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugSymbols>false</DebugSymbols>
+    <Optimize>true</Optimize>
+    <OutputPath>.\bin\Release\</OutputPath>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.SqlServer.ManagedDTS, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.SqlServer.ScriptTask, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Data" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Windows.Forms" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <AppDesigner Include="My Project\" />
+    <Compile Include="My Project\AssemblyInfo.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <EmbeddedResource Include="My Project\Resources.resx">
+      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+    </EmbeddedResource>
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <None Include="My Project\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+    </None>
+    <Compile Include="My Project\Settings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ScriptMain.vb">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+
+  <!-- Include the build rules for a VB project.-->
+  <Import Project="$(MSBuildBinPath)\Microsoft.VisualBasic.targets" />
+
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{30D016F9-3734-4E33-A861-5E7D899E18F3}">
+        <ProjectProperties HostName="ScriptTask"
+                           HostPackage="{B3A685AA-7EAF-4BC6-9940-57959FA5AC07}"
+                           ApplicationType="usd"
+                           Language="vb"
+                           TemplatesPath=""
+                           DebugInfoCommandLine=""
+                           DebugInfoWorkingDir=""
+                           IconImageList=""/>
+
+        <Host Name="ScriptTask" IconIndex="">
+        </Host>
+        <ProjectClient>
+          <HostIdentifier>SSIS_ST150</HostIdentifier>
+        </ProjectClient>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>]]></ProjectItem>
+              <ProjectItem
+                Name="My Project\Resources.Designer.vb"
+                Encoding="UTF8"><![CDATA['------------------------------------------------------------------------------
+' <autogenerated>
+'     This code was generated by a tool.
+'
+'     Changes to this file may cause incorrect behavior and will be lost if
+'     the code is regenerated.
+' </autogenerated>
+'------------------------------------------------------------------------------
+
+Option Strict Off
+Option Explicit On
+
+
+Namespace My.Resources
+    
+    '''<summary>
+    '''   A strongly-typed resource class, for looking up localized strings, etc.
+    '''</summary>
+    'This class was auto-generated by the Strongly Typed Resource Builder
+    'class via a tool like ResGen or Visual Studio.NET.
+    'To add or remove a member, edit your .ResX file then rerun ResGen
+    'with the /str option, or rebuild your VS project.
+    Class MyResources
+        
+        Private Shared _resMgr As System.Resources.ResourceManager
+        
+        Private Shared _resCulture As System.Globalization.CultureInfo
+        
+        Friend Sub New()
+            MyBase.New
+        End Sub
+        
+        '''<summary>
+        '''   Returns the cached ResourceManager instance used by this class.
+        '''</summary>
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+        Public Shared ReadOnly Property ResourceManager() As System.Resources.ResourceManager
+            Get
+                If (_resMgr Is Nothing) Then
+                    Dim temp As System.Resources.ResourceManager = New System.Resources.ResourceManager("My.Resources.MyResources", GetType(MyResources).Assembly)
+                    _resMgr = temp
+                End If
+                Return _resMgr
+            End Get
+        End Property
+        
+        '''<summary>
+        '''   Overrides the current thread's CurrentUICulture property for all
+        '''   resource lookups using this strongly typed resource class.
+        '''</summary>
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+        Public Shared Property Culture() As System.Globalization.CultureInfo
+            Get
+                Return _resCulture
+            End Get
+            Set
+                _resCulture = value
+            End Set
+        End Property
+    End Class
+End Namespace]]></ProjectItem>
+              <BinaryItem
+                Name="ST_bb774c3c8bfe45f8a45bacdf56b40710.dll">TVqQAAMAAAAEAAAA//8AALgAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAgAAAAA4fug4AtAnNIbgBTM0hVGhpcyBwcm9ncmFtIGNhbm5vdCBiZSBydW4gaW4gRE9TIG1v
+ZGUuDQ0KJAAAAAAAAABQRQAATAEDAGZxx2MAAAAAAAAAAOAAIiALAVAAABoAAAAIAAAAAAAAOjkA
+AAAgAAAAQAAAAAAAEAAgAAAAAgAABAAAAAAAAAAGAAAAAAAAAACAAAAAAgAAAAAAAAMAYIUAABAA
+ABAAAAAAEAAAEAAAAAAAABAAAAAAAAAAAAAAAOg4AABPAAAAAEAAAGQEAAAAAAAAAAAAAAAAAAAA
+AAAAAGAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAIAAACAAAAAAAAAAAAAAACCAAAEgAAAAAAAAAAAAAAC50ZXh0AAAAQBkAAAAgAAAAGgAAAAIA
+AAAAAAAAAAAAAAAAACAAAGAucnNyYwAAAGQEAAAAQAAAAAYAAAAcAAAAAAAAAAAAAAAAAABAAABA
+LnJlbG9jAAAMAAAAAGAAAAACAAAAIgAAAAAAAAAAAAAAAAAAQAAAQgAAAAAAAAAAAAAAAAAAAAAc
+OQAAAAAAAEgAAAACAAUAoCIAAJAVAAABAAAAAAAAADA4AAC4AAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAB4CKBgAAAoqHgIoGQAACiqmcxoAAAqAAQAABHMbAAAKgAIA
+AARzHAAACoADAAAEcx0AAAqABAAABCoufgEAAARvHgAACioufgIAAARvHwAACioufgMAAARvIAAA
+CioufgQAAARvIQAACioeAigiAAAKKq5+BQAABC0ecgEAAHDQBQAAAigjAAAKbyQAAApzJQAACoAF
+AAAEfgUAAAQqGn4GAAAEKh4CgAYAAAQqQnMiAAAKKCYAAAqACAAABCoeAignAAAKKgAAGzABAD8A
+AAAAAAAAfgcAAAQtMn4IAAAEKCYAAAooKAAACn4HAAAELRxzDQAABoAHAAAE3hB+CAAABCgmAAAK
+KCkAAArcfgcAAAQqAAEQAAACAB0ADCkAEAAAAAAeAigqAAAKKhMwAwB4AAAAAQAAEQIoKwAACm8s
+AAAKcjMAAHASAG8tAAAKBnJXAABwby4AAApvLwAACm8wAAAKBnJXAABwby4AAApvLwAACm8wAAAK
+bzEAAAod2hlvMgAACgsCKCsAAApvLAAACnJvAABwEgJvMwAACghybwAAcG8uAAAKB280AAAKKjYC
+AygmAAAKKDUAAAoqHgIoNgAACiou0AgAAAIoIwAACioeAigwAAAKKgAAEzABABQAAAACAAARAowF
+AAAbLQgoAQAAKworAgIKBioiA/4VBQAAGyoAAAATMAIAKAAAAAMAABECezgAAApvOQAACgoGjAgA
+ABstEigCAAArCgJ7OAAACgZvOgAACgYqSgIoIgAACgJzOwAACn04AAAKKgBCU0pCAQABAAAAAAAM
+AAAAdjQuMC4zMDMxOQAAAAAFAGwAAADQBwAAI34AADwIAAAcCQAAI1N0cmluZ3MAAAAAWBEAAJgA
+AAAjVVMA8BEAABAAAAAjR1VJRAAAAAASAACQAwAAI0Jsb2IAAAAAAAAAAgAAAVcdogkJDwAAAPoB
+MwAWAAABAAAALwAAAAoAAAAMAAAAGQAAAAQAAAA7AAAAAgAAADcAAAADAAAABAAAAAgAAAAJAAAA
+CAAAAAEAAAAFAAAAAQAAAAMAAAADAAAAAgAAAAAASgUBAAAAAAAGAHQDxAcGABkExAcGAEsCBQcP
+AGoIAAAGAIwC9wUGAFcD9wUGAAAE9wUGAJQD9wUGAK0D9wUGANMC9wUGAMgDewUGAHgCfgcGAPQB
+fgcGAB8D9wUGAO4CcwQKABcCiQYKAM8BNAUKAF8CNAUOAKcBVAcOANUGGAcGAAcDBQcOAKMCnQcO
+ALsCsQAGAMgIewUOAKUGVAcOADwDsQAGAFoBewUOACUA+AQKAAIChwUGAHkG5AcGAAkG4gUKALcB
+zQUGAC4CBQcSAN4DzwQSAIsBzwQGAKAEewUWAHkINwEGAIIFewUGABMBewUGABMJ9wUGAJUIxAcG
+AP0GYgQSACIFzwQWAK4GNwEWAAoBNwEGAI8EewUGAOYGewUAAAAATwAAAAAAAQABAAAAAAC/BegI
+TQABAAEAAAAAANMG6AhRAAEAAgAAARAAzwjoCGEAAQADAAAAAAAmCPUHYQAFAAgAAAEQAIMIAQCB
+AAcADAABAAAApAUBAI0ACQAPAAUBAABGBwAAYQAJABEABQEAADQAAABhAAkAGAACAQAAtAgAAJkA
+CgAaADEAPgYSATEAFQYaATEAKQYiATEAVwYqAREA3gYyAREAfwE2AREANwQ6AREAwgg+ASEA3gjQ
+AAYGoABBAVaApAhEAVaAXwFEAVAgAAAAAAYY8AYGAAEAWCAAAAAABhjwBgYAAQBgIAAAAAARGPYG
+SAEBAIogAAAAABMIxgZMAQEAliAAAAAAEwivBVEBAQCiIAAAAAATCKEGVgEBAK4gAAAAABMINgdb
+AQEAuiAAAAAAAxjwBgYAAQDCIAAAAAAWCHUGYAEBAO4gAAAAABYIZwFlAQEA9SAAAAAAFghzAWoB
+AQD9IAAAAAARGPYGSAECAA4hAAAAAAYY8AYGAAIAGCEAAAAAFgg/BHABAgB0IQAAAAAGGPAGBgAC
+AHwhAAAAAAYAqgUGAAIAACIAAAAAxgKOCKwAAgAOIgAAAADGAv4AnQADABYiAAAAAIMAVwF1AQMA
+IiIAAAAAxgKNBJkAAwAsIgAAAAARAI0AegEDAEwiAAAAAAEAeQCCAQQAuiAAAAAABhjwBgYABQBY
+IgAAAAADCOUASgAFAIwiAAAAAAYY8AYGAAUAAAABAFwEAAABABMGAAABAPUAAAABAPUACQDwBgEA
+EQDwBgYAGQDwBgoAKQDwBhAAMQDwBhAAOQDwBhAAQQDwBhAASQDwBhAAUQDwBhAAWQDwBhUAYQDw
+BhUAaQDwBhAAcQDwBhAAeQDwBhAAgQDwBhoAkQDwBiAAqQDwBgYAsQDwBgYAuQDwBgYA0QDwBiYA
+6QDwBhAACQHwBgYAEQHwBgYAmQDwBgYAoQDwBgYADADwBgYAFADwBgYAHADwBgYAJADwBgYADADl
+AEoAFADlAEoAHADlAEoAJADlAEoAwQDwBgYA2QAlAU8A2QAPCVcA8QDwBl0ASQFTBGUAAQHwBgYA
+UQHABmoAUQHZCGoAGQHwBgYAGQGsCHkAWQGqBn8AYQHHAIUAKQFyBY4AaQE/BJUAwQCNBJkAcQGl
+BJ0AcQGWBKEAYQHkAYUAaQFJBKcAwQCOCKwAwQD+AJ0AeQHWALkANADeCNAAPAA/BEoAPABJBOcA
+PADwBgYACAAsAAgBCAAwAA0BKQCrAEgDLgALALIBLgATALsBLgAbANoBLgAjAOMBLgArAAwCLgAz
+ABICLgA7AOMBLgBDAB8CLgBLAAwCLgBTAD0CLgBbAAwCLgBjAEMCLgBrAG0CLgBzAHoCQACLAA0B
+QACDAMQCQwB7AM0CQwCDAMQCSQCrAFkDYwB7AM0CYwCDAMQCaQCrAG0DgACLAA0BgwCTAA0BgwCb
+AA0BgwB7AM0CiQCrAHoDoACLAA0BqQCDANoBwACLAA0ByQCDANoB4ACLAA0B4wC7AA0B4wBTAAwC
+6QCzAA0BAwGDAMQCAwGjAOYCIwGDAMQCIwFbAAwCIAKDAMQCIAKLAA0BQAKDAMQCQAKLAA0BYAKD
+AMQCYAKLAA0BgAKDAMQCgAKLAA0BoAKLAA0BwAKLAA0B4AKLAA0B4AKDAMQCAAOLAA0BIAOLAA0B
+IAODAMQCbwCxAMQABAABAAUABQAGAAcACQAIAAAA1QaKAQAAwQWPAQAApQaUAQAASAeZAQAAeQae
+AQAAgwGjAQAAXASoAQAA6QCtAQIABAADAAIABQAFAAIABgAHAAIABwAJAAIACQALAAIACgANAAEA
+CwANAAIADgAPAAIAGAARAC4ANQA8AEMAtgDJANgA3wAEgAAAAQAAAAAAAAAAAAAAAAABAAAABAAA
+AAAAAAAAAAAA7QCoAAAAAAAEAAAAAAAAAAAAAADtAHsFAAAAAAoAAAAAAAAAAAAAAPYAsQAAAAAA
+DwAAAAAAAAAAAAAA/wCwBAAAAAAPAAAAAAAAAAAAAAD/AFgAAAAAAAAAAAABAAAAMggAAAgABAAJ
+AAQACgAHAAAAEAASAHcAAAAQACsAdwAAAAAALQB3AG8AvwBvAOIAAAAAAABTVF9iYjc3NGMzYzhi
+ZmU0NWY4YTQ1YmFjZGY1NmI0MDcxMABDb250ZXh0VmFsdWVgMQBUaHJlYWRTYWZlT2JqZWN0UHJv
+dmlkZXJgMQA8TW9kdWxlPgBNaWNyb3NvZnQuU3FsU2VydmVyLk1hbmFnZWREVFMAVABEaXNwb3Nl
+X19JbnN0YW5jZV9fAENyZWF0ZV9fSW5zdGFuY2VfXwB2YWx1ZV9fAG1zY29ybGliAE1pY3Jvc29m
+dC5WaXN1YWxCYXNpYwBMb2NrT25lRm9yUmVhZABDcmVhdGVJbnN0YW5jZQBnZXRfR2V0SW5zdGFu
+Y2UAaW5zdGFuY2UAR2V0SGFzaENvZGUAVmFyaWFibGUAUnVudGltZVR5cGVIYW5kbGUAR2V0VHlw
+ZUZyb21IYW5kbGUATWljcm9zb2Z0LlNxbFNlcnZlci5EdHMuUnVudGltZQBHZXRUeXBlAEZhaWx1
+cmUAZ2V0X0N1bHR1cmUAc2V0X0N1bHR1cmUAX3Jlc0N1bHR1cmUAVlNUQVJUU2NyaXB0T2JqZWN0
+TW9kZWxCYXNlAEFwcGxpY2F0aW9uQmFzZQBBcHBsaWNhdGlvblNldHRpbmdzQmFzZQBFZGl0b3JC
+cm93c2FibGVTdGF0ZQBMb2NrT25lRm9yV3JpdGUAR3VpZEF0dHJpYnV0ZQBIZWxwS2V5d29yZEF0
+dHJpYnV0ZQBHZW5lcmF0ZWRDb2RlQXR0cmlidXRlAERlYnVnZ2VyTm9uVXNlckNvZGVBdHRyaWJ1
+dGUARGVidWdnYWJsZUF0dHJpYnV0ZQBFZGl0b3JCcm93c2FibGVBdHRyaWJ1dGUAQ29tVmlzaWJs
+ZUF0dHJpYnV0ZQBBc3NlbWJseVRpdGxlQXR0cmlidXRlAFN0YW5kYXJkTW9kdWxlQXR0cmlidXRl
+AEhpZGVNb2R1bGVOYW1lQXR0cmlidXRlAEFzc2VtYmx5VHJhZGVtYXJrQXR0cmlidXRlAFRhcmdl
+dEZyYW1ld29ya0F0dHJpYnV0ZQBEZWJ1Z2dlckhpZGRlbkF0dHJpYnV0ZQBBc3NlbWJseUZpbGVW
+ZXJzaW9uQXR0cmlidXRlAE15R3JvdXBDb2xsZWN0aW9uQXR0cmlidXRlAEFzc2VtYmx5RGVzY3Jp
+cHRpb25BdHRyaWJ1dGUAQ29tcGlsYXRpb25SZWxheGF0aW9uc0F0dHJpYnV0ZQBBc3NlbWJseVBy
+b2R1Y3RBdHRyaWJ1dGUAQXNzZW1ibHlDb3B5cmlnaHRBdHRyaWJ1dGUAQ0xTQ29tcGxpYW50QXR0
+cmlidXRlAFNTSVNTY3JpcHRUYXNrRW50cnlQb2ludEF0dHJpYnV0ZQBBc3NlbWJseUNvbXBhbnlB
+dHRyaWJ1dGUAUnVudGltZUNvbXBhdGliaWxpdHlBdHRyaWJ1dGUAbV9WYWx1ZQBnZXRfVmFsdWUA
+c2V0X1ZhbHVlAEdldE9iamVjdFZhbHVlAFN5c3RlbS5UaHJlYWRpbmcAU3lzdGVtLlJ1bnRpbWUu
+VmVyc2lvbmluZwBUb1N0cmluZwBTdWJzdHJpbmcATWF0aABnZXRfTGVuZ3RoAE1pY3Jvc29mdC5T
+cWxTZXJ2ZXIuU2NyaXB0VGFzawBNaWNyb3NvZnQuU3FsU2VydmVyLkR0cy5UYXNrcy5TY3JpcHRU
+YXNrAE1pY3Jvc29mdC5WaXN1YWxCYXNpYy5NeVNlcnZpY2VzLkludGVybmFsAFNjcmlwdE9iamVj
+dE1vZGVsAFN5c3RlbS5Db21wb25lbnRNb2RlbABTVF9iYjc3NGMzYzhiZmU0NWY4YTQ1YmFjZGY1
+NmI0MDcxMC5kbGwAZ2V0X0l0ZW0AU3lzdGVtAEVudW0AU3lzdGVtLkNvbXBvbmVudE1vZGVsLkRl
+c2lnbgBTY3JpcHRNYWluAGdldF9BcHBsaWNhdGlvbgBNeUFwcGxpY2F0aW9uAFN5c3RlbS5Db25m
+aWd1cmF0aW9uAFN5c3RlbS5HbG9iYWxpemF0aW9uAFN5c3RlbS5SZWZsZWN0aW9uAEN1bHR1cmVJ
+bmZvAG1fQXBwT2JqZWN0UHJvdmlkZXIAbV9Vc2VyT2JqZWN0UHJvdmlkZXIAbV9Db21wdXRlck9i
+amVjdFByb3ZpZGVyAG1fTXlXZWJTZXJ2aWNlc09iamVjdFByb3ZpZGVyAGdldF9SZXNvdXJjZU1h
+bmFnZXIAU3lzdGVtLkNvZGVEb20uQ29tcGlsZXIAZ2V0X1VzZXIAZ2V0X1ZhcmlhYmxlRGlzcGVu
+c2VyAEVudGVyAGdldF9Db21wdXRlcgBNeUNvbXB1dGVyAF9yZXNNZ3IAQWN0aXZhdG9yAC5jdG9y
+AC5jY3RvcgBNb25pdG9yAFN5c3RlbS5EaWFnbm9zdGljcwBNaWNyb3NvZnQuVmlzdWFsQmFzaWMu
+RGV2aWNlcwBnZXRfV2ViU2VydmljZXMATXlXZWJTZXJ2aWNlcwBNaWNyb3NvZnQuVmlzdWFsQmFz
+aWMuQXBwbGljYXRpb25TZXJ2aWNlcwBTeXN0ZW0uUnVudGltZS5JbnRlcm9wU2VydmljZXMATWlj
+cm9zb2Z0LlZpc3VhbEJhc2ljLkNvbXBpbGVyU2VydmljZXMAU3lzdGVtLlJ1bnRpbWUuQ29tcGls
+ZXJTZXJ2aWNlcwBTeXN0ZW0uUmVzb3VyY2VzAFNUX2JiNzc0YzNjOGJmZTQ1ZjhhNDViYWNkZjU2
+YjQwNzEwLk15LlJlc291cmNlcwBNeVJlc291cmNlcwBTVF9iYjc3NGMzYzhiZmU0NWY4YTQ1YmFj
+ZGY1NmI0MDcxMC5SZXNvdXJjZXMucmVzb3VyY2VzAERlYnVnZ2luZ01vZGVzAFZhcmlhYmxlcwBN
+eVNldHRpbmdzAEVxdWFscwBSdW50aW1lSGVscGVycwBTdWNjZXNzAGdldF9EdHMAU2NyaXB0UmVz
+dWx0cwBtX1N5bmNPYmplY3QATXlQcm9qZWN0AEV4aXQAbV9Db250ZXh0AFNUX2JiNzc0YzNjOGJm
+ZTQ1ZjhhNDViYWNkZjU2YjQwNzEwLk15AGdldF9Bc3NlbWJseQAAMU0AeQAuAFIAZQBzAG8AdQBy
+AGMAZQBzAC4ATQB5AFIAZQBzAG8AdQByAGMAZQBzAAAjVQBzAGUAcgA6ADoAVgBhAHIARgBpAGwA
+ZQBOAGEAbQBlAAAXVgBhAHIARgBpAGwAZQBOAGEAbQBlAAAlVgBhAHIARgBpAGwAZQBOAGEAdABp
+AG8AbgBhAGwAaQB0AHkAAAAAALh3j3FlHflItD1i3Nz/P+AABCABAQgDIAABBSABARERBCABAQ4E
+IAEBAgUgAgEODgUgAQERRQcgBAEODg4OBhUSJAESDAYVEiQBEggGFRIkARJlBhUSJAESIAQgABMA
+BwABEm0RgJ0FIAASgKEHIAIBDhKAoQQAARwcBAABARwJBwMSgJUOEoCVBSAAEoCtBSAAEoCxCCAC
+AQ4QEoCVBiABEoC1HAMgABwDIAAOAyAACAUgAg4ICAQgAQEcBCABAhwEBwEeAAIeAAUQAQAeAAQK
+AR4ABAcBEwAGFRIkARMABwYVEnEBEwAGFRJxARMAAhMABAoBEwAFIAEBEwAIt3pcVhk04IkIsD9f
+fxHVCjoIiYRdzYCAzJEEAAAAAAQBAAAABwYVEiQBEgwHBhUSJAESCAcGFRIkARJlBwYVEiQBEiAD
+BhJ5AwYSfQMGEhgCBhwCBggDBhEoAwAAAQQAABIMBAAAEggEAAASZQQAABIgBAAAEnkEAAASfQUA
+AQESfQQAABIYBCAAEm0HEAEBHgAeAAcwAQEBEB4ABAgAEgwECAASCAQIABJlBAgAEiAECAASeQQI
+ABJ9BAgAEhgEKAATAAgBAAgAAAAAAB4BAAEAVAIWV3JhcE5vbkV4Y2VwdGlvblRocm93cwEIAQAC
+AAAAAAAoAQAjU1RfYmI3NzRjM2M4YmZlNDVmOGE0NWJhY2RmNTZiNDA3MTAAAAUBAAAAAAwBAAdI
+UCBJbmMuAAAdAQAYQ29weXJpZ2h0IEAgSFAgSW5jLiAyMDIzAAAFAQABAAApAQAkNjVkNTBjZmEt
+YTUzMS00NDVlLWE1ZTYtZTNlZGFiYTY3MmE5AAAMAQAHMS4wLjAuMAAASQEAGi5ORVRGcmFtZXdv
+cmssVmVyc2lvbj12NC43AQBUDhRGcmFtZXdvcmtEaXNwbGF5TmFtZRIuTkVUIEZyYW1ld29yayA0
+LjcIAQABAAAAAAAYAQAKTXlUZW1wbGF0ZQgxMS4wLjAuMAAAYQEANFN5c3RlbS5XZWIuU2Vydmlj
+ZXMuUHJvdG9jb2xzLlNvYXBIdHRwQ2xpZW50UHJvdG9jb2wSQ3JlYXRlX19JbnN0YW5jZV9fE0Rp
+c3Bvc2VfX0luc3RhbmNlX18AAAAQAQALTXkuQ29tcHV0ZXIAABMBAA5NeS5BcHBsaWNhdGlvbgAA
+DAEAB015LlVzZXIAABMBAA5NeS5XZWJTZXJ2aWNlcwAAAAC0AAAAzsrvvgEAAACRAAAAbFN5c3Rl
+bS5SZXNvdXJjZXMuUmVzb3VyY2VSZWFkZXIsIG1zY29ybGliLCBWZXJzaW9uPTQuMC4wLjAsIEN1
+bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49Yjc3YTVjNTYxOTM0ZTA4OSNTeXN0ZW0uUmVz
+b3VyY2VzLlJ1bnRpbWVSZXNvdXJjZVNldAIAAAAAAAAAAAAAAFBBRFBBRFC0AAAAEDkAAAAAAAAA
+AAAAKjkAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAABw5AAAAAAAAAAAAAAAAX0NvckRsbE1haW4A
+bXNjb3JlZS5kbGwAAAAAAP8lACAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AQAQAAAAGAAAgAAAAAAAAAAAAAAAAAAAAQABAAAAMAAAgAAAAAAAAAAAAAAAAAAAAQAAAAAASAAA
+AFhAAAAIBAAAAAAAAAAAAAAIBDQAAABWAFMAXwBWAEUAUgBTAEkATwBOAF8ASQBOAEYATwAAAAAA
+vQTv/gAAAQAAAAEAAAAAAAAAAQAAAAAAPwAAAAAAAAAEAAAAAgAAAAAAAAAAAAAAAAAAAEQAAAAB
+AFYAYQByAEYAaQBsAGUASQBuAGYAbwAAAAAAJAAEAAAAVAByAGEAbgBzAGwAYQB0AGkAbwBuAAAA
+AAAAALAEaAMAAAEAUwB0AHIAaQBuAGcARgBpAGwAZQBJAG4AZgBvAAAARAMAAAEAMAAwADAAMAAw
+ADQAYgAwAAAAGgABAAEAQwBvAG0AbQBlAG4AdABzAAAAAAAAADAACAABAEMAbwBtAHAAYQBuAHkA
+TgBhAG0AZQAAAAAASABQACAASQBuAGMALgAAAHAAJAABAEYAaQBsAGUARABlAHMAYwByAGkAcAB0
+AGkAbwBuAAAAAABTAFQAXwBiAGIANwA3ADQAYwAzAGMAOABiAGYAZQA0ADUAZgA4AGEANAA1AGIA
+YQBjAGQAZgA1ADYAYgA0ADAANwAxADAAAAAwAAgAAQBGAGkAbABlAFYAZQByAHMAaQBvAG4AAAAA
+ADEALgAwAC4AMAAuADAAAABwACgAAQBJAG4AdABlAHIAbgBhAGwATgBhAG0AZQAAAFMAVABfAGIA
+YgA3ADcANABjADMAYwA4AGIAZgBlADQANQBmADgAYQA0ADUAYgBhAGMAZABmADUANgBiADQAMAA3
+ADEAMAAuAGQAbABsAAAAVgAZAAEATABlAGcAYQBsAEMAbwBwAHkAcgBpAGcAaAB0AAAAQwBvAHAA
+eQByAGkAZwBoAHQAIABAACAASABQACAASQBuAGMALgAgADIAMAAyADMAAAAAACoAAQABAEwAZQBn
+AGEAbABUAHIAYQBkAGUAbQBhAHIAawBzAAAAAAAAAAAAeAAoAAEATwByAGkAZwBpAG4AYQBsAEYA
+aQBsAGUAbgBhAG0AZQAAAFMAVABfAGIAYgA3ADcANABjADMAYwA4AGIAZgBlADQANQBmADgAYQA0
+ADUAYgBhAGMAZABmADUANgBiADQAMAA3ADEAMAAuAGQAbABsAAAAaAAkAAEAUAByAG8AZAB1AGMA
+dABOAGEAbQBlAAAAAABTAFQAXwBiAGIANwA3ADQAYwAzAGMAOABiAGYAZQA0ADUAZgA4AGEANAA1
+AGIAYQBjAGQAZgA1ADYAYgA0ADAANwAxADAAAAA0AAgAAQBQAHIAbwBkAHUAYwB0AFYAZQByAHMA
+aQBvAG4AAAAxAC4AMAAuADAALgAwAAAAOAAIAAEAQQBzAHMAZQBtAGIAbAB5ACAAVgBlAHIAcwBp
+AG8AbgAAADEALgAwAC4AMAAuADAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAwAAAMAAAAPDkAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</BinaryItem>
+            </ScriptProject>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Contenedor de bucles Foreach.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{6B8EB6EE-590C-4E39-BE0C-640F786276F3}"
+          DTS:EvalOp="1"
+          DTS:Expression="@[User::varFilenationality]==&quot;Nac&quot;"
+          DTS:From="Package\Contenedor de bucles Foreach\Obtener Ambito Cliente"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\Contenedor de bucles Foreach\Clientes Nacionales" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Contenedor de bucles Foreach.PrecedenceConstraints[Constraint 1]"
+          DTS:CreationName=""
+          DTS:DTSID="{AD609867-CBF4-462C-B0A3-6F90C538B300}"
+          DTS:EvalOp="1"
+          DTS:Expression="@[User::varFilenationality]==&quot;Int&quot;"
+          DTS:From="Package\Contenedor de bucles Foreach\Obtener Ambito Cliente"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 1"
+          DTS:To="Package\Contenedor de bucles Foreach\Clientes Internacionales" />
+      </DTS:PrecedenceConstraints>
+      <DTS:ForEachVariableMappings>
+        <DTS:ForEachVariableMapping
+          DTS:CreationName=""
+          DTS:DTSID="{1E39B6E0-2C8F-4326-AF99-FE7FBDD0CA6A}"
+          DTS:ObjectName="{1E39B6E0-2C8F-4326-AF99-FE7FBDD0CA6A}"
+          DTS:ValueIndex="0"
+          DTS:VariableName="User::varFileName" />
+      </DTS:ForEachVariableMappings>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{9F8AE2DE-555B-4494-9CEC-CEE463D79C66}"
+      DTS:From="Package\Borrar datos anteriores"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Contenedor de bucles Foreach" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="212.8,41.6"
+          Id="Package\Contenedor de bucles Foreach\Obtener Ambito Cliente"
+          TopLeft="143.228581415391,5.15294325706464" />
+        <NodeLayout
+          Size="168.8,41.6"
+          Id="Package\Contenedor de bucles Foreach\Clientes Nacionales"
+          TopLeft="5.5,110.682356501781" />
+        <EdgeLayout
+          Id="Package\Contenedor de bucles Foreach.PrecedenceConstraints[Constraint]"
+          TopLeft="249.628581415391,46.7529432570646">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-159.728581415391,63.9294132447161"
+              Start="0,0"
+              End="-159.728581415391,56.4294132447161">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,27.9647066223581" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,27.9647066223581"
+                    Point2="0,31.9647066223581"
+                    Point3="-4,31.9647066223581" />
+                  <mssgle:LineSegment
+                    End="-155.728581415391,31.9647066223581" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-155.728581415391,31.9647066223581"
+                    Point2="-159.728581415391,31.9647066223581"
+                    Point3="-159.728581415391,35.9647066223581" />
+                  <mssgle:LineSegment
+                    End="-159.728581415391,56.4294132447161" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-87.8642907076953,36.9647066223581,16,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="190.4,41.6"
+          Id="Package\Contenedor de bucles Foreach\Clientes Internacionales"
+          TopLeft="288.942869611176,110.682356501781" />
+        <EdgeLayout
+          Id="Package\Contenedor de bucles Foreach.PrecedenceConstraints[Constraint 1]"
+          TopLeft="283.761914748724,46.7529432570646">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="100.380954862452,63.929413244716"
+              Start="0,0"
+              End="100.380954862452,56.429413244716">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,21.8580164019672" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,21.8580164019672"
+                    Point2="0,25.8580164019672"
+                    Point3="4,25.8580164019672" />
+                  <mssgle:LineSegment
+                    End="96.3809548624523,25.8580164019672" />
+                  <mssgle:CubicBezierSegment
+                    Point1="96.3809548624523,25.8580164019672"
+                    Point2="100.380954862452,25.8580164019672"
+                    Point3="100.380954862452,29.8580164019672" />
+                  <mssgle:LineSegment
+                    End="100.380954862452,56.429413244716" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="42.1904774312262,30.8580164019672,16,16"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="495.2,216.8"
+          Size="495.2,260"
+          Id="Package\Contenedor de bucles Foreach"
+          TopLeft="442.857150398955,100.176471993173" />
+        <NodeLayout
+          Size="187.2,41.6"
+          Id="Package\Borrar datos anteriores"
+          TopLeft="491.42857979755,8.41176482385418" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="585.02857979755,50.0117648238542">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="105.428570601405,50.1647071693183"
+              Start="0,0"
+              End="105.428570601405,42.6647071693183">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,21.0823535846592" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,21.0823535846592"
+                    Point2="0,25.0823535846592"
+                    Point3="4,25.0823535846592" />
+                  <mssgle:LineSegment
+                    End="101.428570601405,25.0823535846592" />
+                  <mssgle:CubicBezierSegment
+                    Point1="101.428570601405,25.0823535846592"
+                    Point2="105.428570601405,25.0823535846592"
+                    Point3="105.428570601405,29.0823535846592" />
+                  <mssgle:LineSegment
+                    End="105.428570601405,42.6647071693183" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Contenedor de bucles Foreach\Clientes Nacionales">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="210.4,41.6"
+          Id="Package\Contenedor de bucles Foreach\Clientes Nacionales\Origen - Clientes Nacionales"
+          TopLeft="378.571435018462,49.7058830500474" />
+        <NodeLayout
+          Size="160,41.6"
+          Id="Package\Contenedor de bucles Foreach\Clientes Nacionales\Destino  Neptuno"
+          TopLeft="417.857149973208,250.82353292947" />
+        <EdgeLayout
+          Id="Package\Contenedor de bucles Foreach\Clientes Nacionales.Paths[Flat File Source Output]"
+          TopLeft="483.771435018462,91.3058830500474">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="14.0857149547462,159.517649879423"
+              Start="0,0"
+              End="14.0857149547462,152.017649879423">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,75.7588249397113" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,75.7588249397113"
+                    Point2="0,79.7588249397113"
+                    Point3="4,79.7588249397113" />
+                  <mssgle:LineSegment
+                    End="10.0857149547462,79.7588249397113" />
+                  <mssgle:CubicBezierSegment
+                    Point1="10.0857149547462,79.7588249397113"
+                    Point2="14.0857149547462,79.7588249397113"
+                    Point3="14.0857149547462,83.7588249397113" />
+                  <mssgle:LineSegment
+                    End="14.0857149547462,152.017649879423" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <TaskHost
+    design-time-name="Package\Contenedor de bucles Foreach\Clientes Internacionales">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="232,41.6"
+          Id="Package\Contenedor de bucles Foreach\Clientes Internacionales\Origen - Clientes Internacionales"
+          TopLeft="630,50" />
+        <NodeLayout
+          Size="157.6,41.6"
+          Id="Package\Contenedor de bucles Foreach\Clientes Internacionales\Destino-Neptuno"
+          TopLeft="666,184" />
+        <EdgeLayout
+          Id="Package\Contenedor de bucles Foreach\Clientes Internacionales.Paths[Flat File Source Output]"
+          TopLeft="745.4,91.6">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,92.4"
+              Start="0,0"
+              End="0,84.9">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,84.9" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Contenedor de bucles Foreach\Clientes Nacionales\Destino  Neptuno">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Contenedor de bucles Foreach\Clientes Internacionales\Destino-Neptuno">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

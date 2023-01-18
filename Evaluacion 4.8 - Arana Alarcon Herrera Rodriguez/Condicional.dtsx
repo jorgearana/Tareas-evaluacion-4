@@ -1,0 +1,679 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="1/17/2023 8:48:15 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="JARANA"
+  DTS:CreatorName="JARANA\jorge"
+  DTS:DTSID="{4F088948-07BF-4E2B-B2BE-785ADF9ED998}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.948.0"
+  DTS:LocaleID="10250"
+  DTS:ObjectName="Package"
+  DTS:PackageType="5"
+  DTS:VersionBuild="2"
+  DTS:VersionGUID="{08CF3C92-4986-4391-BF0C-A0B9CA8A6F47}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Destino - clientes]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{E05D0006-5C46-4CFB-B592-F2372D797CC3}"
+      DTS:ObjectName="Destino - clientes">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="10250"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:ColumnNamesInFirstDataRow="True"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x003C_none_x003E_"
+          DTS:CodePage="1252"
+          DTS:ConnectionString="C:\jorge\Maestria\SSIS\08 Recursos\04 Enunciado de Laboratorio 4.8\Destion -Clientes.txt">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Codigo"
+              DTS:DTSID="{38284FB0-B8BE-4AC1-A8DF-838AD0BFEBB8}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Apellido"
+              DTS:DTSID="{D051D80A-D52C-481A-ACC9-8F134BE4573E}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Nombre"
+              DTS:DTSID="{2DA052AA-0470-47AD-96F6-E14631A2972A}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Genero"
+              DTS:DTSID="{757078B5-2975-499A-A723-FA75B49A87BC}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000D__x000A_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Edad"
+              DTS:DTSID="{3B545489-2B7C-4078-8546-F7DAF018E1A3}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Origen - clientes]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{B530E443-4910-47C4-A5CB-4E9BFCC44703}"
+      DTS:ObjectName="Origen - clientes">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="10250"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:ColumnNamesInFirstDataRow="True"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x003C_none_x003E_"
+          DTS:CodePage="1252"
+          DTS:ConnectionString="C:\jorge\Maestria\SSIS\08 Recursos\04 Enunciado de Laboratorio 4.8\Clientes.txt">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Codigo"
+              DTS:DTSID="{B76D1D04-7335-4CFF-A8DB-15C4821E7223}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Apellido"
+              DTS:DTSID="{A8FAEF66-DEF1-4DD5-BE48-D6182E7A62CE}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Nombre"
+              DTS:DTSID="{A5A6F38D-E25A-499F-B99E-6147D30763E3}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x0009_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Genero"
+              DTS:DTSID="{144B4247-97C8-48C4-BE12-F68B0BEF4B37}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000D__x000A_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Edad"
+              DTS:DTSID="{A05E8175-E60B-4395-A1E1-09229A706C69}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\CargaCliente”"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{8DF36CFB-0849-4AC6-BB5E-58F0EA6DA1CC}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="CargaCliente”"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\CargaCliente”\Carga Archivo Cliente"
+              componentClassID="Microsoft.FlatFileDestination"
+              contactInfo="Flat File Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Flat File Destination"
+              localeId="10250"
+              name="Carga Archivo Cliente"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether the data will overwrite or append to the destination file."
+                  name="Overwrite">true</property>
+                <property
+                  dataType="System.Null"
+                  description="Specifies the text to write to the destination file before any data is written."
+                  expressionType="Notify"
+                  name="Header" />
+                <property
+                  dataType="System.Boolean"
+                  description="When text qualifier is enabled, specifies whether the text qualifier in the data written to the destination file will be escaped or not."
+                  name="EscapeQualifier">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\CargaCliente”\Carga Archivo Cliente.Connections[FlatFileConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Destino - clientes]"
+                  connectionManagerRefId="Package.ConnectionManagers[Destino - clientes]"
+                  name="FlatFileConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\CargaCliente”\Carga Archivo Cliente.Inputs[Flat File Destination Input]"
+                  hasSideEffects="true"
+                  name="Flat File Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\CargaCliente”\Carga Archivo Cliente.Inputs[Flat File Destination Input].Columns[Codigo]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Codigo"
+                      externalMetadataColumnId="Package\CargaCliente”\Carga Archivo Cliente.Inputs[Flat File Destination Input].ExternalColumns[Codigo]"
+                      lineageId="Package\CargaCliente”\Leer cliente.Outputs[Flat File Source Output].Columns[Codigo]" />
+                    <inputColumn
+                      refId="Package\CargaCliente”\Carga Archivo Cliente.Inputs[Flat File Destination Input].Columns[Apellido]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Apellido"
+                      externalMetadataColumnId="Package\CargaCliente”\Carga Archivo Cliente.Inputs[Flat File Destination Input].ExternalColumns[Apellido]"
+                      lineageId="Package\CargaCliente”\Leer cliente.Outputs[Flat File Source Output].Columns[Apellido]" />
+                    <inputColumn
+                      refId="Package\CargaCliente”\Carga Archivo Cliente.Inputs[Flat File Destination Input].Columns[Nombre]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Nombre"
+                      externalMetadataColumnId="Package\CargaCliente”\Carga Archivo Cliente.Inputs[Flat File Destination Input].ExternalColumns[Nombre]"
+                      lineageId="Package\CargaCliente”\Leer cliente.Outputs[Flat File Source Output].Columns[Nombre]" />
+                    <inputColumn
+                      refId="Package\CargaCliente”\Carga Archivo Cliente.Inputs[Flat File Destination Input].Columns[Edad]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Edad"
+                      externalMetadataColumnId="Package\CargaCliente”\Carga Archivo Cliente.Inputs[Flat File Destination Input].ExternalColumns[Edad]"
+                      lineageId="Package\CargaCliente”\Leer cliente.Outputs[Flat File Source Output].Columns[Edad]" />
+                    <inputColumn
+                      refId="Package\CargaCliente”\Carga Archivo Cliente.Inputs[Flat File Destination Input].Columns[NGenero]"
+                      cachedDataType="wstr"
+                      cachedLength="9"
+                      cachedName="NGenero"
+                      externalMetadataColumnId="Package\CargaCliente”\Carga Archivo Cliente.Inputs[Flat File Destination Input].ExternalColumns[Genero]"
+                      lineageId="Package\CargaCliente”\Derived Column.Outputs[Derived Column Output].Columns[NGenero]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\CargaCliente”\Carga Archivo Cliente.Inputs[Flat File Destination Input].ExternalColumns[Codigo]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Codigo" />
+                    <externalMetadataColumn
+                      refId="Package\CargaCliente”\Carga Archivo Cliente.Inputs[Flat File Destination Input].ExternalColumns[Apellido]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Apellido" />
+                    <externalMetadataColumn
+                      refId="Package\CargaCliente”\Carga Archivo Cliente.Inputs[Flat File Destination Input].ExternalColumns[Nombre]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Nombre" />
+                    <externalMetadataColumn
+                      refId="Package\CargaCliente”\Carga Archivo Cliente.Inputs[Flat File Destination Input].ExternalColumns[Genero]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Genero" />
+                    <externalMetadataColumn
+                      refId="Package\CargaCliente”\Carga Archivo Cliente.Inputs[Flat File Destination Input].ExternalColumns[Edad]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Edad" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+            </component>
+            <component
+              refId="Package\CargaCliente”\Derived Column"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Derived Column"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\CargaCliente”\Derived Column.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\CargaCliente”\Derived Column.Inputs[Derived Column Input].Columns[Genero]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Genero"
+                      lineageId="Package\CargaCliente”\Leer cliente.Outputs[Flat File Source Output].Columns[Genero]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\CargaCliente”\Derived Column.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\CargaCliente”\Derived Column.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\CargaCliente”\Derived Column.Outputs[Derived Column Output].Columns[NGenero]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="9"
+                      lineageId="Package\CargaCliente”\Derived Column.Outputs[Derived Column Output].Columns[NGenero]"
+                      name="NGenero"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(#{Package\CargaCliente”\Leer cliente.Outputs[Flat File Source Output].Columns[Genero]} == "1") ? "Masculino" : "Femenino"</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(Genero == "1") ? "Masculino" : "Femenino"</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\CargaCliente”\Derived Column.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\CargaCliente”\Derived Column.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\CargaCliente”\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\CargaCliente”\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\CargaCliente”\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\CargaCliente”\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\CargaCliente”\Leer cliente"
+              componentClassID="Microsoft.FlatFileSource"
+              contactInfo="Flat File Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Flat File Source"
+              localeId="10250"
+              name="Leer cliente"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether zero-length columns are treated as null."
+                  name="RetainNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of an output column containing the file name. If no name is specified, no output column containing the file name will be generated."
+                  name="FileNameColumnName"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\CargaCliente”\Leer cliente.Connections[FlatFileConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Origen - clientes]"
+                  connectionManagerRefId="Package.ConnectionManagers[Origen - clientes]"
+                  name="FlatFileConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\CargaCliente”\Leer cliente.Outputs[Flat File Source Output]"
+                  name="Flat File Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\CargaCliente”\Leer cliente.Outputs[Flat File Source Output].Columns[Codigo]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\CargaCliente”\Leer cliente.Outputs[Flat File Source Output].ExternalColumns[Codigo]"
+                      length="50"
+                      lineageId="Package\CargaCliente”\Leer cliente.Outputs[Flat File Source Output].Columns[Codigo]"
+                      name="Codigo"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\CargaCliente”\Leer cliente.Outputs[Flat File Source Output].Columns[Apellido]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\CargaCliente”\Leer cliente.Outputs[Flat File Source Output].ExternalColumns[Apellido]"
+                      length="50"
+                      lineageId="Package\CargaCliente”\Leer cliente.Outputs[Flat File Source Output].Columns[Apellido]"
+                      name="Apellido"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\CargaCliente”\Leer cliente.Outputs[Flat File Source Output].Columns[Nombre]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\CargaCliente”\Leer cliente.Outputs[Flat File Source Output].ExternalColumns[Nombre]"
+                      length="50"
+                      lineageId="Package\CargaCliente”\Leer cliente.Outputs[Flat File Source Output].Columns[Nombre]"
+                      name="Nombre"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\CargaCliente”\Leer cliente.Outputs[Flat File Source Output].Columns[Genero]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\CargaCliente”\Leer cliente.Outputs[Flat File Source Output].ExternalColumns[Genero]"
+                      length="50"
+                      lineageId="Package\CargaCliente”\Leer cliente.Outputs[Flat File Source Output].Columns[Genero]"
+                      name="Genero"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\CargaCliente”\Leer cliente.Outputs[Flat File Source Output].Columns[Edad]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\CargaCliente”\Leer cliente.Outputs[Flat File Source Output].ExternalColumns[Edad]"
+                      length="50"
+                      lineageId="Package\CargaCliente”\Leer cliente.Outputs[Flat File Source Output].Columns[Edad]"
+                      name="Edad"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\CargaCliente”\Leer cliente.Outputs[Flat File Source Output].ExternalColumns[Codigo]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Codigo" />
+                    <externalMetadataColumn
+                      refId="Package\CargaCliente”\Leer cliente.Outputs[Flat File Source Output].ExternalColumns[Apellido]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Apellido" />
+                    <externalMetadataColumn
+                      refId="Package\CargaCliente”\Leer cliente.Outputs[Flat File Source Output].ExternalColumns[Nombre]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Nombre" />
+                    <externalMetadataColumn
+                      refId="Package\CargaCliente”\Leer cliente.Outputs[Flat File Source Output].ExternalColumns[Genero]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Genero" />
+                    <externalMetadataColumn
+                      refId="Package\CargaCliente”\Leer cliente.Outputs[Flat File Source Output].ExternalColumns[Edad]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Edad" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\CargaCliente”\Leer cliente.Outputs[Flat File Source Error Output]"
+                  isErrorOut="true"
+                  name="Flat File Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\CargaCliente”\Leer cliente.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      codePage="1252"
+                      dataType="text"
+                      description="Flat File Source Error Output Column"
+                      lineageId="Package\CargaCliente”\Leer cliente.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      name="Flat File Source Error Output Column" />
+                    <outputColumn
+                      refId="Package\CargaCliente”\Leer cliente.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\CargaCliente”\Leer cliente.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\CargaCliente”\Leer cliente.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\CargaCliente”\Leer cliente.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\CargaCliente”.Paths[Derived Column Output]"
+              endId="Package\CargaCliente”\Carga Archivo Cliente.Inputs[Flat File Destination Input]"
+              name="Derived Column Output"
+              startId="Package\CargaCliente”\Derived Column.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\CargaCliente”.Paths[Flat File Source Output]"
+              endId="Package\CargaCliente”\Derived Column.Inputs[Derived Column Input]"
+              name="Flat File Source Output"
+              startId="Package\CargaCliente”\Leer cliente.Outputs[Flat File Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="142.4,41.6"
+          Id="Package\CargaCliente”"
+          TopLeft="378.571435018462,61.9411773392899" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\CargaCliente”">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="132.8,41.6"
+          Id="Package\CargaCliente”\Leer cliente"
+          TopLeft="445.000007578305,118.529413427036" />
+        <NodeLayout
+          Size="152.8,41.6"
+          Id="Package\CargaCliente”\Derived Column"
+          TopLeft="505.714294326549,224.058826671752" />
+        <EdgeLayout
+          Id="Package\CargaCliente”.Paths[Flat File Source Output]"
+          TopLeft="511.400007578305,160.129413427036">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="70.7142867482439,63.929413244716"
+              Start="0,0"
+              End="70.7142867482439,56.429413244716">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,27.964706622358" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,27.964706622358"
+                    Point2="0,31.964706622358"
+                    Point3="4,31.964706622358" />
+                  <mssgle:LineSegment
+                    End="66.7142867482439,31.964706622358" />
+                  <mssgle:CubicBezierSegment
+                    Point1="66.7142867482439,31.964706622358"
+                    Point2="70.7142867482439,31.964706622358"
+                    Point3="70.7142867482439,35.964706622358" />
+                  <mssgle:LineSegment
+                    End="70.7142867482439,56.429413244716" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="179.2,41.6"
+          Id="Package\CargaCliente”\Carga Archivo Cliente"
+          TopLeft="490.000008344651,295.176474727974" />
+        <EdgeLayout
+          Id="Package\CargaCliente”.Paths[Derived Column Output]"
+          TopLeft="580.8571513356,265.658826671752">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,29.5176480562217"
+              Start="0,0"
+              End="0,22.0176480562217">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,22.0176480562217" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

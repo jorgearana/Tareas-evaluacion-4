@@ -1,0 +1,2340 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="1/14/2023 11:46:34 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="JARANA"
+  DTS:CreatorName="JARANA\jorge"
+  DTS:DTSID="{D0A014E1-EE01-4528-BF40-6DB5A5269A0F}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.948.0"
+  DTS:LocaleID="10250"
+  DTS:ObjectName="Package"
+  DTS:PackageType="5"
+  DTS:VersionBuild="9"
+  DTS:VersionGUID="{6DBA8413-DBAC-47C9-B4EF-001A4089EC13}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Destino-Neptuno]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{3BE06566-720B-4DC0-B43F-52E67810BB92}"
+      DTS:ObjectName="Destino-Neptuno">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=jarana\local;Initial Catalog=NEPTUNO;Provider=SQLNCLI11.1;Integrated Security=SSPI;Application Name=SSIS-Package-{3BE06566-720B-4DC0-B43F-52E67810BB92}jarana\local.NEPTUNO;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Poblar Dim Tiempo"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{C9C4F031-602F-43A1-8267-9B9F80610BB4}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Poblar Dim Tiempo"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Poblar Dim Tiempo\Convertidor de datos"
+              componentClassID="Microsoft.DataConvert"
+              contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Data Conversion"
+              name="Convertidor de datos"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Poblar Dim Tiempo\Convertidor de datos.Inputs[Data Conversion Input]"
+                  name="Data Conversion Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Poblar Dim Tiempo\Convertidor de datos.Inputs[Data Conversion Input].Columns[Comentarios]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Comentarios"
+                      lineageId="Package\Poblar Dim Tiempo\Excel Connection Manager,.Outputs[Excel Source Output].Columns[Comentarios]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Poblar Dim Tiempo\Convertidor de datos.Outputs[Data Conversion Output]"
+                  exclusionGroup="1"
+                  name="Data Conversion Output"
+                  synchronousInputId="Package\Poblar Dim Tiempo\Convertidor de datos.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Poblar Dim Tiempo\Convertidor de datos.Outputs[Data Conversion Output].Columns[NOUNI-Comentarios]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="20"
+                      lineageId="Package\Poblar Dim Tiempo\Convertidor de datos.Outputs[Data Conversion Output].Columns[NOUNI-Comentarios]"
+                      name="NOUNI-Comentarios"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Poblar Dim Tiempo\Excel Connection Manager,.Outputs[Excel Source Output].Columns[Comentarios]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Poblar Dim Tiempo\Convertidor de datos.Outputs[Data Conversion Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Data Conversion Error Output"
+                  synchronousInputId="Package\Poblar Dim Tiempo\Convertidor de datos.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Poblar Dim Tiempo\Convertidor de datos.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Poblar Dim Tiempo\Convertidor de datos.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Poblar Dim Tiempo\Convertidor de datos.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Poblar Dim Tiempo\Convertidor de datos.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Poblar Dim Tiempo\Destino BD Neptuno"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Destino BD Neptuno"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[DimTiempo]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Poblar Dim Tiempo\Destino BD Neptuno.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Destino-Neptuno]"
+                  connectionManagerRefId="Package.ConnectionManagers[Destino-Neptuno]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Poblar Dim Tiempo\Destino BD Neptuno.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Poblar Dim Tiempo\Destino BD Neptuno.Inputs[OLE DB Destination Input].Columns[Fecha]"
+                      cachedDataType="date"
+                      cachedName="Fecha"
+                      externalMetadataColumnId="Package\Poblar Dim Tiempo\Destino BD Neptuno.Inputs[OLE DB Destination Input].ExternalColumns[Tiempo_FechaActual]"
+                      lineageId="Package\Poblar Dim Tiempo\Excel Connection Manager,.Outputs[Excel Source Output].Columns[Fecha]" />
+                    <inputColumn
+                      refId="Package\Poblar Dim Tiempo\Destino BD Neptuno.Inputs[OLE DB Destination Input].Columns[Año]"
+                      cachedDataType="r8"
+                      cachedName="Año"
+                      externalMetadataColumnId="Package\Poblar Dim Tiempo\Destino BD Neptuno.Inputs[OLE DB Destination Input].ExternalColumns[Tiempo_Anio]"
+                      lineageId="Package\Poblar Dim Tiempo\Excel Connection Manager,.Outputs[Excel Source Output].Columns[Año]" />
+                    <inputColumn
+                      refId="Package\Poblar Dim Tiempo\Destino BD Neptuno.Inputs[OLE DB Destination Input].Columns[Trimestre]"
+                      cachedDataType="r8"
+                      cachedName="Trimestre"
+                      externalMetadataColumnId="Package\Poblar Dim Tiempo\Destino BD Neptuno.Inputs[OLE DB Destination Input].ExternalColumns[Tiempo_Trimestre]"
+                      lineageId="Package\Poblar Dim Tiempo\Excel Connection Manager,.Outputs[Excel Source Output].Columns[Trimestre]" />
+                    <inputColumn
+                      refId="Package\Poblar Dim Tiempo\Destino BD Neptuno.Inputs[OLE DB Destination Input].Columns[Mes]"
+                      cachedDataType="r8"
+                      cachedName="Mes"
+                      externalMetadataColumnId="Package\Poblar Dim Tiempo\Destino BD Neptuno.Inputs[OLE DB Destination Input].ExternalColumns[Tiempo_Mes]"
+                      lineageId="Package\Poblar Dim Tiempo\Excel Connection Manager,.Outputs[Excel Source Output].Columns[Mes]" />
+                    <inputColumn
+                      refId="Package\Poblar Dim Tiempo\Destino BD Neptuno.Inputs[OLE DB Destination Input].Columns[Semana]"
+                      cachedDataType="r8"
+                      cachedName="Semana"
+                      externalMetadataColumnId="Package\Poblar Dim Tiempo\Destino BD Neptuno.Inputs[OLE DB Destination Input].ExternalColumns[Tiempo_Semana]"
+                      lineageId="Package\Poblar Dim Tiempo\Excel Connection Manager,.Outputs[Excel Source Output].Columns[Semana]" />
+                    <inputColumn
+                      refId="Package\Poblar Dim Tiempo\Destino BD Neptuno.Inputs[OLE DB Destination Input].Columns[DiaDeAño]"
+                      cachedDataType="r8"
+                      cachedName="DiaDeAño"
+                      externalMetadataColumnId="Package\Poblar Dim Tiempo\Destino BD Neptuno.Inputs[OLE DB Destination Input].ExternalColumns[Tiempo_DiaDeAnio]"
+                      lineageId="Package\Poblar Dim Tiempo\Excel Connection Manager,.Outputs[Excel Source Output].Columns[DiaDeAño]" />
+                    <inputColumn
+                      refId="Package\Poblar Dim Tiempo\Destino BD Neptuno.Inputs[OLE DB Destination Input].Columns[DiaDeMes]"
+                      cachedDataType="r8"
+                      cachedName="DiaDeMes"
+                      externalMetadataColumnId="Package\Poblar Dim Tiempo\Destino BD Neptuno.Inputs[OLE DB Destination Input].ExternalColumns[Tiempo_DiaDeMes]"
+                      lineageId="Package\Poblar Dim Tiempo\Excel Connection Manager,.Outputs[Excel Source Output].Columns[DiaDeMes]" />
+                    <inputColumn
+                      refId="Package\Poblar Dim Tiempo\Destino BD Neptuno.Inputs[OLE DB Destination Input].Columns[DiaDeSemana]"
+                      cachedDataType="r8"
+                      cachedName="DiaDeSemana"
+                      externalMetadataColumnId="Package\Poblar Dim Tiempo\Destino BD Neptuno.Inputs[OLE DB Destination Input].ExternalColumns[Tiempo_DiaDeSemana]"
+                      lineageId="Package\Poblar Dim Tiempo\Excel Connection Manager,.Outputs[Excel Source Output].Columns[DiaDeSemana]" />
+                    <inputColumn
+                      refId="Package\Poblar Dim Tiempo\Destino BD Neptuno.Inputs[OLE DB Destination Input].Columns[EsFinSemana]"
+                      cachedDataType="r8"
+                      cachedName="EsFinSemana"
+                      externalMetadataColumnId="Package\Poblar Dim Tiempo\Destino BD Neptuno.Inputs[OLE DB Destination Input].ExternalColumns[Tiempo_EsFinSemana]"
+                      lineageId="Package\Poblar Dim Tiempo\Excel Connection Manager,.Outputs[Excel Source Output].Columns[EsFinSemana]" />
+                    <inputColumn
+                      refId="Package\Poblar Dim Tiempo\Destino BD Neptuno.Inputs[OLE DB Destination Input].Columns[EsFeriado]"
+                      cachedDataType="r8"
+                      cachedName="EsFeriado"
+                      externalMetadataColumnId="Package\Poblar Dim Tiempo\Destino BD Neptuno.Inputs[OLE DB Destination Input].ExternalColumns[Tiempo_EsFeriado]"
+                      lineageId="Package\Poblar Dim Tiempo\Excel Connection Manager,.Outputs[Excel Source Output].Columns[EsFeriado]" />
+                    <inputColumn
+                      refId="Package\Poblar Dim Tiempo\Destino BD Neptuno.Inputs[OLE DB Destination Input].Columns[SemanaCalendario]"
+                      cachedDataType="r8"
+                      cachedName="SemanaCalendario"
+                      externalMetadataColumnId="Package\Poblar Dim Tiempo\Destino BD Neptuno.Inputs[OLE DB Destination Input].ExternalColumns[Tiempo_SemanaCalendario]"
+                      lineageId="Package\Poblar Dim Tiempo\Excel Connection Manager,.Outputs[Excel Source Output].Columns[SemanaCalendario]" />
+                    <inputColumn
+                      refId="Package\Poblar Dim Tiempo\Destino BD Neptuno.Inputs[OLE DB Destination Input].Columns[SemanaDelAñoLaboral]"
+                      cachedDataType="r8"
+                      cachedName="SemanaDelAñoLaboral"
+                      externalMetadataColumnId="Package\Poblar Dim Tiempo\Destino BD Neptuno.Inputs[OLE DB Destination Input].ExternalColumns[Tiempo_SemanasDelAñoLaborales]"
+                      lineageId="Package\Poblar Dim Tiempo\Excel Connection Manager,.Outputs[Excel Source Output].Columns[SemanaDelAñoLaboral]" />
+                    <inputColumn
+                      refId="Package\Poblar Dim Tiempo\Destino BD Neptuno.Inputs[OLE DB Destination Input].Columns[AñoBiesto]"
+                      cachedDataType="r8"
+                      cachedName="AñoBiesto"
+                      externalMetadataColumnId="Package\Poblar Dim Tiempo\Destino BD Neptuno.Inputs[OLE DB Destination Input].ExternalColumns[Tiempo_AñoBisiesto]"
+                      lineageId="Package\Poblar Dim Tiempo\Excel Connection Manager,.Outputs[Excel Source Output].Columns[AñoBiesto]" />
+                    <inputColumn
+                      refId="Package\Poblar Dim Tiempo\Destino BD Neptuno.Inputs[OLE DB Destination Input].Columns[TiempoDescripcionDiadeSemana]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="TiempoDescripcionDiadeSemana"
+                      externalMetadataColumnId="Package\Poblar Dim Tiempo\Destino BD Neptuno.Inputs[OLE DB Destination Input].ExternalColumns[Tiempo_Descripcion_DiaDeSemana]"
+                      lineageId="Package\Poblar Dim Tiempo\Transformacion de excel.Outputs[Salida 0].Columns[TiempoDescripcionDiadeSemana]" />
+                    <inputColumn
+                      refId="Package\Poblar Dim Tiempo\Destino BD Neptuno.Inputs[OLE DB Destination Input].Columns[TiempoDescripcionMes]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="TiempoDescripcionMes"
+                      externalMetadataColumnId="Package\Poblar Dim Tiempo\Destino BD Neptuno.Inputs[OLE DB Destination Input].ExternalColumns[Tiempo_Descripcion_Mes]"
+                      lineageId="Package\Poblar Dim Tiempo\Transformacion de excel.Outputs[Salida 0].Columns[TiempoDescripcionMes]" />
+                    <inputColumn
+                      refId="Package\Poblar Dim Tiempo\Destino BD Neptuno.Inputs[OLE DB Destination Input].Columns[TiempoDescripcionTrimestre]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="20"
+                      cachedName="TiempoDescripcionTrimestre"
+                      externalMetadataColumnId="Package\Poblar Dim Tiempo\Destino BD Neptuno.Inputs[OLE DB Destination Input].ExternalColumns[Tiempo_Descripcion_Trimestre]"
+                      lineageId="Package\Poblar Dim Tiempo\Transformacion de excel.Outputs[Salida 0].Columns[TiempoDescripcionTrimestre]" />
+                    <inputColumn
+                      refId="Package\Poblar Dim Tiempo\Destino BD Neptuno.Inputs[OLE DB Destination Input].Columns[TiempoDescripcionSemestre.]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="20"
+                      cachedName="TiempoDescripcionSemestre."
+                      externalMetadataColumnId="Package\Poblar Dim Tiempo\Destino BD Neptuno.Inputs[OLE DB Destination Input].ExternalColumns[Tiempo_Descripcion_Semestre]"
+                      lineageId="Package\Poblar Dim Tiempo\Transformacion de excel.Outputs[Salida 0].Columns[TiempoDescripcionSemestre.]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Poblar Dim Tiempo\Destino BD Neptuno.Inputs[OLE DB Destination Input].ExternalColumns[Tiempo_Skey]"
+                      dataType="i4"
+                      name="Tiempo_Skey" />
+                    <externalMetadataColumn
+                      refId="Package\Poblar Dim Tiempo\Destino BD Neptuno.Inputs[OLE DB Destination Input].ExternalColumns[Tiempo_FechaActual]"
+                      dataType="dbTimeStamp"
+                      name="Tiempo_FechaActual" />
+                    <externalMetadataColumn
+                      refId="Package\Poblar Dim Tiempo\Destino BD Neptuno.Inputs[OLE DB Destination Input].ExternalColumns[Tiempo_Anio]"
+                      dataType="i4"
+                      name="Tiempo_Anio" />
+                    <externalMetadataColumn
+                      refId="Package\Poblar Dim Tiempo\Destino BD Neptuno.Inputs[OLE DB Destination Input].ExternalColumns[Tiempo_Trimestre]"
+                      dataType="i4"
+                      name="Tiempo_Trimestre" />
+                    <externalMetadataColumn
+                      refId="Package\Poblar Dim Tiempo\Destino BD Neptuno.Inputs[OLE DB Destination Input].ExternalColumns[Tiempo_Mes]"
+                      dataType="i4"
+                      name="Tiempo_Mes" />
+                    <externalMetadataColumn
+                      refId="Package\Poblar Dim Tiempo\Destino BD Neptuno.Inputs[OLE DB Destination Input].ExternalColumns[Tiempo_Semana]"
+                      dataType="i4"
+                      name="Tiempo_Semana" />
+                    <externalMetadataColumn
+                      refId="Package\Poblar Dim Tiempo\Destino BD Neptuno.Inputs[OLE DB Destination Input].ExternalColumns[Tiempo_DiaDeAnio]"
+                      dataType="i4"
+                      name="Tiempo_DiaDeAnio" />
+                    <externalMetadataColumn
+                      refId="Package\Poblar Dim Tiempo\Destino BD Neptuno.Inputs[OLE DB Destination Input].ExternalColumns[Tiempo_DiaDeMes]"
+                      dataType="i4"
+                      name="Tiempo_DiaDeMes" />
+                    <externalMetadataColumn
+                      refId="Package\Poblar Dim Tiempo\Destino BD Neptuno.Inputs[OLE DB Destination Input].ExternalColumns[Tiempo_DiaDeSemana]"
+                      dataType="i4"
+                      name="Tiempo_DiaDeSemana" />
+                    <externalMetadataColumn
+                      refId="Package\Poblar Dim Tiempo\Destino BD Neptuno.Inputs[OLE DB Destination Input].ExternalColumns[Tiempo_EsFinSemana]"
+                      dataType="i4"
+                      name="Tiempo_EsFinSemana" />
+                    <externalMetadataColumn
+                      refId="Package\Poblar Dim Tiempo\Destino BD Neptuno.Inputs[OLE DB Destination Input].ExternalColumns[Tiempo_EsFeriado]"
+                      dataType="i4"
+                      name="Tiempo_EsFeriado" />
+                    <externalMetadataColumn
+                      refId="Package\Poblar Dim Tiempo\Destino BD Neptuno.Inputs[OLE DB Destination Input].ExternalColumns[Tiempo_Comentarios]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      name="Tiempo_Comentarios" />
+                    <externalMetadataColumn
+                      refId="Package\Poblar Dim Tiempo\Destino BD Neptuno.Inputs[OLE DB Destination Input].ExternalColumns[Tiempo_SemanaCalendario]"
+                      dataType="i4"
+                      name="Tiempo_SemanaCalendario" />
+                    <externalMetadataColumn
+                      refId="Package\Poblar Dim Tiempo\Destino BD Neptuno.Inputs[OLE DB Destination Input].ExternalColumns[Tiempo_SemanasDelAñoLaborales]"
+                      dataType="i4"
+                      name="Tiempo_SemanasDelAñoLaborales" />
+                    <externalMetadataColumn
+                      refId="Package\Poblar Dim Tiempo\Destino BD Neptuno.Inputs[OLE DB Destination Input].ExternalColumns[Tiempo_AñoBisiesto]"
+                      dataType="ui1"
+                      name="Tiempo_AñoBisiesto" />
+                    <externalMetadataColumn
+                      refId="Package\Poblar Dim Tiempo\Destino BD Neptuno.Inputs[OLE DB Destination Input].ExternalColumns[Tiempo_Descripcion_DiaDeSemana]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Tiempo_Descripcion_DiaDeSemana" />
+                    <externalMetadataColumn
+                      refId="Package\Poblar Dim Tiempo\Destino BD Neptuno.Inputs[OLE DB Destination Input].ExternalColumns[Tiempo_Descripcion_Mes]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Tiempo_Descripcion_Mes" />
+                    <externalMetadataColumn
+                      refId="Package\Poblar Dim Tiempo\Destino BD Neptuno.Inputs[OLE DB Destination Input].ExternalColumns[Tiempo_Descripcion_Trimestre]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      name="Tiempo_Descripcion_Trimestre" />
+                    <externalMetadataColumn
+                      refId="Package\Poblar Dim Tiempo\Destino BD Neptuno.Inputs[OLE DB Destination Input].ExternalColumns[Tiempo_Descripcion_Semestre]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      name="Tiempo_Descripcion_Semestre" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Poblar Dim Tiempo\Destino BD Neptuno.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Poblar Dim Tiempo\Destino BD Neptuno.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Poblar Dim Tiempo\Destino BD Neptuno.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Poblar Dim Tiempo\Destino BD Neptuno.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Poblar Dim Tiempo\Destino BD Neptuno.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Poblar Dim Tiempo\Destino BD Neptuno.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Poblar Dim Tiempo\Excel Connection Manager,"
+              componentClassID="Microsoft.ExcelSource"
+              contactInfo="Excel Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Excel Source"
+              name="Excel Connection Manager,"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">Tiempo$</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mapping from parameters in the SQL command to variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Poblar Dim Tiempo\Excel Connection Manager,.Connections[OleDbConnection]"
+                  connectionManagerID="{528060D6-3860-460A-AC6E-1C3B5A69F9D6}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Excel Connection Manager]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Poblar Dim Tiempo\Excel Connection Manager,.Outputs[Excel Source Output]"
+                  name="Excel Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Poblar Dim Tiempo\Excel Connection Manager,.Outputs[Excel Source Output].Columns[Fecha]"
+                      dataType="date"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Poblar Dim Tiempo\Excel Connection Manager,.Outputs[Excel Source Output].ExternalColumns[Fecha]"
+                      lineageId="Package\Poblar Dim Tiempo\Excel Connection Manager,.Outputs[Excel Source Output].Columns[Fecha]"
+                      name="Fecha"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Poblar Dim Tiempo\Excel Connection Manager,.Outputs[Excel Source Output].Columns[Año]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Poblar Dim Tiempo\Excel Connection Manager,.Outputs[Excel Source Output].ExternalColumns[Año]"
+                      lineageId="Package\Poblar Dim Tiempo\Excel Connection Manager,.Outputs[Excel Source Output].Columns[Año]"
+                      name="Año"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Poblar Dim Tiempo\Excel Connection Manager,.Outputs[Excel Source Output].Columns[Trimestre]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Poblar Dim Tiempo\Excel Connection Manager,.Outputs[Excel Source Output].ExternalColumns[Trimestre]"
+                      lineageId="Package\Poblar Dim Tiempo\Excel Connection Manager,.Outputs[Excel Source Output].Columns[Trimestre]"
+                      name="Trimestre"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Poblar Dim Tiempo\Excel Connection Manager,.Outputs[Excel Source Output].Columns[Mes]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Poblar Dim Tiempo\Excel Connection Manager,.Outputs[Excel Source Output].ExternalColumns[Mes]"
+                      lineageId="Package\Poblar Dim Tiempo\Excel Connection Manager,.Outputs[Excel Source Output].Columns[Mes]"
+                      name="Mes"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Poblar Dim Tiempo\Excel Connection Manager,.Outputs[Excel Source Output].Columns[Semana]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Poblar Dim Tiempo\Excel Connection Manager,.Outputs[Excel Source Output].ExternalColumns[Semana]"
+                      lineageId="Package\Poblar Dim Tiempo\Excel Connection Manager,.Outputs[Excel Source Output].Columns[Semana]"
+                      name="Semana"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Poblar Dim Tiempo\Excel Connection Manager,.Outputs[Excel Source Output].Columns[DiaDeAño]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Poblar Dim Tiempo\Excel Connection Manager,.Outputs[Excel Source Output].ExternalColumns[DiaDeAño]"
+                      lineageId="Package\Poblar Dim Tiempo\Excel Connection Manager,.Outputs[Excel Source Output].Columns[DiaDeAño]"
+                      name="DiaDeAño"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Poblar Dim Tiempo\Excel Connection Manager,.Outputs[Excel Source Output].Columns[DiaDeMes]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Poblar Dim Tiempo\Excel Connection Manager,.Outputs[Excel Source Output].ExternalColumns[DiaDeMes]"
+                      lineageId="Package\Poblar Dim Tiempo\Excel Connection Manager,.Outputs[Excel Source Output].Columns[DiaDeMes]"
+                      name="DiaDeMes"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Poblar Dim Tiempo\Excel Connection Manager,.Outputs[Excel Source Output].Columns[DiaDeSemana]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Poblar Dim Tiempo\Excel Connection Manager,.Outputs[Excel Source Output].ExternalColumns[DiaDeSemana]"
+                      lineageId="Package\Poblar Dim Tiempo\Excel Connection Manager,.Outputs[Excel Source Output].Columns[DiaDeSemana]"
+                      name="DiaDeSemana"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Poblar Dim Tiempo\Excel Connection Manager,.Outputs[Excel Source Output].Columns[EsFinSemana]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Poblar Dim Tiempo\Excel Connection Manager,.Outputs[Excel Source Output].ExternalColumns[EsFinSemana]"
+                      lineageId="Package\Poblar Dim Tiempo\Excel Connection Manager,.Outputs[Excel Source Output].Columns[EsFinSemana]"
+                      name="EsFinSemana"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Poblar Dim Tiempo\Excel Connection Manager,.Outputs[Excel Source Output].Columns[EsFeriado]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Poblar Dim Tiempo\Excel Connection Manager,.Outputs[Excel Source Output].ExternalColumns[EsFeriado]"
+                      lineageId="Package\Poblar Dim Tiempo\Excel Connection Manager,.Outputs[Excel Source Output].Columns[EsFeriado]"
+                      name="EsFeriado"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Poblar Dim Tiempo\Excel Connection Manager,.Outputs[Excel Source Output].Columns[Comentarios]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Poblar Dim Tiempo\Excel Connection Manager,.Outputs[Excel Source Output].ExternalColumns[Comentarios]"
+                      length="255"
+                      lineageId="Package\Poblar Dim Tiempo\Excel Connection Manager,.Outputs[Excel Source Output].Columns[Comentarios]"
+                      name="Comentarios"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Poblar Dim Tiempo\Excel Connection Manager,.Outputs[Excel Source Output].Columns[SemanaCalendario]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Poblar Dim Tiempo\Excel Connection Manager,.Outputs[Excel Source Output].ExternalColumns[SemanaCalendario]"
+                      lineageId="Package\Poblar Dim Tiempo\Excel Connection Manager,.Outputs[Excel Source Output].Columns[SemanaCalendario]"
+                      name="SemanaCalendario"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Poblar Dim Tiempo\Excel Connection Manager,.Outputs[Excel Source Output].Columns[SemanaDelAñoLaboral]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Poblar Dim Tiempo\Excel Connection Manager,.Outputs[Excel Source Output].ExternalColumns[SemanaDelAñoLaboral]"
+                      lineageId="Package\Poblar Dim Tiempo\Excel Connection Manager,.Outputs[Excel Source Output].Columns[SemanaDelAñoLaboral]"
+                      name="SemanaDelAñoLaboral"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Poblar Dim Tiempo\Excel Connection Manager,.Outputs[Excel Source Output].Columns[AñoBiesto]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Poblar Dim Tiempo\Excel Connection Manager,.Outputs[Excel Source Output].ExternalColumns[AñoBiesto]"
+                      lineageId="Package\Poblar Dim Tiempo\Excel Connection Manager,.Outputs[Excel Source Output].Columns[AñoBiesto]"
+                      name="AñoBiesto"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Poblar Dim Tiempo\Excel Connection Manager,.Outputs[Excel Source Output].ExternalColumns[Fecha]"
+                      dataType="date"
+                      name="Fecha" />
+                    <externalMetadataColumn
+                      refId="Package\Poblar Dim Tiempo\Excel Connection Manager,.Outputs[Excel Source Output].ExternalColumns[Año]"
+                      dataType="r8"
+                      name="Año" />
+                    <externalMetadataColumn
+                      refId="Package\Poblar Dim Tiempo\Excel Connection Manager,.Outputs[Excel Source Output].ExternalColumns[Trimestre]"
+                      dataType="r8"
+                      name="Trimestre" />
+                    <externalMetadataColumn
+                      refId="Package\Poblar Dim Tiempo\Excel Connection Manager,.Outputs[Excel Source Output].ExternalColumns[Mes]"
+                      dataType="r8"
+                      name="Mes" />
+                    <externalMetadataColumn
+                      refId="Package\Poblar Dim Tiempo\Excel Connection Manager,.Outputs[Excel Source Output].ExternalColumns[Semana]"
+                      dataType="r8"
+                      name="Semana" />
+                    <externalMetadataColumn
+                      refId="Package\Poblar Dim Tiempo\Excel Connection Manager,.Outputs[Excel Source Output].ExternalColumns[DiaDeAño]"
+                      dataType="r8"
+                      name="DiaDeAño" />
+                    <externalMetadataColumn
+                      refId="Package\Poblar Dim Tiempo\Excel Connection Manager,.Outputs[Excel Source Output].ExternalColumns[DiaDeMes]"
+                      dataType="r8"
+                      name="DiaDeMes" />
+                    <externalMetadataColumn
+                      refId="Package\Poblar Dim Tiempo\Excel Connection Manager,.Outputs[Excel Source Output].ExternalColumns[DiaDeSemana]"
+                      dataType="r8"
+                      name="DiaDeSemana" />
+                    <externalMetadataColumn
+                      refId="Package\Poblar Dim Tiempo\Excel Connection Manager,.Outputs[Excel Source Output].ExternalColumns[EsFinSemana]"
+                      dataType="r8"
+                      name="EsFinSemana" />
+                    <externalMetadataColumn
+                      refId="Package\Poblar Dim Tiempo\Excel Connection Manager,.Outputs[Excel Source Output].ExternalColumns[EsFeriado]"
+                      dataType="r8"
+                      name="EsFeriado" />
+                    <externalMetadataColumn
+                      refId="Package\Poblar Dim Tiempo\Excel Connection Manager,.Outputs[Excel Source Output].ExternalColumns[Comentarios]"
+                      dataType="wstr"
+                      length="255"
+                      name="Comentarios" />
+                    <externalMetadataColumn
+                      refId="Package\Poblar Dim Tiempo\Excel Connection Manager,.Outputs[Excel Source Output].ExternalColumns[SemanaCalendario]"
+                      dataType="r8"
+                      name="SemanaCalendario" />
+                    <externalMetadataColumn
+                      refId="Package\Poblar Dim Tiempo\Excel Connection Manager,.Outputs[Excel Source Output].ExternalColumns[SemanaDelAñoLaboral]"
+                      dataType="r8"
+                      name="SemanaDelAñoLaboral" />
+                    <externalMetadataColumn
+                      refId="Package\Poblar Dim Tiempo\Excel Connection Manager,.Outputs[Excel Source Output].ExternalColumns[AñoBiesto]"
+                      dataType="r8"
+                      name="AñoBiesto" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Poblar Dim Tiempo\Excel Connection Manager,.Outputs[Excel Source Error Output]"
+                  isErrorOut="true"
+                  name="Excel Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Poblar Dim Tiempo\Excel Connection Manager,.Outputs[Excel Source Error Output].Columns[Fecha]"
+                      dataType="date"
+                      lineageId="Package\Poblar Dim Tiempo\Excel Connection Manager,.Outputs[Excel Source Error Output].Columns[Fecha]"
+                      name="Fecha" />
+                    <outputColumn
+                      refId="Package\Poblar Dim Tiempo\Excel Connection Manager,.Outputs[Excel Source Error Output].Columns[Año]"
+                      dataType="r8"
+                      lineageId="Package\Poblar Dim Tiempo\Excel Connection Manager,.Outputs[Excel Source Error Output].Columns[Año]"
+                      name="Año" />
+                    <outputColumn
+                      refId="Package\Poblar Dim Tiempo\Excel Connection Manager,.Outputs[Excel Source Error Output].Columns[Trimestre]"
+                      dataType="r8"
+                      lineageId="Package\Poblar Dim Tiempo\Excel Connection Manager,.Outputs[Excel Source Error Output].Columns[Trimestre]"
+                      name="Trimestre" />
+                    <outputColumn
+                      refId="Package\Poblar Dim Tiempo\Excel Connection Manager,.Outputs[Excel Source Error Output].Columns[Mes]"
+                      dataType="r8"
+                      lineageId="Package\Poblar Dim Tiempo\Excel Connection Manager,.Outputs[Excel Source Error Output].Columns[Mes]"
+                      name="Mes" />
+                    <outputColumn
+                      refId="Package\Poblar Dim Tiempo\Excel Connection Manager,.Outputs[Excel Source Error Output].Columns[Semana]"
+                      dataType="r8"
+                      lineageId="Package\Poblar Dim Tiempo\Excel Connection Manager,.Outputs[Excel Source Error Output].Columns[Semana]"
+                      name="Semana" />
+                    <outputColumn
+                      refId="Package\Poblar Dim Tiempo\Excel Connection Manager,.Outputs[Excel Source Error Output].Columns[DiaDeAño]"
+                      dataType="r8"
+                      lineageId="Package\Poblar Dim Tiempo\Excel Connection Manager,.Outputs[Excel Source Error Output].Columns[DiaDeAño]"
+                      name="DiaDeAño" />
+                    <outputColumn
+                      refId="Package\Poblar Dim Tiempo\Excel Connection Manager,.Outputs[Excel Source Error Output].Columns[DiaDeMes]"
+                      dataType="r8"
+                      lineageId="Package\Poblar Dim Tiempo\Excel Connection Manager,.Outputs[Excel Source Error Output].Columns[DiaDeMes]"
+                      name="DiaDeMes" />
+                    <outputColumn
+                      refId="Package\Poblar Dim Tiempo\Excel Connection Manager,.Outputs[Excel Source Error Output].Columns[DiaDeSemana]"
+                      dataType="r8"
+                      lineageId="Package\Poblar Dim Tiempo\Excel Connection Manager,.Outputs[Excel Source Error Output].Columns[DiaDeSemana]"
+                      name="DiaDeSemana" />
+                    <outputColumn
+                      refId="Package\Poblar Dim Tiempo\Excel Connection Manager,.Outputs[Excel Source Error Output].Columns[EsFinSemana]"
+                      dataType="r8"
+                      lineageId="Package\Poblar Dim Tiempo\Excel Connection Manager,.Outputs[Excel Source Error Output].Columns[EsFinSemana]"
+                      name="EsFinSemana" />
+                    <outputColumn
+                      refId="Package\Poblar Dim Tiempo\Excel Connection Manager,.Outputs[Excel Source Error Output].Columns[EsFeriado]"
+                      dataType="r8"
+                      lineageId="Package\Poblar Dim Tiempo\Excel Connection Manager,.Outputs[Excel Source Error Output].Columns[EsFeriado]"
+                      name="EsFeriado" />
+                    <outputColumn
+                      refId="Package\Poblar Dim Tiempo\Excel Connection Manager,.Outputs[Excel Source Error Output].Columns[Comentarios]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Poblar Dim Tiempo\Excel Connection Manager,.Outputs[Excel Source Error Output].Columns[Comentarios]"
+                      name="Comentarios" />
+                    <outputColumn
+                      refId="Package\Poblar Dim Tiempo\Excel Connection Manager,.Outputs[Excel Source Error Output].Columns[SemanaCalendario]"
+                      dataType="r8"
+                      lineageId="Package\Poblar Dim Tiempo\Excel Connection Manager,.Outputs[Excel Source Error Output].Columns[SemanaCalendario]"
+                      name="SemanaCalendario" />
+                    <outputColumn
+                      refId="Package\Poblar Dim Tiempo\Excel Connection Manager,.Outputs[Excel Source Error Output].Columns[SemanaDelAñoLaboral]"
+                      dataType="r8"
+                      lineageId="Package\Poblar Dim Tiempo\Excel Connection Manager,.Outputs[Excel Source Error Output].Columns[SemanaDelAñoLaboral]"
+                      name="SemanaDelAñoLaboral" />
+                    <outputColumn
+                      refId="Package\Poblar Dim Tiempo\Excel Connection Manager,.Outputs[Excel Source Error Output].Columns[AñoBiesto]"
+                      dataType="r8"
+                      lineageId="Package\Poblar Dim Tiempo\Excel Connection Manager,.Outputs[Excel Source Error Output].Columns[AñoBiesto]"
+                      name="AñoBiesto" />
+                    <outputColumn
+                      refId="Package\Poblar Dim Tiempo\Excel Connection Manager,.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Poblar Dim Tiempo\Excel Connection Manager,.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Poblar Dim Tiempo\Excel Connection Manager,.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Poblar Dim Tiempo\Excel Connection Manager,.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Poblar Dim Tiempo\Transformacion de excel"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="Incluye y ejecuta código de scripts personalizados. Por ejemplo, se usa para aplicar una regla de negocios que limita el intervalo de valores válidos de una columna de ingresos o para sumar los valores de dos columnas y calcular el promedio de la suma.;Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; Todos los derechos reservados; http://www.microsoft.com/sql/support;12"
+              description="Incluye y ejecuta código de scripts personalizados. Por ejemplo, se usa para aplicar una regla de negocios que limita el intervalo de valores válidos de una columna de ingresos o para sumar los valores de dos columnas y calcular el promedio de la suma."
+              name="Transformacion de excel"
+              version="12">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Almacena el código fuente del componente"
+                  isArray="true"
+                  name="SourceCode"
+                  state="cdata">
+                  <arrayElements
+                    arrayElementCount="30">
+                    <arrayElement
+                      dataType="System.String"><![CDATA[SC_7cec3e38c93a48c3b9ff3866c8b46921.vbproj]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectTypeGuids>{30D016F9-3734-4E33-A861-5E7D899E18F3};{F184B08F-C81C-45F6-A57F-5ABD9991F28F}</ProjectTypeGuids>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{e49329ec-869a-4c8f-859f-4ad11ce5ea88}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>My Project</AppDesignerFolder>
+    <RootNamespace>SC_7cec3e38c93a48c3b9ff3866c8b46921</RootNamespace>
+    <AssemblyName>SC_7cec3e38c93a48c3b9ff3866c8b46921</AssemblyName>
+    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ResolveAssemblyReferenceIgnoreTargetFrameworkAttributeVersionMismatch>true</ResolveAssemblyReferenceIgnoreTargetFrameworkAttributeVersionMismatch>
+    <TargetFrameworkProfile></TargetFrameworkProfile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>.\bin\Debug\</OutputPath>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugSymbols>false</DebugSymbols>
+    <Optimize>true</Optimize>
+    <OutputPath>.\bin\Release\</OutputPath>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <!-- This sections specifies references for the project. -->
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.SqlServer.TxScript, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.SqlServer.DTSRuntimeWrap, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.SqlServer.DTSPipelineWrap, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.SqlServer.PipelineHost, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Compile Include="main.vb" />
+    <Compile Include="BufferWrapper.vb" />
+    <Compile Include="ComponentWrapper.vb" />
+  </ItemGroup>
+  <!-- Visual Basic supports Importing namespaces (equivalent to using statements in C#).-->
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Data" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Windows.Forms" />
+  </ItemGroup>
+  <ItemGroup>
+    <AppDesigner Include="My Project\" />
+    <Compile Include="My Project\AssemblyInfo.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <EmbeddedResource Include="My Project\Resources.resx">
+      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+    </EmbeddedResource>
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <None Include="My Project\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+    </None>
+    <Compile Include="My Project\Settings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <!-- Include the build rules for a VB project.-->
+  <Import Project="$(MSBuildBinPath)\Microsoft.VisualBasic.targets" />
+  <!-- This section defines VSTA properties that describe the host-changable project properties. -->
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{30D016F9-3734-4E33-A861-5E7D899E18F3}">
+        <ProjectProperties HostName="SSIS_SC150" HostPackage="{B3A685AA-7EAF-4BC6-9940-57959FA5AC07}" ApplicationType="usd" Language="vb" TemplatesPath="" DebugInfoExeName="" DebugInfoCommandLine="" DebugInfoWorkingDir="" IconImageList="" />
+        <Host Name="SSIS_SC150" IconIndex=""></Host>
+        <ProjectClient>
+          <HostIdentifier>SSIS_SC150</HostIdentifier>
+        </ProjectClient>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[ComponentWrapper.vb]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[' THIS IS AUTO-GENERATED CODE THAT WILL BE OVERWRITTEN! DO NOT EDIT!
+' Microsoft SQL Server Integration Services component wrapper
+' This module defines the base class for your component
+' THIS IS AUTO-GENERATED CODE THAT WILL BE OVERWRITTEN! DO NOT EDIT!
+
+Imports System
+Imports System.Data
+Imports Microsoft.SqlServer.Dts.Pipeline
+Imports Microsoft.SqlServer.Dts.Pipeline.Wrapper
+Imports Microsoft.SqlServer.Dts.Runtime.Wrapper
+
+<CLSCompliant(False)> _
+Public Class UserComponent
+    Inherits ScriptComponent
+
+    Public Connections As New Connections(Me)
+    Public Variables As New Variables(Me)
+
+    Public Overrides Sub ProcessInput(ByVal InputID As Integer, ByVal InputName As String, ByVal Buffer As PipelineBuffer, ByVal OutputMap As OutputNameMap)
+
+        If InputName.Equals("Entrada 0", StringComparison.Ordinal) Then
+            Entrada0_ProcessInput(New Entrada0Buffer(Buffer, GetColumnIndexes(InputID), OutputMap))
+        End If
+
+    End Sub
+
+    Public Overridable Sub Entrada0_ProcessInput(ByVal Buffer As Entrada0Buffer)
+
+        While Buffer.NextRow()
+            Entrada0_ProcessInputRow(Buffer)
+        End While
+
+    End Sub
+
+    Public Overridable Sub Entrada0_ProcessInputRow(ByVal Row As Entrada0Buffer)
+
+    End Sub
+
+End Class
+
+<CLSCompliant(False)> _
+Public Class Connections
+
+    Dim ParentComponent As ScriptComponent
+
+    <CLSCompliant(False)> _
+    Public Sub New(ByVal Component As ScriptComponent)
+        ParentComponent = Component
+    End Sub
+
+End Class
+
+<CLSCompliant(False)> _
+Public Class Variables
+
+    Dim ParentComponent As ScriptComponent
+
+    <CLSCompliant(False)> _
+    Public Sub New(ByVal Component As ScriptComponent)
+        ParentComponent = Component
+    End Sub
+
+End Class
+]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[main.vb]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[#Region "Help:  Introduction to the Script Component"
+' The Script Component allows you to perform virtually any operation that can be accomplished in
+' a .Net application within the context of an Integration Services data flow.
+
+' Expand the other regions which have "Help" prefixes for examples of specific ways to use
+' Integration Services features within this script component.
+#End Region
+
+#Region "Imports"
+Imports System
+Imports System.Data
+Imports System.Math
+Imports Microsoft.SqlServer.Dts.Pipeline.Wrapper
+Imports Microsoft.SqlServer.Dts.Runtime.Wrapper
+#End Region
+
+' This is the class to which to add your code.  Do not change the name, attributes, or parent
+' of this class.
+<Microsoft.SqlServer.Dts.Pipeline.SSISScriptComponentEntryPointAttribute> _
+<CLSCompliant(False)> _
+Public Class ScriptMain
+    Inherits UserComponent
+
+#Region "Help:  Using Integration Services variables and parameters"
+    'To use a variable in this script, first ensure that the variable has been added to
+    'either the list contained in the ReadOnlyVariables property or the list contained in
+    'the ReadWriteVariables property of this script component, according to whether or not your
+    'code needs to write into the variable.  To do so, save this script, close this instance of
+    'Visual Studio, and update the ReadOnlyVariables and ReadWriteVariables properties.
+    'To use a parameter in this script, follow the same steps. Parameters are always read-only.
+
+    'Example of reading from a variable or parameter:
+    ' startTime = Variables.MyStartTime;
+
+    'Example of writing to a variable:
+    ' Variables.myStringVariable = "new value";
+#End Region
+
+#Region "Help:  Using Integration Services Connnection Managers"
+    'Some types of connection managers can be used in this script component.  See the help topic
+    '"Working with Connection Managers Programatically" for details.
+
+    'To use a connection manager in this script, first ensure that the connection manager has
+    'been added to either the list of connection managers on the Connection Managers page of the
+    'script component editor.  To add the connection manager, save this script, close this instance of
+    ' Visual Studio, and add the Connection Manager to the list.
+
+    'If the component needs to hold a connection open while processing rows, override the
+    'AcquireConnections and ReleaseConnections methods.
+
+    'Example of using an ADO.Net connection manager to acquire a SqlConnection:
+    ' Dim rawConnection As Object = Connections.SalesDB.AcquireConnection(Transaction)
+    ' Dim salesDBConn As SqlConnection = CType(rawConnection, SqlConnection)
+
+    'Example of using a File connection manager to acquire a file path:
+    ' Dim rawConnection As Object = Connections.Prices_zip.AcquireConnection(Transaction)
+    ' Dim filePath As String = CType(rawConnection, String)
+
+    'Example of releasing a connection manager:
+    ' Connections.SalesDB.ReleaseConnection(rawConnection)
+#End Region
+
+#Region "Help:  Firing Integration Services Events"
+    'This script component can fire events.
+
+    'Example of firing an error event:
+    ' ComponentMetaData.FireError(10, "Process Values", "Bad value", "", 0, cancel)
+
+    'Example of firing an information event:
+    ' ComponentMetaData.FireInformation(10, "Process Values", "Processing has started", "", 0, fireAgain)
+
+    'Example of firing a warning event:
+    ' ComponentMetaData.FireWarning(10, "Process Values", "No rows were received", "", 0)
+
+#End Region
+
+    'This method is called once, before rows begin to be processed in the data flow.
+    '
+    'You can remove this method if you don't need to do anything here.
+    Public Overrides Sub PreExecute()
+        MyBase.PreExecute()
+        '
+        ' Add your code here
+        '
+    End Sub
+
+    ' This method is called after all the rows have passed through this component.
+    '
+    ' You can delete this method if you don't need to do anything here.
+    Public Overrides Sub PostExecute()
+        MyBase.PostExecute()
+        '
+        ' Add your code here
+        '
+    End Sub
+
+    'This method is called once for every row that passes through the component from Entrada0.
+    '
+    'Example of reading a value from a column in the the row:
+    ' zipCode = Row.ZipCode
+    '
+    'Example of writing a value to a column in the row:
+    ' Row.ZipCode = zipCode
+    Public Overrides Sub Entrada0_ProcessInputRow(ByVal Row As Entrada0Buffer)
+        Select Case CType(Row.DiaDeSemana, Integer)
+            Case 1
+                Row.TiempoDescripcionDiaDeSemana = "Lunes"
+            Case 2
+                Row.TiempoDescripcionDiaDeSemana = "Martes"
+            Case 3
+                Row.TiempoDescripcionDiaDeSemana = "Miercoles"
+            Case 4
+                Row.TiempoDescripcionDiaDeSemana = "Jueves"
+            Case 5
+                Row.TiempoDescripcionDiaDeSemana = "Viernes"
+            Case 6
+                Row.TiempoDescripcionDiaDeSemana = "Sabado"
+            Case 7
+                Row.TiempoDescripcionDiaDeSemana = "Domingo"
+        End Select
+        Select Case CType(Row.Mes, Integer)
+            Case 1
+                Row.TiempoDescripcionMes = "Enero"
+            Case 2
+                Row.TiempoDescripcionMes = "Febrero"
+            Case 3
+                Row.TiempoDescripcionMes = "Marzo"
+            Case 4
+                Row.TiempoDescripcionMes = "Abril"
+            Case 5
+                Row.TiempoDescripcionMes = "Mayo"
+            Case 6
+                Row.TiempoDescripcionMes = "Junio"
+            Case 7
+                Row.TiempoDescripcionMes = "Julio"
+            Case 8
+                Row.TiempoDescripcionMes = "Agosto"
+            Case 9
+                Row.TiempoDescripcionMes = "Setiembre"
+            Case 10
+                Row.TiempoDescripcionMes = "Octubre"
+            Case 11
+                Row.TiempoDescripcionMes = "Noviembre"
+            Case 12
+                Row.TiempoDescripcionMes = "Diciembre"
+        End Select
+        Select Case CType(Row.Trimestre, Integer)
+            Case 1
+                Row.TiempoDescripcionTrimestre = "Primer Trimestre"
+            Case 2
+                Row.TiempoDescripcionTrimestre = "Segundo Trimestre"
+            Case 3
+                Row.TiempoDescripcionTrimestre = "Tercer Trimestre"
+            Case 4
+                Row.TiempoDescripcionTrimestre = "Cuarto Trimestre"
+        End Select
+        Select Case CType(Row.Trimestre, Integer)
+            Case 1 To 2
+                Row.TiempoDescripcionSemestre = "Primer Semestre"
+            Case 3 To 4
+                Row.TiempoDescripcionSemestre = "Segundo Semestre"
+        End Select
+    End Sub
+
+
+End Class
+]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[My Project\Settings.settings]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[<?xml version='1.0' encoding='iso-8859-1'?>
+<SettingsFile xmlns="uri:settings" CurrentProfile="(Default)" GeneratedClassNamespace="" GeneratedClassName="MySettings">
+  <Profiles>
+    <Profile Name="(Default)" />
+  </Profiles>
+  <Settings />
+</SettingsFile>]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[My Project\AssemblyInfo.vb]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[Imports System
+Imports System.Reflection
+Imports System.Runtime.InteropServices
+
+' General Information about an assembly is controlled through the following 
+' set of attributes. Change these attribute values to modify the information
+' associated with an assembly.
+
+' Review the values of the assembly attributes
+
+<Assembly: AssemblyTitle("SC_7cec3e38c93a48c3b9ff3866c8b46921")> 
+<Assembly: AssemblyDescription("")> 
+<Assembly: AssemblyCompany("HP Inc.")> 
+<Assembly: AssemblyProduct("SC_7cec3e38c93a48c3b9ff3866c8b46921")> 
+<Assembly: AssemblyCopyright("Copyright @ HP Inc. 2023")> 
+<Assembly: AssemblyTrademark("")> 
+<Assembly: CLSCompliant(True)> 
+
+<Assembly: ComVisible(False)> 
+
+'The following GUID is for the ID of the typelib if this project is exposed to COM
+<Assembly: Guid("42585eda-62c6-49fd-99ac-c8757c8d2087")> 
+
+' Version information for an assembly consists of the following four values:
+'
+'      Major Version
+'      Minor Version 
+'      Build Number
+'      Revision
+'
+' You can specify all the values or you can default the Build and Revision Numbers 
+' by using the '*' as shown below:
+' <Assembly: AssemblyVersion("1.0.*")>
+
+<Assembly: AssemblyVersion("1.0.0.0")> 
+<Assembly: AssemblyFileVersion("1.0.0.0")> 
+]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[My Project\Settings.Designer.vb]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA['------------------------------------------------------------------------------
+' <autogenerated>
+'     This code was generated by a tool.
+'
+'     Changes to this file may cause incorrect behavior and will be lost if
+'     the code is regenerated.
+' </autogenerated>
+'------------------------------------------------------------------------------
+
+Option Strict Off
+Option Explicit On
+
+
+
+Partial Friend NotInheritable Class MySettings
+    Inherits System.Configuration.ApplicationSettingsBase
+
+    Private Shared m_Value As MySettings
+
+    Private Shared m_SyncObject As Object = New Object
+
+    <System.Diagnostics.DebuggerNonUserCode()> _
+    Public Shared ReadOnly Property Value() As MySettings
+        Get
+            If (MySettings.m_Value Is Nothing) Then
+                System.Threading.Monitor.Enter(MySettings.m_SyncObject)
+                If (MySettings.m_Value Is Nothing) Then
+                    Try
+                        MySettings.m_Value = New MySettings
+                    Finally
+                        System.Threading.Monitor.Exit(MySettings.m_SyncObject)
+                    End Try
+                End If
+            End If
+            Return MySettings.m_Value
+        End Get
+    End Property
+End Class
+]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[BufferWrapper.vb]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[' THIS IS AUTO-GENERATED CODE THAT WILL BE OVERWRITTEN! DO NOT EDIT!
+' Microsoft SQL Server Integration Services buffer wrappers
+' This module defines classes for accessing data flow buffers
+' THIS IS AUTO-GENERATED CODE THAT WILL BE OVERWRITTEN! DO NOT EDIT!
+
+
+Option Strict Off   ' This allows usage of PipelineBuffer typed accessors.
+
+Imports System
+Imports System.Data
+Imports Microsoft.SqlServer.Dts.Pipeline
+Imports Microsoft.SqlServer.Dts.Pipeline.Wrapper
+
+<CLSCompliant(False)> _
+Public Class Entrada0Buffer
+    Inherits ScriptBuffer
+
+    Public Sub New(ByVal Buffer As PipelineBuffer, ByVal BufferColumnIndexes As Integer(), ByVal OutputMap As OutputNameMap)
+        MyBase.New(Buffer, BufferColumnIndexes, OutputMap)
+    End Sub
+
+    Public ReadOnly Property [Fecha]() As DateTime
+        Get
+            Return Buffer.GetDateTime(Me.BufferColumnIndexes(0))
+        End Get
+    End Property
+    Public ReadOnly Property [Fecha_IsNull] As Boolean
+        Get
+            Return IsNull(0)
+        End Get
+    End Property
+
+    Public ReadOnly Property [Año]() As Double
+        Get
+            Return Buffer.GetDouble(Me.BufferColumnIndexes(1))
+        End Get
+    End Property
+    Public ReadOnly Property [Año_IsNull] As Boolean
+        Get
+            Return IsNull(1)
+        End Get
+    End Property
+
+    Public ReadOnly Property [Trimestre]() As Double
+        Get
+            Return Buffer.GetDouble(Me.BufferColumnIndexes(2))
+        End Get
+    End Property
+    Public ReadOnly Property [Trimestre_IsNull] As Boolean
+        Get
+            Return IsNull(2)
+        End Get
+    End Property
+
+    Public ReadOnly Property [Mes]() As Double
+        Get
+            Return Buffer.GetDouble(Me.BufferColumnIndexes(3))
+        End Get
+    End Property
+    Public ReadOnly Property [Mes_IsNull] As Boolean
+        Get
+            Return IsNull(3)
+        End Get
+    End Property
+
+    Public ReadOnly Property [Semana]() As Double
+        Get
+            Return Buffer.GetDouble(Me.BufferColumnIndexes(4))
+        End Get
+    End Property
+    Public ReadOnly Property [Semana_IsNull] As Boolean
+        Get
+            Return IsNull(4)
+        End Get
+    End Property
+
+    Public ReadOnly Property [DiaDeAño]() As Double
+        Get
+            Return Buffer.GetDouble(Me.BufferColumnIndexes(5))
+        End Get
+    End Property
+    Public ReadOnly Property [DiaDeAño_IsNull] As Boolean
+        Get
+            Return IsNull(5)
+        End Get
+    End Property
+
+    Public ReadOnly Property [DiaDeMes]() As Double
+        Get
+            Return Buffer.GetDouble(Me.BufferColumnIndexes(6))
+        End Get
+    End Property
+    Public ReadOnly Property [DiaDeMes_IsNull] As Boolean
+        Get
+            Return IsNull(6)
+        End Get
+    End Property
+
+    Public ReadOnly Property [DiaDeSemana]() As Double
+        Get
+            Return Buffer.GetDouble(Me.BufferColumnIndexes(7))
+        End Get
+    End Property
+    Public ReadOnly Property [DiaDeSemana_IsNull] As Boolean
+        Get
+            Return IsNull(7)
+        End Get
+    End Property
+
+    Public ReadOnly Property [EsFinSemana]() As Double
+        Get
+            Return Buffer.GetDouble(Me.BufferColumnIndexes(8))
+        End Get
+    End Property
+    Public ReadOnly Property [EsFinSemana_IsNull] As Boolean
+        Get
+            Return IsNull(8)
+        End Get
+    End Property
+
+    Public ReadOnly Property [EsFeriado]() As Double
+        Get
+            Return Buffer.GetDouble(Me.BufferColumnIndexes(9))
+        End Get
+    End Property
+    Public ReadOnly Property [EsFeriado_IsNull] As Boolean
+        Get
+            Return IsNull(9)
+        End Get
+    End Property
+
+    Public ReadOnly Property [Comentarios]() As String
+        Get
+            Return Buffer.GetString(Me.BufferColumnIndexes(10))
+        End Get
+    End Property
+    Public ReadOnly Property [Comentarios_IsNull] As Boolean
+        Get
+            Return IsNull(10)
+        End Get
+    End Property
+
+    Public ReadOnly Property [SemanaCalendario]() As Double
+        Get
+            Return Buffer.GetDouble(Me.BufferColumnIndexes(11))
+        End Get
+    End Property
+    Public ReadOnly Property [SemanaCalendario_IsNull] As Boolean
+        Get
+            Return IsNull(11)
+        End Get
+    End Property
+
+    Public ReadOnly Property [SemanaDelAñoLaboral]() As Double
+        Get
+            Return Buffer.GetDouble(Me.BufferColumnIndexes(12))
+        End Get
+    End Property
+    Public ReadOnly Property [SemanaDelAñoLaboral_IsNull] As Boolean
+        Get
+            Return IsNull(12)
+        End Get
+    End Property
+
+    Public ReadOnly Property [AñoBiesto]() As Double
+        Get
+            Return Buffer.GetDouble(Me.BufferColumnIndexes(13))
+        End Get
+    End Property
+    Public ReadOnly Property [AñoBiesto_IsNull] As Boolean
+        Get
+            Return IsNull(13)
+        End Get
+    End Property
+
+    Public WriteOnly Property [TiempoDescripcionSemestre]() As String
+        Set
+            Me(14) = Value
+        End Set
+    End Property
+    Public WriteOnly Property [TiempoDescripcionSemestre_IsNull] As Boolean
+        Set
+            If (value)
+                SetNull(14)
+            Else
+                Throw new InvalidOperationException("La propiedad IsNull no puede establecerse en False. En su lugar, asigne un valor a la columna.")
+            End If
+        End Set
+    End Property
+
+    Public WriteOnly Property [TiempoDescripcionTrimestre]() As String
+        Set
+            Me(15) = Value
+        End Set
+    End Property
+    Public WriteOnly Property [TiempoDescripcionTrimestre_IsNull] As Boolean
+        Set
+            If (value)
+                SetNull(15)
+            Else
+                Throw new InvalidOperationException("La propiedad IsNull no puede establecerse en False. En su lugar, asigne un valor a la columna.")
+            End If
+        End Set
+    End Property
+
+    Public WriteOnly Property [TiempoDescripcionMes]() As String
+        Set
+            Me(16) = Value
+        End Set
+    End Property
+    Public WriteOnly Property [TiempoDescripcionMes_IsNull] As Boolean
+        Set
+            If (value)
+                SetNull(16)
+            Else
+                Throw new InvalidOperationException("La propiedad IsNull no puede establecerse en False. En su lugar, asigne un valor a la columna.")
+            End If
+        End Set
+    End Property
+
+    Public WriteOnly Property [TiempoDescripcionDiadeSemana]() As String
+        Set
+            Me(17) = Value
+        End Set
+    End Property
+    Public WriteOnly Property [TiempoDescripcionDiadeSemana_IsNull] As Boolean
+        Set
+            If (value)
+                SetNull(17)
+            Else
+                Throw new InvalidOperationException("La propiedad IsNull no puede establecerse en False. En su lugar, asigne un valor a la columna.")
+            End If
+        End Set
+    End Property
+
+    Public Overloads Function NextRow() As Boolean
+        NextRow = MyBase.NextRow()
+    End Function
+
+    Public Overloads Function EndOfRowset() As Boolean
+        EndOfRowset = MyBase.EndOfRowset
+    End Function
+
+End Class
+]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[Project]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF16LE]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[<?xml version="1.0" encoding="UTF-16" standalone="yes"?>
+<c:Project xmlns:c="http://schemas.microsoft.com/codeprojectml/2010/08/main" xmlns:msb="http://schemas.microsoft.com/developer/msbuild/2003" runtimeVersion="4.0" schemaVersion="1.0">
+  <msb:PropertyGroup>
+    <msb:CodeName>SC_7cec3e38c93a48c3b9ff3866c8b46921</msb:CodeName>
+    <msb:Language>msBuild</msb:Language>
+    <msb:DisplayName>SC_7cec3e38c93a48c3b9ff3866c8b46921</msb:DisplayName>
+    <msb:ProjectId>{A364FADD-A5B5-41E6-8703-EE26C5E8C239}</msb:ProjectId>
+  </msb:PropertyGroup>
+  <msb:ItemGroup>
+    <msb:Project Include="SC_7cec3e38c93a48c3b9ff3866c8b46921.vbproj" />
+    <msb:File Include="My Project\AssemblyInfo.vb" />
+    <msb:File Include="main.vb" />
+    <msb:File Include="BufferWrapper.vb" />
+    <msb:File Include="My Project\Settings.Designer.vb" />
+    <msb:File Include="My Project\Resources.resx" />
+    <msb:File Include="ComponentWrapper.vb" />
+    <msb:File Include="My Project\Resources.Designer.vb" />
+    <msb:File Include="My Project\Settings.settings" />
+  </msb:ItemGroup>
+</c:Project>]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[My Project\Resources.resx]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+</root>]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[My Project\Resources.Designer.vb]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[UTF8]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA['------------------------------------------------------------------------------
+' <autogenerated>
+'     This code was generated by a tool.
+'
+'     Changes to this file may cause incorrect behavior and will be lost if
+'     the code is regenerated.
+' </autogenerated>
+'------------------------------------------------------------------------------
+
+Option Strict Off
+Option Explicit On
+
+
+Namespace My.Resources
+    
+    '''<summary>
+    '''   A strongly-typed resource class, for looking up localized strings, etc.
+    '''</summary>
+    'This class was auto-generated by the Strongly Typed Resource Builder
+    'class via a tool like ResGen or Visual Studio.NET.
+    'To add or remove a member, edit your .ResX file then rerun ResGen
+    'with the /str option, or rebuild your VS project.
+    Class MyResources
+        
+        Private Shared _resMgr As System.Resources.ResourceManager
+        
+        Private Shared _resCulture As System.Globalization.CultureInfo
+        
+        Friend Sub New()
+            MyBase.New
+        End Sub
+        
+        '''<summary>
+        '''   Returns the cached ResourceManager instance used by this class.
+        '''</summary>
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+        Public Shared ReadOnly Property ResourceManager() As System.Resources.ResourceManager
+            Get
+                If (_resMgr Is Nothing) Then
+                    Dim temp As System.Resources.ResourceManager = New System.Resources.ResourceManager("My.Resources.MyResources", GetType(MyResources).Assembly)
+                    _resMgr = temp
+                End If
+                Return _resMgr
+            End Get
+        End Property
+        
+        '''<summary>
+        '''   Overrides the current thread's CurrentUICulture property for all
+        '''   resource lookups using this strongly typed resource class.
+        '''</summary>
+        <System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)>  _
+        Public Shared Property Culture() As System.Globalization.CultureInfo
+            Get
+                Return _resCulture
+            End Get
+            Set
+                _resCulture = value
+            End Set
+        End Property
+    End Class
+End Namespace
+]]></arrayElement>
+                  </arrayElements>
+                </property>
+                <property
+                  dataType="System.String"
+                  description="Almacena la representación binaria del componente"
+                  isArray="true"
+                  name="BinaryCode"
+                  state="cdata">
+                  <arrayElements
+                    arrayElementCount="2">
+                    <arrayElement
+                      dataType="System.String"><![CDATA[SC_7cec3e38c93a48c3b9ff3866c8b46921.dll]]></arrayElement>
+                    <arrayElement
+                      dataType="System.String"><![CDATA[TVqQAAMAAAAEAAAA//8AALgAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAgAAAAA4fug4AtAnNIbgBTM0hVGhpcyBwcm9ncmFtIGNhbm5vdCBiZSBydW4gaW4gRE9TIG1v
+ZGUuDQ0KJAAAAAAAAABQRQAATAEDAECSw2MAAAAAAAAAAOAAIiALAVAAACoAAAAIAAAAAAAAMkkA
+AAAgAAAAYAAAAAAAEAAgAAAAAgAABAAAAAAAAAAGAAAAAAAAAACgAAAAAgAAAAAAAAMAYIUAABAA
+ABAAAAAAEAAAEAAAAAAAABAAAAAAAAAAAAAAAOBIAABPAAAAAGAAAGQEAAAAAAAAAAAAAAAAAAAA
+AAAAAIAAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAIAAACAAAAAAAAAAAAAAACCAAAEgAAAAAAAAAAAAAAC50ZXh0AAAAOCkAAAAgAAAAKgAAAAIA
+AAAAAAAAAAAAAAAAACAAAGAucnNyYwAAAGQEAAAAYAAAAAYAAAAsAAAAAAAAAAAAAAAAAABAAABA
+LnJlbG9jAAAMAAAAAIAAAAACAAAAMgAAAAAAAAAAAAAAAAAAQAAAQgAAAAAAAAAAAAAAAAAAAAAU
+SQAAAAAAAEgAAAACAAUALCcAAPwgAAABAAAAAAAAAChIAAC4AAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAB4CKBgAAAoqHgIoGQAACiqmcxoAAAqAAQAABHMbAAAKgAIA
+AARzHAAACoADAAAEcx0AAAqABAAABCoufgEAAARvHgAACioufgIAAARvHwAACioufgMAAARvIAAA
+CioufgQAAARvIQAACioeAigiAAAKKq5+BQAABC0ecgEAAHDQBQAAAigjAAAKbyQAAApzJQAACoAF
+AAAEfgUAAAQqGn4GAAAEKh4CgAYAAAQqHgIoNwAABioeAigmAAAKKh4CKCcAAAoqAAAAEzACAAQC
+AAABAAARA28fAAAGKCgAAAq3CgYXWUUHAAAAAgAAAA8AAAAcAAAAKQAAADYAAABDAAAAUAAAACtZ
+A3IzAABwbzMAAAYrTANyPwAAcG8zAAAGKz8Dck0AAHBvMwAABisyA3JhAABwbzMAAAYrJQNybwAA
+cG8zAAAGKxgDcn8AAHBvMwAABisLA3KNAABwbzMAAAYDbxcAAAYoKAAACrcLBxdZRQwAAAAFAAAA
+FQAAACUAAAAyAAAAPwAAAEwAAABZAAAAZgAAAHMAAACAAAAAjQAAAJoAAAA4oAAAAANynQAAcG8x
+AAAGOJAAAAADcqkAAHBvMQAABjiAAAAAA3K5AABwbzEAAAYrcwNyxQAAcG8xAAAGK2YDctEAAHBv
+MQAABitZA3LbAABwbzEAAAYrTANy5wAAcG8xAAAGKz8DcvMAAHBvMQAABisyA3IBAQBwbzEAAAYr
+JQNyFQEAcG8xAAAGKxgDciUBAHBvMQAABisLA3I5AQBwbzEAAAYDbxUAAAYoKAAACrcMCBdZRQQA
+AAACAAAADwAAABwAAAApAAAAKzIDck0BAHBvLwAABislA3JvAQBwby8AAAYrGANykwEAcG8vAAAG
+KwsDcrUBAHBvLwAABgNvFQAABigoAAAKtw0JFzIQCRgwDANy1wEAcG8tAAAGKgkZMg8JGjALA3L3
+AQBwby0AAAYqKgIDBAUoKQAACipSAnsqAAAKAnsrAAAKFpRvLAAACioiAhYoLQAACipSAnsqAAAK
+AnsrAAAKF5RvLgAACioiAhcoLQAACipSAnsqAAAKAnsrAAAKGJRvLgAACioiAhgoLQAACipSAnsq
+AAAKAnsrAAAKGZRvLgAACioiAhkoLQAACipSAnsqAAAKAnsrAAAKGpRvLgAACioiAhooLQAACipS
+AnsqAAAKAnsrAAAKG5RvLgAACioiAhsoLQAACipSAnsqAAAKAnsrAAAKHJRvLgAACioiAhwoLQAA
+CipSAnsqAAAKAnsrAAAKHZRvLgAACioiAh0oLQAACipSAnsqAAAKAnsrAAAKHpRvLgAACioiAh4o
+LQAACipWAnsqAAAKAnsrAAAKHwmUby4AAAoqJgIfCSgtAAAKKlYCeyoAAAoCeysAAAofCpRvLwAA
+CiomAh8KKC0AAAoqVgJ7KgAACgJ7KwAACh8LlG8uAAAKKiYCHwsoLQAACipWAnsqAAAKAnsrAAAK
+HwyUby4AAAoqJgIfDCgtAAAKKlYCeyoAAAoCeysAAAofDZRvLgAACiomAh8NKC0AAAoqKgIfDgMo
+MAAACipeAywJAh8OKDEAAAoqchkCAHBzMgAACnoqAh8PAygwAAAKKl4DLAkCHw8oMQAACipyGQIA
+cHMyAAAKeioCHxADKDAAAAoqXgMsCQIfECgxAAAKKnIZAgBwczIAAAp6KgIfEQMoMAAACipeAywJ
+Ah8RKDEAAAoqchkCAHBzMgAACnoAAAATMAEACQAAAAIAABECKDMAAAoKBioAAAATMAEACQAAAAIA
+ABECKDQAAAoKBip+Aig1AAAKAgJzOwAABn0HAAAEAgJzPAAABn0IAAAEKpIEctgCAHAabzYAAAos
+FQIFAgMoNwAACg4EcxAAAAZvOQAABipKKwcCA286AAAGA281AAAGLfEqBio6AigiAAAKAgN9CQAA
+BCo6AigiAAAKAgN9CgAABCpCcyIAAAooOAAACoAMAAAEKh4CKDkAAAoqAAAbMAEAPwAAAAAAAAB+
+CwAABC0yfgwAAAQoOAAACig6AAAKfgsAAAQtHHM+AAAGgAsAAATeEH4MAAAEKDgAAAooOwAACtx+
+CwAABCoAARAAAAIAHQAMKQAQAAAAADYCAyg4AAAKKDwAAAoqHgIoPQAACiou0AwAAAIoIwAACioe
+Aig+AAAKKgAAEzABABQAAAADAAARAowFAAAbLQgoAQAAKworAgIKBioiA/4VBQAAGyoAAAATMAIA
+KAAAAAQAABECe0AAAApvQQAACgoGjAgAABstEigCAAArCgJ7QAAACgZvQgAACgYqSgIoIgAACgJz
+QwAACn1AAAAKKgBCU0pCAQABAAAAAAAMAAAAdjQuMC4zMDMxOQAAAAAFAGwAAAAEDQAAI34AAHAN
+AACsDAAAI1N0cmluZ3MAAAAAHBoAAOwCAAAjVVMACB0AABAAAAAjR1VJRAAAABgdAADkAwAAI0Js
+b2IAAAAAAAAAAgAAAVcVogkJDwAAAPoBMwAWAAABAAAAMAAAAA0AAAANAAAASAAAABgAAABDAAAA
+PQAAAAQAAAAFAAAALAAAAC0AAAAIAAAAAQAAAAUAAAABAAAAAgAAAAMAAAACAAAAAAB3BQEAAAAA
+AAYA0QOCCgYAewSCCgYAqAKVCQ8AKAsAAAYA6QLmBwYAtAPmBwYAYgTmBwYA8QPmBwYACgTmBwYA
+MAPmBwYAJQRvBwYA1QI8CgYAUQI8CgYAfAPmBwYASwPsBAoAdAIvCQoAPAJhBQoAvAJhBQ4AFAIS
+Cg4AZQnWCQYAZAOVCQ4AAANbCg4AGAPoAAYAqQtvBw4ASwkSCg4AmQPoAAYAoAFvBw4AJQAeBQoA
+XwJ2BwYAHwmiCgYAMQjRBxIAOwR8AQYAGQVvBxIADgl8ARYA/wh8ARIAeAh8AQYAcwFvBxIA6Qt8
+AQoAJAK8BwYAiwKVCQYAQgFvBwYAowzmBwYA+AdvBwYAEgVvBwYAEghvBwYAlAuCCgYAjQnbBAYA
+dglvBwAAAABPAAAAAAABAAEAAAAAAK4HeAxNAAEAAQAAAAAAYwl4DFEAAQACAAABEACwC3gMYQAB
+AAMAAAAAAOQKswphAAUACAABAAAAkwcBACAABwAMAAEAAADwCAEAiQAHABAAAQAAAMsLAQCZAAcA
+NwABAAAAeAsBAGEACQA7AAEAAAA3CwEAYQAKADwAAAEQAGYLAQCdAAsAPQAFAQAABAoAAGEADQBA
+AAUBAAA0AAAAYQANAEcAMQC5CCYBMQCQCC4BMQCkCDYBMQDSCD4BEQBuCUYBEQAIAkoBBgB4C04B
+BgA3C1IBAQDZC1YBAQDZC1YBEQCwBFsBEQCjC18BIQBNDO4AUCAAAAAABhiACQYAAQBYIAAAAAAG
+GIAJBgABAGAgAAAAABEYhgliAQEAiiAAAAAAEwhWCWYBAQCWIAAAAAATCJ4HawEBAKIgAAAAABMI
+RwlwAQEAriAAAAAAEwj0CXUBAQC6IAAAAAADGIAJBgABAMIgAAAAABYIGwl6AQEA7iAAAAAAFgjw
+AX8BAQD1IAAAAAAWCPwBhAEBAP0gAAAAAAYYgAkGAAIABSEAAAAAxgKZBAYAAgANIQAAAADGAqQE
+BgACABghAAAAAMYCVwyKAQIAKCMAAAAABhiACXEAAwAzIwAAAAAGCIkAkAEGAEgjAAAAAAYInwWm
+AAYAUSMAAAAABghhCJYBBgBmIwAAAAAGCN8GpgAGAG8jAAAAAAYIwwGWAQYAhCMAAAAABgg9BqYA
+BgCNIwAAAAAGCKgJlgEGAKIjAAAAAAYIBAemAAYAqyMAAAAABgiTAJYBBgDAIwAAAAAGCLAFpgAG
+AMkjAAAAAAYIagiWAQYA3iMAAAAABgjvBqYABgDnIwAAAAAGCLAJlgEGAPwjAAAAAAYIEwemAAYA
+BSQAAAAABgieAJYBBgAaJAAAAAAGCMIFpgAGACMkAAAAAAYIzwCWAQYAOCQAAAAABggBBqYABgBB
+JAAAAAAGCCMIlgEGAFckAAAAAAYImAamAAYAYSQAAAAABgiEC8sABgB3JAAAAAAGCEcHpgAGAIEk
+AAAAAAYIPQiWAQYAlyQAAAAABgitBqYABgChJAAAAAAGCEgFlgEGALckAAAAAAYIeAamAAYAwSQA
+AAAABghSCJYBBgDXJAAAAAAGCMkGpgAGAOEkAAAAAAYIpQEQAAYA7CQAAAAABggYBhUABwAEJQAA
+AAAGCNEBEAAIAA8lAAAAAAYIUgYVAAkAJyUAAAAABgi9CRAACgAyJQAAAAAGCCcHFQALAEolAAAA
+AAYIrgAQAAwAVSUAAAAABgjZBRUADQBwJQAAAACGAHAMpgAOAIglAAAAAIYAugumAA4AnSUAAAAA
+BhiACQYADgC9JQAAAADGAkAMmgEOAOIlAAAAAEYDNwyKARIA9SUAAAAARgNXDIoBEwD3JQAAAAAG
+GIAJpgEUAAYmAAAAAAYYgAmmARUAFSYAAAAAERiGCWIBFgAmJgAAAAAGGIAJBgAWADAmAAAAABYI
+uAStARYAjCYAAAAAxgJxC8IAFgCaJgAAAADGAiwBxwAXAKImAAAAAIMAnQGyARcAriYAAAAAxgIG
+BcsAFwC4JgAAAAARAHYAtwEXANgmAAAAAAEAYgC/ARgAuiAAAAAABhiACQYAGQDkJgAAAAADCBMB
+SgAZABgnAAAAAAYYgAkGABkAAAABANUEAAABAHQMAAABABQJAAACAEELAAADAIYIAAABANUEAAAB
+ANUEAAABANUEAAABANUEAAABANUEAAABANUEAAABANUEAAABANUEAAABAFgAAAACAGYBAAADABQJ
+AAAEAIYIAAABABQJAAABAHQMAAABAO8LAAABAO8LAAABAHYIAAABACMBAAABACMBCQCACQEAEQCA
+CQYAGQCACQoAKQCACRAAMQCACRAAOQCACRAAQQCACRAASQCACRAAUQCACRAAWQCACRUAYQCACRUA
+aQCACRAAcQCACRAAeQCACRAAgQCACRoAkQCACSAAqQCACQYAsQCACQYAuQCACQYA0QCACSYA6QCA
+CRAAAQGACQYAQQGACQYAmQCACQYAoQCACQYADACACQYAFACACQYAHACACQYAJACACQYADAATAUoA
+FAATAUoAHAATAUoAJAATAUoAwQCACQYA2QBUAU8A2QCfDFcA8QCACV0AMQGZBAYAMQGkBAYACQH+
+AGwAEQGACXEAEQEUCX0AEQFBC4IAGQFwAYYAEQFXB40AGQE4AZIAGQEPBZcAEQFmB5wAEQFeBwEA
+WQGACRAAEQFwDKYAEQG6C6YAMQGACQYAYQFxC6oAMQFVC7IAcQHMBLgAOQGACQYAeQFQCb0AeQHG
+C70AwQBxC8IAwQAsAccAwQAGBcsAgQEEAdcANABNDO4APAC4BEoAPADCBAUBPACACQYAKQCrAJwD
+LgALAAECLgATAAoCLgAbACkCLgAjADICLgArAFsCLgAzAGECLgA7ADICLgBDAG4CLgBLAFsCLgBT
+AIwCLgBbAFsCLgBjAJICLgBrALwCLgBzAMkCQACLABMDQACDABgDQwB7ACEDQwCDABgDSQCrAK0D
+YwB7ACEDYwCDABgDaQCrAMEDgACLABMDgwCTABMDgwCbABMDgwB7ACEDiQCrAM4DoACLABMDqQCD
+ACkCwACLABMDwwCzABMDwwBTAFsCyQCDACkC4ACLABMD4wBTAFsCAwFTAFsCIwFTAFsCQwFTAFsC
+gwGDABgDgwGjADoDowGDABgDowFbAFsCaQW7ABMDYAdTAFsCgAdTAFsCAAiDABgDAAiLABMDIAiD
+ABgDIAiLABMDQAiDABgDQAiLABMDYAiDABgDYAiLABMDgAiLABMDoAiLABMDwAiLABMDwAiDABgD
+4AiLABMDAAmLABMDAAmDABgDZQCiAM8A4gAEAAEABQAFAAcABwALACsADQAsAAAAZQnHAQAAsAfM
+AQAASwnRAQAABgrWAQAAHwnbAQAADALgAQAAjQDlAQAAowXrAQAAcwjvAQAA+AbrAQAA5gHvAQAA
+ZwbrAQAA0gnvAQAAPAfrAQAA2ADvAQAACgbrAQAAbgjvAQAA8wbrAQAAtAnvAQAAFwfrAQAAogDv
+AQAAxgXrAQAA0wDvAQAABQbrAQAAJwjvAQAAnAbrAQAAiAvzAQAASwfrAQAAQQjvAQAAsQbrAQAA
+TAXvAQAAfAbrAQAAVgjvAQAAzQbrAQAAqQHzAQAAHAbrAQAA1QHzAQAAVgbrAQAAwQnzAQAAKwfr
+AQAAsgDzAQAA3QXrAQAA1QT3AQAAFwH8AQIABAADAAIABQAFAAIABgAHAAIABwAJAAIACQALAAIA
+CgANAAEACwANAAIAEQAPAAIAEgARAAIAEwATAAIAFAAVAAIAFQAXAAIAFgAZAAIAFwAbAAIAGAAd
+AAIAGQAfAAIAGgAhAAIAGwAjAAIAHAAlAAIAHQAnAAIAHgApAAIAHwArAAIAIAAtAAIAIQAvAAIA
+IgAxAAIAIwAzAAIAJAA1AAIAJQA3AAIAJgA5AAIAJwA7AAIAKAA9AAIAKQA/AAIAKgBBAAIAKwBD
+AAIALABFAAEALQBHAAEALgBJAAEALwBLAAEAMABNAAEAMQBPAAEAMgBRAAEAMwBTAAEANABVAAIA
+PwBXAAIARwBZAC4ANQA8AEMA1ADnAPYA/QAEgAAAAQAAAAAAAAAAAAAAAAABAAAABAAAAAAAAAAA
+AAAACwHfAAAAAAAEAAAAAAAAAAAAAAALAW8HAAAAAAoAAAAAAAAAAAAAABQB6AAAAAAADwAAAAAA
+AAAAAAAAHQH5CwAAAAAPAAAAAAAAAAAAAAAdARYMAAAAAAAAAAABAAAA8AoAAAwABAANAAQAAAAQ
+ABoAYAAAABAAiQBgAAAAAACLAGAAfwDdAH8AAAEAAABTQ183Y2VjM2UzOGM5M2E0OGMzYjlmZjM4
+NjZjOGI0NjkyMQBDb250ZXh0VmFsdWVgMQBUaHJlYWRTYWZlT2JqZWN0UHJvdmlkZXJgMQA8TW9k
+dWxlPgBJbnB1dElEAFQARGlzcG9zZV9fSW5zdGFuY2VfXwBDcmVhdGVfX0luc3RhbmNlX18AZ2V0
+X0ZlY2hhAGdldF9TZW1hbmEAZ2V0X0RpYURlU2VtYW5hAHNldF9UaWVtcG9EZXNjcmlwY2lvbkRp
+YWRlU2VtYW5hAGdldF9Fc0ZpblNlbWFuYQBtc2NvcmxpYgBNaWNyb3NvZnQuVmlzdWFsQmFzaWMA
+Um91bmQAQ3JlYXRlSW5zdGFuY2UAZ2V0X0dldEluc3RhbmNlAGluc3RhbmNlAEdldEhhc2hDb2Rl
+AEdldERvdWJsZQBSdW50aW1lVHlwZUhhbmRsZQBHZXRUeXBlRnJvbUhhbmRsZQBJbnB1dE5hbWUA
+R2V0RGF0ZVRpbWUATWljcm9zb2Z0LlNxbFNlcnZlci5EdHMuUGlwZWxpbmUAR2V0VHlwZQBzZXRf
+VGllbXBvRGVzY3JpcGNpb25TZW1lc3RyZQBnZXRfVHJpbWVzdHJlAHNldF9UaWVtcG9EZXNjcmlw
+Y2lvblRyaW1lc3RyZQBnZXRfQ3VsdHVyZQBzZXRfQ3VsdHVyZQBfcmVzQ3VsdHVyZQBBcHBsaWNh
+dGlvbkJhc2UAQXBwbGljYXRpb25TZXR0aW5nc0Jhc2UARWRpdG9yQnJvd3NhYmxlU3RhdGUAR3Vp
+ZEF0dHJpYnV0ZQBIZWxwS2V5d29yZEF0dHJpYnV0ZQBHZW5lcmF0ZWRDb2RlQXR0cmlidXRlAERl
+YnVnZ2VyTm9uVXNlckNvZGVBdHRyaWJ1dGUARGVidWdnYWJsZUF0dHJpYnV0ZQBFZGl0b3JCcm93
+c2FibGVBdHRyaWJ1dGUAQ29tVmlzaWJsZUF0dHJpYnV0ZQBBc3NlbWJseVRpdGxlQXR0cmlidXRl
+AFN0YW5kYXJkTW9kdWxlQXR0cmlidXRlAEhpZGVNb2R1bGVOYW1lQXR0cmlidXRlAEFzc2VtYmx5
+VHJhZGVtYXJrQXR0cmlidXRlAFRhcmdldEZyYW1ld29ya0F0dHJpYnV0ZQBEZWJ1Z2dlckhpZGRl
+bkF0dHJpYnV0ZQBBc3NlbWJseUZpbGVWZXJzaW9uQXR0cmlidXRlAE15R3JvdXBDb2xsZWN0aW9u
+QXR0cmlidXRlAEFzc2VtYmx5RGVzY3JpcHRpb25BdHRyaWJ1dGUAQ29tcGlsYXRpb25SZWxheGF0
+aW9uc0F0dHJpYnV0ZQBBc3NlbWJseVByb2R1Y3RBdHRyaWJ1dGUAQXNzZW1ibHlDb3B5cmlnaHRB
+dHRyaWJ1dGUAQ0xTQ29tcGxpYW50QXR0cmlidXRlAFNTSVNTY3JpcHRDb21wb25lbnRFbnRyeVBv
+aW50QXR0cmlidXRlAEFzc2VtYmx5Q29tcGFueUF0dHJpYnV0ZQBSdW50aW1lQ29tcGF0aWJpbGl0
+eUF0dHJpYnV0ZQBQcmVFeGVjdXRlAFBvc3RFeGVjdXRlAG1fVmFsdWUAZ2V0X1ZhbHVlAHNldF9W
+YWx1ZQBHZXRPYmplY3RWYWx1ZQBTeXN0ZW0uVGhyZWFkaW5nAFN5c3RlbS5SdW50aW1lLlZlcnNp
+b25pbmcAVG9TdHJpbmcAR2V0U3RyaW5nAE1hdGgATWljcm9zb2Z0LlZpc3VhbEJhc2ljLk15U2Vy
+dmljZXMuSW50ZXJuYWwAZ2V0X1NlbWFuYURlbEHDsW9MYWJvcmFsAFN5c3RlbS5Db21wb25lbnRN
+b2RlbABTQ183Y2VjM2UzOGM5M2E0OGMzYjlmZjM4NjZjOGI0NjkyMS5kbGwAZ2V0X0ZlY2hhX0lz
+TnVsbABnZXRfU2VtYW5hX0lzTnVsbABnZXRfRGlhRGVTZW1hbmFfSXNOdWxsAHNldF9UaWVtcG9E
+ZXNjcmlwY2lvbkRpYWRlU2VtYW5hX0lzTnVsbABnZXRfRXNGaW5TZW1hbmFfSXNOdWxsAHNldF9U
+aWVtcG9EZXNjcmlwY2lvblNlbWVzdHJlX0lzTnVsbABnZXRfVHJpbWVzdHJlX0lzTnVsbABzZXRf
+VGllbXBvRGVzY3JpcGNpb25UcmltZXN0cmVfSXNOdWxsAGdldF9TZW1hbmFEZWxBw7FvTGFib3Jh
+bF9Jc051bGwAZ2V0X0VzRmVyaWFkb19Jc051bGwAZ2V0X1NlbWFuYUNhbGVuZGFyaW9fSXNOdWxs
+AGdldF9Bw7FvQmllc3RvX0lzTnVsbABnZXRfQcOxb19Jc051bGwAZ2V0X0RpYURlQcOxb19Jc051
+bGwAZ2V0X01lc19Jc051bGwAZ2V0X0RpYURlTWVzX0lzTnVsbABzZXRfVGllbXBvRGVzY3JpcGNp
+b25NZXNfSXNOdWxsAGdldF9Db21lbnRhcmlvc19Jc051bGwAU2V0TnVsbABzZXRfSXRlbQBTeXN0
+ZW0AU3lzdGVtLkNvbXBvbmVudE1vZGVsLkRlc2lnbgBTY3JpcHRNYWluAGdldF9BcHBsaWNhdGlv
+bgBNeUFwcGxpY2F0aW9uAFN5c3RlbS5Db25maWd1cmF0aW9uAFN5c3RlbS5HbG9iYWxpemF0aW9u
+AFN5c3RlbS5SZWZsZWN0aW9uAEludmFsaWRPcGVyYXRpb25FeGNlcHRpb24AU3RyaW5nQ29tcGFy
+aXNvbgBnZXRfRXNGZXJpYWRvAEN1bHR1cmVJbmZvAGdldF9TZW1hbmFDYWxlbmRhcmlvAGdldF9B
+w7FvQmllc3RvAGdldF9Bw7FvAGdldF9EaWFEZUHDsW8AT3V0cHV0TmFtZU1hcABPdXRwdXRNYXAA
+bV9BcHBPYmplY3RQcm92aWRlcgBtX1VzZXJPYmplY3RQcm92aWRlcgBtX0NvbXB1dGVyT2JqZWN0
+UHJvdmlkZXIAbV9NeVdlYlNlcnZpY2VzT2JqZWN0UHJvdmlkZXIARW50cmFkYTBCdWZmZXIAUGlw
+ZWxpbmVCdWZmZXIAU2NyaXB0QnVmZmVyAGdldF9SZXNvdXJjZU1hbmFnZXIAU3lzdGVtLkNvZGVE
+b20uQ29tcGlsZXIAZ2V0X1VzZXIARW50ZXIAZ2V0X0NvbXB1dGVyAE15Q29tcHV0ZXIAX3Jlc01n
+cgBBY3RpdmF0b3IALmN0b3IALmNjdG9yAE1vbml0b3IAU3lzdGVtLkRpYWdub3N0aWNzAGdldF9N
+ZXMAZ2V0X0RpYURlTWVzAHNldF9UaWVtcG9EZXNjcmlwY2lvbk1lcwBNaWNyb3NvZnQuVmlzdWFs
+QmFzaWMuRGV2aWNlcwBnZXRfV2ViU2VydmljZXMATXlXZWJTZXJ2aWNlcwBNaWNyb3NvZnQuVmlz
+dWFsQmFzaWMuQXBwbGljYXRpb25TZXJ2aWNlcwBTeXN0ZW0uUnVudGltZS5JbnRlcm9wU2Vydmlj
+ZXMATWljcm9zb2Z0LlZpc3VhbEJhc2ljLkNvbXBpbGVyU2VydmljZXMAU3lzdGVtLlJ1bnRpbWUu
+Q29tcGlsZXJTZXJ2aWNlcwBTeXN0ZW0uUmVzb3VyY2VzAFNDXzdjZWMzZTM4YzkzYTQ4YzNiOWZm
+Mzg2NmM4YjQ2OTIxLk15LlJlc291cmNlcwBNeVJlc291cmNlcwBTQ183Y2VjM2UzOGM5M2E0OGMz
+YjlmZjM4NjZjOGI0NjkyMS5SZXNvdXJjZXMucmVzb3VyY2VzAERlYnVnZ2luZ01vZGVzAFZhcmlh
+YmxlcwBCdWZmZXJDb2x1bW5JbmRleGVzAEdldENvbHVtbkluZGV4ZXMATXlTZXR0aW5ncwBFcXVh
+bHMAQ29ubmVjdGlvbnMAZ2V0X0NvbWVudGFyaW9zAFJ1bnRpbWVIZWxwZXJzAG1fU3luY09iamVj
+dABNeVByb2plY3QARW5kT2ZSb3dzZXQARXhpdABVc2VyQ29tcG9uZW50AFBhcmVudENvbXBvbmVu
+dABTY3JpcHRDb21wb25lbnQATWljcm9zb2Z0LlNxbFNlcnZlci5UeFNjcmlwdABNaWNyb3NvZnQu
+U3FsU2VydmVyLlBpcGVsaW5lSG9zdABFbnRyYWRhMF9Qcm9jZXNzSW5wdXQAbV9Db250ZXh0AEVu
+dHJhZGEwX1Byb2Nlc3NJbnB1dFJvdwBOZXh0Um93AFNDXzdjZWMzZTM4YzkzYTQ4YzNiOWZmMzg2
+NmM4YjQ2OTIxLk15AGdldF9Bc3NlbWJseQAAMU0AeQAuAFIAZQBzAG8AdQByAGMAZQBzAC4ATQB5
+AFIAZQBzAG8AdQByAGMAZQBzAAALTAB1AG4AZQBzAAANTQBhAHIAdABlAHMAABNNAGkAZQByAGMA
+bwBsAGUAcwAADUoAdQBlAHYAZQBzAAAPVgBpAGUAcgBuAGUAcwAADVMAYQBiAGEAZABvAAAPRABv
+AG0AaQBuAGcAbwAAC0UAbgBlAHIAbwAAD0YAZQBiAHIAZQByAG8AAAtNAGEAcgB6AG8AAAtBAGIA
+cgBpAGwAAAlNAGEAeQBvAAALSgB1AG4AaQBvAAALSgB1AGwAaQBvAAANQQBnAG8AcwB0AG8AABNT
+AGUAdABpAGUAbQBiAHIAZQAAD08AYwB0AHUAYgByAGUAABNOAG8AdgBpAGUAbQBiAHIAZQAAE0QA
+aQBjAGkAZQBtAGIAcgBlAAAhUAByAGkAbQBlAHIAIABUAHIAaQBtAGUAcwB0AHIAZQAAI1MAZQBn
+AHUAbgBkAG8AIABUAHIAaQBtAGUAcwB0AHIAZQAAIVQAZQByAGMAZQByACAAVAByAGkAbQBlAHMA
+dAByAGUAACFDAHUAYQByAHQAbwAgAFQAcgBpAG0AZQBzAHQAcgBlAAAfUAByAGkAbQBlAHIAIABT
+AGUAbQBlAHMAdAByAGUAACFTAGUAZwB1AG4AZABvACAAUwBlAG0AZQBzAHQAcgBlAACAvUwAYQAg
+AHAAcgBvAHAAaQBlAGQAYQBkACAASQBzAE4AdQBsAGwAIABuAG8AIABwAHUAZQBkAGUAIABlAHMA
+dABhAGIAbABlAGMAZQByAHMAZQAgAGUAbgAgAEYAYQBsAHMAZQAuACAARQBuACAAcwB1ACAAbAB1
+AGcAYQByACwAIABhAHMAaQBnAG4AZQAgAHUAbgAgAHYAYQBsAG8AcgAgAGEAIABsAGEAIABjAG8A
+bAB1AG0AbgBhAC4AABNFAG4AdAByAGEAZABhACAAMAAAWeI7O4V6nkyD9+Ga/RXt/wAEIAEBCAMg
+AAEFIAEBEREEIAEBDgQgAQECBSACAQ4OBSABARFFByAEAQ4ODg4GFRI0ARIMBhUSNAESCAYVEjQB
+EmUGFRI0ARIwBCAAEwAHAAESbRGApQUgABKAqQcgAgEOEoCpBgcECAgICAQAAQ0NCyADARKAjR0I
+EoCRBAYSgI0DBh0IBiABEYCVCAQgAQIIBCABDQgEIAEOCAUgAgEIHAMHAQIDIAACByACAg4RgLUF
+IAEdCAgEAAEcHAQAAQEcBCABAhwDIAAIAyAADgQHAR4AAh4ABRABAB4ABAoBHgAEBwETAAYVEjQB
+EwAHBhUScQETAAYVEnEBEwACEwAECgETAAUgAQETAAi3elxWGTTgiQiwP19/EdUKOgiJhF3NgIDM
+kQcGFRI0ARIMBwYVEjQBEggHBhUSNAESZQcGFRI0ARIwAwYSeQMGEn0DBhIkAwYSKAQGEoCZAwYS
+LAIGHAMAAAEEAAASDAQAABIIBAAAEmUEAAASMAQAABJ5BAAAEn0FAAEBEn0FIAEBEhwFIAARgJUD
+IAANCyAEAQgOEoCNEoCRBiABARKAmQQAABIsBCAAEm0HEAEBHgAeAAcwAQEBEB4ABAgAEgwECAAS
+CAQIABJlBAgAEjAECAASeQQIABJ9BSgAEYCVAygAAgMoAA0DKAAOBAgAEiwEKAATAAgBAAgAAAAA
+AB4BAAEAVAIWV3JhcE5vbkV4Y2VwdGlvblRocm93cwEIAQACAAAAAAAoAQAjU0NfN2NlYzNlMzhj
+OTNhNDhjM2I5ZmYzODY2YzhiNDY5MjEAAAUBAAAAAAwBAAdIUCBJbmMuAAAdAQAYQ29weXJpZ2h0
+IEAgSFAgSW5jLiAyMDIzAAAFAQABAAApAQAkNDI1ODVlZGEtNjJjNi00OWZkLTk5YWMtYzg3NTdj
+OGQyMDg3AAAMAQAHMS4wLjAuMAAASQEAGi5ORVRGcmFtZXdvcmssVmVyc2lvbj12NC43AQBUDhRG
+cmFtZXdvcmtEaXNwbGF5TmFtZRIuTkVUIEZyYW1ld29yayA0LjcEAQAAAAgBAAEAAAAAABgBAApN
+eVRlbXBsYXRlCDExLjAuMC4wAABhAQA0U3lzdGVtLldlYi5TZXJ2aWNlcy5Qcm90b2NvbHMuU29h
+cEh0dHBDbGllbnRQcm90b2NvbBJDcmVhdGVfX0luc3RhbmNlX18TRGlzcG9zZV9fSW5zdGFuY2Vf
+XwAAABABAAtNeS5Db21wdXRlcgAAEwEADk15LkFwcGxpY2F0aW9uAAAMAQAHTXkuVXNlcgAAEwEA
+Dk15LldlYlNlcnZpY2VzAAAAALQAAADOyu++AQAAAJEAAABsU3lzdGVtLlJlc291cmNlcy5SZXNv
+dXJjZVJlYWRlciwgbXNjb3JsaWIsIFZlcnNpb249NC4wLjAuMCwgQ3VsdHVyZT1uZXV0cmFsLCBQ
+dWJsaWNLZXlUb2tlbj1iNzdhNWM1NjE5MzRlMDg5I1N5c3RlbS5SZXNvdXJjZXMuUnVudGltZVJl
+c291cmNlU2V0AgAAAAAAAAAAAAAAUEFEUEFEULQAAAAISQAAAAAAAAAAAAAiSQAAACAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAFEkAAAAAAAAAAAAAAABfQ29yRGxsTWFpbgBtc2NvcmVlLmRsbAAAAAAA
+/yUAIAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAEAAAABgA
+AIAAAAAAAAAAAAAAAAAAAAEAAQAAADAAAIAAAAAAAAAAAAAAAAAAAAEAAAAAAEgAAABYYAAACAQA
+AAAAAAAAAAAACAQ0AAAAVgBTAF8AVgBFAFIAUwBJAE8ATgBfAEkATgBGAE8AAAAAAL0E7/4AAAEA
+AAABAAAAAAAAAAEAAAAAAD8AAAAAAAAABAAAAAIAAAAAAAAAAAAAAAAAAABEAAAAAQBWAGEAcgBG
+AGkAbABlAEkAbgBmAG8AAAAAACQABAAAAFQAcgBhAG4AcwBsAGEAdABpAG8AbgAAAAAAAACwBGgD
+AAABAFMAdAByAGkAbgBnAEYAaQBsAGUASQBuAGYAbwAAAEQDAAABADAAMAAwADAAMAA0AGIAMAAA
+ABoAAQABAEMAbwBtAG0AZQBuAHQAcwAAAAAAAAAwAAgAAQBDAG8AbQBwAGEAbgB5AE4AYQBtAGUA
+AAAAAEgAUAAgAEkAbgBjAC4AAABwACQAAQBGAGkAbABlAEQAZQBzAGMAcgBpAHAAdABpAG8AbgAA
+AAAAUwBDAF8ANwBjAGUAYwAzAGUAMwA4AGMAOQAzAGEANAA4AGMAMwBiADkAZgBmADMAOAA2ADYA
+YwA4AGIANAA2ADkAMgAxAAAAMAAIAAEARgBpAGwAZQBWAGUAcgBzAGkAbwBuAAAAAAAxAC4AMAAu
+ADAALgAwAAAAcAAoAAEASQBuAHQAZQByAG4AYQBsAE4AYQBtAGUAAABTAEMAXwA3AGMAZQBjADMA
+ZQAzADgAYwA5ADMAYQA0ADgAYwAzAGIAOQBmAGYAMwA4ADYANgBjADgAYgA0ADYAOQAyADEALgBk
+AGwAbAAAAFYAGQABAEwAZQBnAGEAbABDAG8AcAB5AHIAaQBnAGgAdAAAAEMAbwBwAHkAcgBpAGcA
+aAB0ACAAQAAgAEgAUAAgAEkAbgBjAC4AIAAyADAAMgAzAAAAAAAqAAEAAQBMAGUAZwBhAGwAVABy
+AGEAZABlAG0AYQByAGsAcwAAAAAAAAAAAHgAKAABAE8AcgBpAGcAaQBuAGEAbABGAGkAbABlAG4A
+YQBtAGUAAABTAEMAXwA3AGMAZQBjADMAZQAzADgAYwA5ADMAYQA0ADgAYwAzAGIAOQBmAGYAMwA4
+ADYANgBjADgAYgA0ADYAOQAyADEALgBkAGwAbAAAAGgAJAABAFAAcgBvAGQAdQBjAHQATgBhAG0A
+ZQAAAAAAUwBDAF8ANwBjAGUAYwAzAGUAMwA4AGMAOQAzAGEANAA4AGMAMwBiADkAZgBmADMAOAA2
+ADYAYwA4AGIANAA2ADkAMgAxAAAANAAIAAEAUAByAG8AZAB1AGMAdABWAGUAcgBzAGkAbwBuAAAA
+MQAuADAALgAwAC4AMAAAADgACAABAEEAcwBzAGUAbQBiAGwAeQAgAFYAZQByAHMAaQBvAG4AAAAx
+AC4AMAAuADAALgAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAADAAAADQ5AAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==]]></arrayElement>
+                  </arrayElements>
+                </property>
+                <property
+                  dataType="System.String"
+                  description="Especifica el nombre del proyecto de Microsoft Visual Studio Tools para Aplicaciones. Los nombres de proyecto deben ser únicos en el paquete."
+                  name="VSTAProjectName"
+                  typeConverter="NOTBROWSABLE">SC_7cec3e38c93a48c3b9ff3866c8b46921</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica el lenguaje de programación que utiliza el script."
+                  name="ScriptLanguage"
+                  typeConverter="Microsoft.SqlServer.VSTAHosting.ScriptingLanguages">VisualBasic</property>
+                <property
+                  dataType="System.String"
+                  description="Especifica una lista separada por comas de variables de solo lectura."
+                  name="ReadOnlyVariables"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ScriptUIVariablePickerDlg"></property>
+                <property
+                  dataType="System.String"
+                  description="Especifica una lista separada por comas de variables de lectura/escritura."
+                  name="ReadWriteVariables"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ScriptUIWriteableVariablePickerDlg"></property>
+                <property
+                  dataType="System.String"
+                  description="Lista de puntos de interrupción presentes en el script."
+                  isArray="true"
+                  name="BreakpointCollection"
+                  typeConverter="NOTBROWSABLE">
+                  <arrayElements
+                    arrayElementCount="0" />
+                </property>
+                <property
+                  dataType="System.String"
+                  description="Suma de comprobación para comparar los metadatos del componente con los códigos compilados."
+                  name="MetadataChecksum140"
+                  typeConverter="NOTBROWSABLE">40</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">Microsoft.ScriptComponentHost</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Poblar Dim Tiempo\Transformacion de excel.Inputs[Entrada 0]"
+                  hasSideEffects="true"
+                  name="Entrada 0">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Poblar Dim Tiempo\Transformacion de excel.Inputs[Entrada 0].Columns[Fecha]"
+                      cachedDataType="date"
+                      cachedName="Fecha"
+                      lineageId="Package\Poblar Dim Tiempo\Excel Connection Manager,.Outputs[Excel Source Output].Columns[Fecha]" />
+                    <inputColumn
+                      refId="Package\Poblar Dim Tiempo\Transformacion de excel.Inputs[Entrada 0].Columns[Año]"
+                      cachedDataType="r8"
+                      cachedName="Año"
+                      lineageId="Package\Poblar Dim Tiempo\Excel Connection Manager,.Outputs[Excel Source Output].Columns[Año]" />
+                    <inputColumn
+                      refId="Package\Poblar Dim Tiempo\Transformacion de excel.Inputs[Entrada 0].Columns[Trimestre]"
+                      cachedDataType="r8"
+                      cachedName="Trimestre"
+                      lineageId="Package\Poblar Dim Tiempo\Excel Connection Manager,.Outputs[Excel Source Output].Columns[Trimestre]" />
+                    <inputColumn
+                      refId="Package\Poblar Dim Tiempo\Transformacion de excel.Inputs[Entrada 0].Columns[Mes]"
+                      cachedDataType="r8"
+                      cachedName="Mes"
+                      lineageId="Package\Poblar Dim Tiempo\Excel Connection Manager,.Outputs[Excel Source Output].Columns[Mes]" />
+                    <inputColumn
+                      refId="Package\Poblar Dim Tiempo\Transformacion de excel.Inputs[Entrada 0].Columns[Semana]"
+                      cachedDataType="r8"
+                      cachedName="Semana"
+                      lineageId="Package\Poblar Dim Tiempo\Excel Connection Manager,.Outputs[Excel Source Output].Columns[Semana]" />
+                    <inputColumn
+                      refId="Package\Poblar Dim Tiempo\Transformacion de excel.Inputs[Entrada 0].Columns[DiaDeAño]"
+                      cachedDataType="r8"
+                      cachedName="DiaDeAño"
+                      lineageId="Package\Poblar Dim Tiempo\Excel Connection Manager,.Outputs[Excel Source Output].Columns[DiaDeAño]" />
+                    <inputColumn
+                      refId="Package\Poblar Dim Tiempo\Transformacion de excel.Inputs[Entrada 0].Columns[DiaDeMes]"
+                      cachedDataType="r8"
+                      cachedName="DiaDeMes"
+                      lineageId="Package\Poblar Dim Tiempo\Excel Connection Manager,.Outputs[Excel Source Output].Columns[DiaDeMes]" />
+                    <inputColumn
+                      refId="Package\Poblar Dim Tiempo\Transformacion de excel.Inputs[Entrada 0].Columns[DiaDeSemana]"
+                      cachedDataType="r8"
+                      cachedName="DiaDeSemana"
+                      lineageId="Package\Poblar Dim Tiempo\Excel Connection Manager,.Outputs[Excel Source Output].Columns[DiaDeSemana]" />
+                    <inputColumn
+                      refId="Package\Poblar Dim Tiempo\Transformacion de excel.Inputs[Entrada 0].Columns[EsFinSemana]"
+                      cachedDataType="r8"
+                      cachedName="EsFinSemana"
+                      lineageId="Package\Poblar Dim Tiempo\Excel Connection Manager,.Outputs[Excel Source Output].Columns[EsFinSemana]" />
+                    <inputColumn
+                      refId="Package\Poblar Dim Tiempo\Transformacion de excel.Inputs[Entrada 0].Columns[EsFeriado]"
+                      cachedDataType="r8"
+                      cachedName="EsFeriado"
+                      lineageId="Package\Poblar Dim Tiempo\Excel Connection Manager,.Outputs[Excel Source Output].Columns[EsFeriado]" />
+                    <inputColumn
+                      refId="Package\Poblar Dim Tiempo\Transformacion de excel.Inputs[Entrada 0].Columns[Comentarios]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Comentarios"
+                      lineageId="Package\Poblar Dim Tiempo\Excel Connection Manager,.Outputs[Excel Source Output].Columns[Comentarios]" />
+                    <inputColumn
+                      refId="Package\Poblar Dim Tiempo\Transformacion de excel.Inputs[Entrada 0].Columns[SemanaCalendario]"
+                      cachedDataType="r8"
+                      cachedName="SemanaCalendario"
+                      lineageId="Package\Poblar Dim Tiempo\Excel Connection Manager,.Outputs[Excel Source Output].Columns[SemanaCalendario]" />
+                    <inputColumn
+                      refId="Package\Poblar Dim Tiempo\Transformacion de excel.Inputs[Entrada 0].Columns[SemanaDelAñoLaboral]"
+                      cachedDataType="r8"
+                      cachedName="SemanaDelAñoLaboral"
+                      lineageId="Package\Poblar Dim Tiempo\Excel Connection Manager,.Outputs[Excel Source Output].Columns[SemanaDelAñoLaboral]" />
+                    <inputColumn
+                      refId="Package\Poblar Dim Tiempo\Transformacion de excel.Inputs[Entrada 0].Columns[AñoBiesto]"
+                      cachedDataType="r8"
+                      cachedName="AñoBiesto"
+                      lineageId="Package\Poblar Dim Tiempo\Excel Connection Manager,.Outputs[Excel Source Output].Columns[AñoBiesto]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Poblar Dim Tiempo\Transformacion de excel.Outputs[Salida 0]"
+                  name="Salida 0"
+                  synchronousInputId="Package\Poblar Dim Tiempo\Transformacion de excel.Inputs[Entrada 0]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Poblar Dim Tiempo\Transformacion de excel.Outputs[Salida 0].Columns[TiempoDescripcionSemestre.]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      lineageId="Package\Poblar Dim Tiempo\Transformacion de excel.Outputs[Salida 0].Columns[TiempoDescripcionSemestre.]"
+                      name="TiempoDescripcionSemestre." />
+                    <outputColumn
+                      refId="Package\Poblar Dim Tiempo\Transformacion de excel.Outputs[Salida 0].Columns[TiempoDescripcionTrimestre]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      lineageId="Package\Poblar Dim Tiempo\Transformacion de excel.Outputs[Salida 0].Columns[TiempoDescripcionTrimestre]"
+                      name="TiempoDescripcionTrimestre" />
+                    <outputColumn
+                      refId="Package\Poblar Dim Tiempo\Transformacion de excel.Outputs[Salida 0].Columns[TiempoDescripcionMes]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\Poblar Dim Tiempo\Transformacion de excel.Outputs[Salida 0].Columns[TiempoDescripcionMes]"
+                      name="TiempoDescripcionMes" />
+                    <outputColumn
+                      refId="Package\Poblar Dim Tiempo\Transformacion de excel.Outputs[Salida 0].Columns[TiempoDescripcionDiadeSemana]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\Poblar Dim Tiempo\Transformacion de excel.Outputs[Salida 0].Columns[TiempoDescripcionDiadeSemana]"
+                      name="TiempoDescripcionDiadeSemana" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Poblar Dim Tiempo.Paths[Data Conversion Output]"
+              endId="Package\Poblar Dim Tiempo\Destino BD Neptuno.Inputs[OLE DB Destination Input]"
+              name="Data Conversion Output"
+              startId="Package\Poblar Dim Tiempo\Convertidor de datos.Outputs[Data Conversion Output]" />
+            <path
+              refId="Package\Poblar Dim Tiempo.Paths[Excel Source Output]"
+              endId="Package\Poblar Dim Tiempo\Transformacion de excel.Inputs[Entrada 0]"
+              name="Excel Source Output"
+              startId="Package\Poblar Dim Tiempo\Excel Connection Manager,.Outputs[Excel Source Output]" />
+            <path
+              refId="Package\Poblar Dim Tiempo.Paths[Salida 0]"
+              endId="Package\Poblar Dim Tiempo\Convertidor de datos.Inputs[Data Conversion Input]"
+              name="Salida 0"
+              startId="Package\Poblar Dim Tiempo\Transformacion de excel.Outputs[Salida 0]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Tarea Ejecutar SQL"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Tarea Ejecutar SQL"
+      DTS:DTSID="{8058A646-D522-4DFB-96A4-DB66EFAFCC4C}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Tarea Ejecutar SQL"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{3BE06566-720B-4DC0-B43F-52E67810BB92}"
+          SQLTask:SqlStatementSource="delete from dimtiempo" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{3B85A2C9-82DD-47E0-80ED-AB0176B9900F}"
+      DTS:From="Package\Tarea Ejecutar SQL"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Poblar Dim Tiempo" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="168,41.6"
+          Id="Package\Poblar Dim Tiempo"
+          TopLeft="317.142862543768,138.411766647055" />
+        <NodeLayout
+          Size="169.6,41.6"
+          Id="Package\Tarea Ejecutar SQL"
+          TopLeft="317.857148270218,36.7058828677273" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="401.900005406993,78.3058828677273">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60.1058837793278"
+              Start="0,0"
+              End="0,52.6058837793278">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.6058837793278" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Poblar Dim Tiempo">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="173.6,41.6"
+          Id="Package\Poblar Dim Tiempo\Destino BD Neptuno"
+          TopLeft="291.428576391571,314.294122054915" />
+        <NodeLayout
+          Size="205.6,41.6"
+          Id="Package\Poblar Dim Tiempo\Excel Connection Manager,"
+          TopLeft="259.285718701324,28.2941180438731" />
+        <NodeLayout
+          Size="176.8,41.6"
+          Id="Package\Poblar Dim Tiempo\Convertidor de datos"
+          TopLeft="356.428577498514,215.647061847898" />
+        <NodeLayout
+          Size="193.6,41.6"
+          Id="Package\Poblar Dim Tiempo\Transformacion de excel"
+          TopLeft="496.4285798827,119.294119320114" />
+        <EdgeLayout
+          Id="Package\Poblar Dim Tiempo.Paths[Salida 0]"
+          TopLeft="593.2285798827,160.894119320114">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-148.400002384186,54.7529425277842"
+              Start="0,0"
+              End="-148.400002384186,47.2529425277842">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,23.3764712638921" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,23.3764712638921"
+                    Point2="0,27.3764712638921"
+                    Point3="-4,27.3764712638921" />
+                  <mssgle:LineSegment
+                    End="-144.400002384186,27.3764712638921" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-144.400002384186,27.3764712638921"
+                    Point2="-148.400002384186,27.3764712638921"
+                    Point3="-148.400002384186,31.3764712638921" />
+                  <mssgle:LineSegment
+                    End="-148.400002384186,47.2529425277842" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Poblar Dim Tiempo.Paths[Excel Source Output]"
+          TopLeft="362.085718701324,69.8941180438731">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="231.142861181376,49.4000012762407"
+              Start="0,0"
+              End="231.142861181376,41.9000012762407">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,20.7000006381203" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,20.7000006381203"
+                    Point2="0,24.7000006381203"
+                    Point3="4,24.7000006381203" />
+                  <mssgle:LineSegment
+                    End="227.142861181376,24.7000006381203" />
+                  <mssgle:CubicBezierSegment
+                    Point1="227.142861181376,24.7000006381203"
+                    Point2="231.142861181376,24.7000006381203"
+                    Point3="231.142861181376,28.7000006381203" />
+                  <mssgle:LineSegment
+                    End="231.142861181376,41.9000012762407" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Poblar Dim Tiempo.Paths[Data Conversion Output]"
+          TopLeft="444.828577498514,257.247061847898">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-66.6000011069432,57.0470602070172"
+              Start="0,0"
+              End="-66.6000011069432,49.5470602070172">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,24.5235301035086" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,24.5235301035086"
+                    Point2="0,28.5235301035086"
+                    Point3="-4,28.5235301035086" />
+                  <mssgle:LineSegment
+                    End="-62.6000011069432,28.5235301035086" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-62.6000011069432,28.5235301035086"
+                    Point2="-66.6000011069432,28.5235301035086"
+                    Point3="-66.6000011069432,32.5235301035086" />
+                  <mssgle:LineSegment
+                    End="-66.6000011069432,49.5470602070172" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Poblar Dim Tiempo\Destino BD Neptuno">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Poblar Dim Tiempo\Excel Connection Manager,">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

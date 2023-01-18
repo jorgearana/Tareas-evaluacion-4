@@ -1,0 +1,12 @@
+﻿<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="jarana_local.AWorks_MartDemo"
+  DTS:DTSID="{53DDA592-A689-4593-BC6C-550B14BF87AB}"
+  DTS:CreationName="OLEDB">
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectRetryCount="1"
+      DTS:ConnectRetryInterval="5"
+      DTS:ConnectionString="Data Source=jarana\local;Initial Catalog=AWorks_MartDemo;Provider=SQLNCLI11.1;Integrated Security=SSPI;Application Name=SSIS-Integration Services Project1-{53DDA592-A689-4593-BC6C-550B14BF87AB}jarana\local.AWorks_MartDemo;Auto Translate=False;" />
+  </DTS:ObjectData>
+</DTS:ConnectionManager>

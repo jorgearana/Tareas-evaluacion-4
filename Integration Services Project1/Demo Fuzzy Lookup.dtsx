@@ -1,0 +1,784 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="1/15/2023 9:20:20 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="JARANA"
+  DTS:CreatorName="JARANA\jorge"
+  DTS:DTSID="{DA89120F-C241-4EBF-AB19-3E6ED929239F}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.948.0"
+  DTS:LocaleID="10250"
+  DTS:ObjectName="Package1"
+  DTS:PackageType="5"
+  DTS:VersionBuild="1"
+  DTS:VersionGUID="{3B575F25-4A7B-487F-BF65-405CAF568810}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[Ventas Sucio]"
+      DTS:CreationName="FLATFILE"
+      DTS:DTSID="{9E481DCC-D70B-45D7-B052-E0356AB57E6B}"
+      DTS:ObjectName="Ventas Sucio">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:Format="Delimited"
+          DTS:LocaleID="10250"
+          DTS:HeaderRowDelimiter="_x000D__x000A_"
+          DTS:ColumnNamesInFirstDataRow="True"
+          DTS:RowDelimiter=""
+          DTS:TextQualifier="_x003C_none_x003E_"
+          DTS:CodePage="1252"
+          DTS:ConnectionString="C:\jorge\Maestria\SSIS\08 Recursos\Laboratorio 1\Ventas-Sucio.txt">
+          <DTS:FlatFileColumns>
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x002C_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Cliente"
+              DTS:DTSID="{05F3DFF5-F627-4E2C-9602-A715A37ABA43}"
+              DTS:CreationName="" />
+            <DTS:FlatFileColumn
+              DTS:ColumnType="Delimited"
+              DTS:ColumnDelimiter="_x000D__x000A_"
+              DTS:MaximumWidth="50"
+              DTS:DataType="129"
+              DTS:TextQualified="True"
+              DTS:ObjectName="Ventas"
+              DTS:DTSID="{422702A4-6BE1-4324-972D-4EE59BE7F3CF}"
+              DTS:CreationName="" />
+          </DTS:FlatFileColumns>
+        </DTS:ConnectionManager>
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Limpiar Datos de Ventas"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{AF0C7DEB-3BAB-4F1B-AADA-E0E00AA32C25}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Limpiar Datos de Ventas"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Limpiar Datos de Ventas\Archivo de Ventas"
+              componentClassID="Microsoft.FlatFileSource"
+              contactInfo="Flat File Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Flat File Source"
+              localeId="10250"
+              name="Archivo de Ventas"
+              usesDispositions="true"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Specifies whether zero-length columns are treated as null."
+                  name="RetainNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of an output column containing the file name. If no name is specified, no output column containing the file name will be generated."
+                  name="FileNameColumnName"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Limpiar Datos de Ventas\Archivo de Ventas.Connections[FlatFileConnection]"
+                  connectionManagerID="Package.ConnectionManagers[Ventas Sucio]"
+                  connectionManagerRefId="Package.ConnectionManagers[Ventas Sucio]"
+                  name="FlatFileConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Limpiar Datos de Ventas\Archivo de Ventas.Outputs[Flat File Source Output]"
+                  name="Flat File Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Limpiar Datos de Ventas\Archivo de Ventas.Outputs[Flat File Source Output].Columns[Cliente]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Limpiar Datos de Ventas\Archivo de Ventas.Outputs[Flat File Source Output].ExternalColumns[Cliente]"
+                      length="50"
+                      lineageId="Package\Limpiar Datos de Ventas\Archivo de Ventas.Outputs[Flat File Source Output].Columns[Cliente]"
+                      name="Cliente"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Limpiar Datos de Ventas\Archivo de Ventas.Outputs[Flat File Source Output].Columns[Ventas]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Limpiar Datos de Ventas\Archivo de Ventas.Outputs[Flat File Source Output].ExternalColumns[Ventas]"
+                      length="50"
+                      lineageId="Package\Limpiar Datos de Ventas\Archivo de Ventas.Outputs[Flat File Source Output].Columns[Ventas]"
+                      name="Ventas"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the data is in binary format."
+                          name="UseBinaryFormat">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Limpiar Datos de Ventas\Archivo de Ventas.Outputs[Flat File Source Output].ExternalColumns[Cliente]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Cliente" />
+                    <externalMetadataColumn
+                      refId="Package\Limpiar Datos de Ventas\Archivo de Ventas.Outputs[Flat File Source Output].ExternalColumns[Ventas]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Ventas" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Limpiar Datos de Ventas\Archivo de Ventas.Outputs[Flat File Source Error Output]"
+                  isErrorOut="true"
+                  name="Flat File Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Limpiar Datos de Ventas\Archivo de Ventas.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      codePage="1252"
+                      dataType="text"
+                      description="Flat File Source Error Output Column"
+                      lineageId="Package\Limpiar Datos de Ventas\Archivo de Ventas.Outputs[Flat File Source Error Output].Columns[Flat File Source Error Output Column]"
+                      name="Flat File Source Error Output Column" />
+                    <outputColumn
+                      refId="Package\Limpiar Datos de Ventas\Archivo de Ventas.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Limpiar Datos de Ventas\Archivo de Ventas.Outputs[Flat File Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Limpiar Datos de Ventas\Archivo de Ventas.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Limpiar Datos de Ventas\Archivo de Ventas.Outputs[Flat File Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Limpiar Datos de Ventas\Corregir datos"
+              componentClassID="Microsoft.FuzzyLookup"
+              contactInfo="Fuzzy Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;5"
+              description="Performs data cleaning tasks such as standardizing data, correcting data, and providing missing values.  Uses fuzzy matching to return one or more close matches from a reference table. For example, lookup customer data by address, even if your input address data does not exactly match your reference address data."
+              name="Corregir datos"
+              version="5">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Indicates whether to reuse an existing fuzzy-match index table or build a new one. The new index table can be temporary, persisted, or persisted and maintained."
+                  name="MatchIndexOptions"
+                  typeConverter="tcMatchIndexOptions">1</property>
+                <property
+                  dataType="System.Null"
+                  description="Specifies the maximum amount of memory (MB) that this instance of the Fuzzy Lookup transformation can use.  If 0 is given, then the transform will dynamically adjust it's memory usage based upon it's requirements and available system memory."
+                  expressionType="Notify"
+                  name="MaxMemoryUsage" />
+                <property
+                  dataType="System.Null"
+                  description="Specifies the name of the fuzzy-match index table to be reused or the table name in which a newly generated fuzzy-match index table will be written."
+                  name="MatchIndexName"
+                  state="escaped" />
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the reference table or view against which to match incoming records."
+                  name="ReferenceTableName"
+                  state="escaped">_x005B_dbo_x005D_._x005B_Clientes_x005D_</property>
+                <property
+                  dataType="System.Int32"
+                  description="Indicates whether to drop an existing fuzzy-match index table if transformation is configured to generate a new table and a table with the same name already exists."
+                  name="DropExistingMatchIndex">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Whether a copy of the reference table should be made for fuzzy match index construction and subsequent matching.  It is strongly recommended that a copy always be made, otherwise unpredictable output may result if the contents of the reference table change during package execution (or between executions if reusing a fuzzy match index).  If this property is set to false, the reference table must additionally have a clustered index built upon an integer identity column."
+                  name="CopyReferenceTable">1</property>
+                <property
+                  dataType="System.UInt32"
+                  description="Specifies the maximum number of fuzzy matches to return for an input record."
+                  name="MaxOutputMatchesPerInput">1</property>
+                <property
+                  dataType="System.Single"
+                  description="Specifies the minimum similarity score required for the match results that the transformation returns."
+                  name="MinSimilarity">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the set of white-space and punctuation characters used to separate fuzzy match fields into the words used for matching and scoring a fuzzy lookup."
+                  name="Delimiters"
+                  state="escaped">_x0020__x0009__x000D__x000A__x002C_._x003B_:-_x0022__x0027__x0026__x002F__x005C__x0040__x0021__x003F__x0028__x0029__x003C__x003E__x005B__x005D__x007B__x007D__x007C__x0023__x002A__x005E__x0025_</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the metadata of the reference table in XML format."
+                  name="ReferenceMetadataXml"
+                  state="escaped">_x003C_referenceMetadata_x003E__x003C_referenceColumns_x003E__x003C_referenceColumn_x0020_name_x003D__x0022_IdCliente_x0022__x0020_dataType_x003D__x0022_DT_I4_x0022__x0020_length_x003D__x0022_0_x0022__x0020_precision_x003D__x0022_0_x0022__x0020_scale_x003D__x0022_0_x0022__x0020_codePage_x003D__x0022_0_x0022__x002F__x003E__x003C_referenceColumn_x0020_name_x003D__x0022_NombreCliente_x0022__x0020_dataType_x003D__x0022_DT_STR_x0022__x0020_length_x003D__x0022_50_x0022__x0020_precision_x003D__x0022_0_x0022__x0020_scale_x003D__x0022_0_x0022__x0020_codePage_x003D__x0022_1252_x0022__x002F__x003E__x003C_referenceColumn_x0020_name_x003D__x0022_TelefonoCliente_x0022__x0020_dataType_x003D__x0022_DT_STR_x0022__x0020_length_x003D__x0022_10_x0022__x0020_precision_x003D__x0022_0_x0022__x0020_scale_x003D__x0022_0_x0022__x0020_codePage_x003D__x0022_1252_x0022__x002F__x003E__x003C_referenceColumn_x0020_name_x003D__x0022_CiudadCliente_x0022__x0020_dataType_x003D__x0022_DT_STR_x0022__x0020_length_x003D__x0022_20_x0022__x0020_precision_x003D__x0022_0_x0022__x0020_scale_x003D__x0022_0_x0022__x0020_codePage_x003D__x0022_1252_x0022__x002F__x003E__x003C__x002F_referenceColumns_x003E__x003C__x002F_referenceMetadata_x003E__x000D__x000A_</property>
+                <property
+                  dataType="System.Boolean"
+                  description="If true, each input record will be directly compared against EVERY record in the reference table.  This may produce slightly better results, but will be extremely slow unless the number of records in the reference table is very small.  Note that the entire reference table will be loaded into main memory if this option is enabled.  This option is primarily intended for debugging purposes and should be used with care."
+                  name="Exhaustive">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="If true, Fuzzy Lookup will partially load the error-tolerant index and the reference table into main memory before execution begins.  This can greatly enhance performance if many input rows are to be processed."
+                  name="WarmCaches">true</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Limpiar Datos de Ventas\Corregir datos.Connections[OleDbConnection]"
+                  connectionManagerID="{53DDA592-A689-4593-BC6C-550B14BF87AB}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[jarana_local.AWorks_MartDemo]"
+                  description="Microsoft SQL Server connection and database in which the fuzzy lookup reference table is located and where the fuzzy match index table will be stored and accessed."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Limpiar Datos de Ventas\Corregir datos.Inputs[Fuzzy Lookup Input]"
+                  name="Fuzzy Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Limpiar Datos de Ventas\Corregir datos.Inputs[Fuzzy Lookup Input].Columns[Ventas]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Ventas"
+                      lineageId="Package\Limpiar Datos de Ventas\Archivo de Ventas.Outputs[Flat File Source Output].Columns[Ventas]">
+                      <properties>
+                        <property
+                          dataType="System.Null"
+                          description="Name of the reference table column with which the input column should be matched."
+                          name="JoinToReferenceColumn"
+                          state="escaped" />
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies whether the match is a fuzzy or an exact match."
+                          name="JoinType"
+                          typeConverter="tcJoinType">2</property>
+                        <property
+                          dataType="System.Single"
+                          description="Specifies the minimum textual similarity required between input and fuzzy matched records on values in this particular join column.  Must be a floating point value between 0.0 and 1.0."
+                          name="MinSimilarity">0</property>
+                        <property
+                          dataType="System.UInt32"
+                          description="Specifies the comparison options for character data. The options are those supported by the FoldString function."
+                          name="FuzzyComparisonFlags"
+                          typeConverter="tcComparisonFlags">1</property>
+                        <property
+                          dataType="System.UInt32"
+                          description="Flags to FoldString that should be used when comparing whether two strings are equivalent."
+                          name="FuzzyComparisonFlagsEx"
+                          typeConverter="tcComparisonFlagsEx">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Limpiar Datos de Ventas\Corregir datos.Inputs[Fuzzy Lookup Input].Columns[Cliente]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Cliente"
+                      lineageId="Package\Limpiar Datos de Ventas\Archivo de Ventas.Outputs[Flat File Source Output].Columns[Cliente]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Name of the reference table column with which the input column should be matched."
+                          name="JoinToReferenceColumn"
+                          state="escaped">NombreCliente</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies whether the match is a fuzzy or an exact match."
+                          name="JoinType"
+                          typeConverter="tcJoinType">2</property>
+                        <property
+                          dataType="System.Single"
+                          description="Specifies the minimum textual similarity required between input and fuzzy matched records on values in this particular join column.  Must be a floating point value between 0.0 and 1.0."
+                          name="MinSimilarity">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies the comparison options for character data. The options are those supported by the FoldString function."
+                          name="FuzzyComparisonFlags"
+                          typeConverter="tcComparisonFlags">1</property>
+                        <property
+                          dataType="System.UInt32"
+                          description="Flags to FoldString that should be used when comparing whether two strings are equivalent."
+                          name="FuzzyComparisonFlagsEx"
+                          typeConverter="tcComparisonFlagsEx">0</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Limpiar Datos de Ventas\Corregir datos.Outputs[Fuzzy Lookup Output]"
+                  name="Fuzzy Lookup Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Limpiar Datos de Ventas\Corregir datos.Outputs[Fuzzy Lookup Output].Columns[Ventas]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Limpiar Datos de Ventas\Corregir datos.Outputs[Fuzzy Lookup Output].Columns[Ventas]"
+                      name="Ventas">
+                      <properties>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the reference table column that is copied to the output for each match result."
+                          name="CopyFromReferenceColumn"
+                          state="escaped" />
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column from which to copy to this output column for each match."
+                          name="SourceInputColumnLineageID">#{Package\Limpiar Datos de Ventas\Archivo de Ventas.Outputs[Flat File Source Output].Columns[Ventas]}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies whether the column is used to indicate confidence or similarity."
+                          name="ColumnType"
+                          typeConverter="tcColumnType">0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Limpiar Datos de Ventas\Corregir datos.Outputs[Fuzzy Lookup Output].Columns[IdCliente]"
+                      dataType="i4"
+                      lineageId="Package\Limpiar Datos de Ventas\Corregir datos.Outputs[Fuzzy Lookup Output].Columns[IdCliente]"
+                      name="IdCliente">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the reference table column that is copied to the output for each match result."
+                          name="CopyFromReferenceColumn"
+                          state="escaped">IdCliente</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the lineage identifier of the input column from which to copy to this output column for each match."
+                          name="SourceInputColumnLineageID" />
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies whether the column is used to indicate confidence or similarity."
+                          name="ColumnType"
+                          typeConverter="tcColumnType">0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Limpiar Datos de Ventas\Corregir datos.Outputs[Fuzzy Lookup Output].Columns[NombreCliente]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Limpiar Datos de Ventas\Corregir datos.Outputs[Fuzzy Lookup Output].Columns[NombreCliente]"
+                      name="NombreCliente">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the reference table column that is copied to the output for each match result."
+                          name="CopyFromReferenceColumn"
+                          state="escaped">NombreCliente</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the lineage identifier of the input column from which to copy to this output column for each match."
+                          name="SourceInputColumnLineageID" />
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies whether the column is used to indicate confidence or similarity."
+                          name="ColumnType"
+                          typeConverter="tcColumnType">0</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Limpiar Datos de Ventas\Corregir datos.Outputs[Fuzzy Lookup Output].Columns[_Similarity]"
+                      dataType="r4"
+                      lineageId="Package\Limpiar Datos de Ventas\Corregir datos.Outputs[Fuzzy Lookup Output].Columns[_Similarity]"
+                      name="_Similarity">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies whether the column is used to indicate confidence or similarity."
+                          name="ColumnType"
+                          typeConverter="tcColumnType">1</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Limpiar Datos de Ventas\Corregir datos.Outputs[Fuzzy Lookup Output].Columns[_Confidence]"
+                      dataType="r4"
+                      lineageId="Package\Limpiar Datos de Ventas\Corregir datos.Outputs[Fuzzy Lookup Output].Columns[_Confidence]"
+                      name="_Confidence">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies whether the column is used to indicate confidence or similarity."
+                          name="ColumnType"
+                          typeConverter="tcColumnType">2</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Limpiar Datos de Ventas\Corregir datos.Outputs[Fuzzy Lookup Output].Columns[_Similarity_Cliente]"
+                      dataType="r4"
+                      description="Column-level similarity score for fuzzy join on column &quot;Cliente&quot;."
+                      lineageId="Package\Limpiar Datos de Ventas\Corregir datos.Outputs[Fuzzy Lookup Output].Columns[_Similarity_Cliente]"
+                      name="_Similarity_Cliente">
+                      <properties>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the reference table column that is copied to the output for each match result."
+                          name="CopyFromReferenceColumn"
+                          state="escaped" />
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the lineage identifier of the input column from which to copy to this output column for each match."
+                          name="SourceInputColumnLineageID">#{Package\Limpiar Datos de Ventas\Archivo de Ventas.Outputs[Flat File Source Output].Columns[Cliente]}</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Specifies whether the column is used to indicate confidence or similarity."
+                          name="ColumnType"
+                          typeConverter="tcColumnType">3</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Limpiar Datos de Ventas\Ventas a clientes"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Ventas a clientes"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[VentasClientes]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Limpiar Datos de Ventas\Ventas a clientes.Connections[OleDbConnection]"
+                  connectionManagerID="{53DDA592-A689-4593-BC6C-550B14BF87AB}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[jarana_local.AWorks_MartDemo]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Limpiar Datos de Ventas\Ventas a clientes.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Limpiar Datos de Ventas\Ventas a clientes.Inputs[OLE DB Destination Input].Columns[Ventas]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Ventas"
+                      externalMetadataColumnId="Package\Limpiar Datos de Ventas\Ventas a clientes.Inputs[OLE DB Destination Input].ExternalColumns[Ventas]"
+                      lineageId="Package\Limpiar Datos de Ventas\Corregir datos.Outputs[Fuzzy Lookup Output].Columns[Ventas]" />
+                    <inputColumn
+                      refId="Package\Limpiar Datos de Ventas\Ventas a clientes.Inputs[OLE DB Destination Input].Columns[IdCliente]"
+                      cachedDataType="i4"
+                      cachedName="IdCliente"
+                      externalMetadataColumnId="Package\Limpiar Datos de Ventas\Ventas a clientes.Inputs[OLE DB Destination Input].ExternalColumns[IdCliente]"
+                      lineageId="Package\Limpiar Datos de Ventas\Corregir datos.Outputs[Fuzzy Lookup Output].Columns[IdCliente]" />
+                    <inputColumn
+                      refId="Package\Limpiar Datos de Ventas\Ventas a clientes.Inputs[OLE DB Destination Input].Columns[NombreCliente]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="NombreCliente"
+                      externalMetadataColumnId="Package\Limpiar Datos de Ventas\Ventas a clientes.Inputs[OLE DB Destination Input].ExternalColumns[NombreCliente]"
+                      lineageId="Package\Limpiar Datos de Ventas\Corregir datos.Outputs[Fuzzy Lookup Output].Columns[NombreCliente]" />
+                    <inputColumn
+                      refId="Package\Limpiar Datos de Ventas\Ventas a clientes.Inputs[OLE DB Destination Input].Columns[_Similarity]"
+                      cachedDataType="r4"
+                      cachedName="_Similarity"
+                      externalMetadataColumnId="Package\Limpiar Datos de Ventas\Ventas a clientes.Inputs[OLE DB Destination Input].ExternalColumns[_Similarity]"
+                      lineageId="Package\Limpiar Datos de Ventas\Corregir datos.Outputs[Fuzzy Lookup Output].Columns[_Similarity]" />
+                    <inputColumn
+                      refId="Package\Limpiar Datos de Ventas\Ventas a clientes.Inputs[OLE DB Destination Input].Columns[_Confidence]"
+                      cachedDataType="r4"
+                      cachedName="_Confidence"
+                      externalMetadataColumnId="Package\Limpiar Datos de Ventas\Ventas a clientes.Inputs[OLE DB Destination Input].ExternalColumns[_Confidence]"
+                      lineageId="Package\Limpiar Datos de Ventas\Corregir datos.Outputs[Fuzzy Lookup Output].Columns[_Confidence]" />
+                    <inputColumn
+                      refId="Package\Limpiar Datos de Ventas\Ventas a clientes.Inputs[OLE DB Destination Input].Columns[_Similarity_Cliente]"
+                      cachedDataType="r4"
+                      cachedName="_Similarity_Cliente"
+                      externalMetadataColumnId="Package\Limpiar Datos de Ventas\Ventas a clientes.Inputs[OLE DB Destination Input].ExternalColumns[_Similarity_Cliente]"
+                      lineageId="Package\Limpiar Datos de Ventas\Corregir datos.Outputs[Fuzzy Lookup Output].Columns[_Similarity_Cliente]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Limpiar Datos de Ventas\Ventas a clientes.Inputs[OLE DB Destination Input].ExternalColumns[Ventas]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Ventas" />
+                    <externalMetadataColumn
+                      refId="Package\Limpiar Datos de Ventas\Ventas a clientes.Inputs[OLE DB Destination Input].ExternalColumns[IdCliente]"
+                      dataType="i4"
+                      name="IdCliente" />
+                    <externalMetadataColumn
+                      refId="Package\Limpiar Datos de Ventas\Ventas a clientes.Inputs[OLE DB Destination Input].ExternalColumns[NombreCliente]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="NombreCliente" />
+                    <externalMetadataColumn
+                      refId="Package\Limpiar Datos de Ventas\Ventas a clientes.Inputs[OLE DB Destination Input].ExternalColumns[_Similarity]"
+                      dataType="r4"
+                      name="_Similarity" />
+                    <externalMetadataColumn
+                      refId="Package\Limpiar Datos de Ventas\Ventas a clientes.Inputs[OLE DB Destination Input].ExternalColumns[_Confidence]"
+                      dataType="r4"
+                      name="_Confidence" />
+                    <externalMetadataColumn
+                      refId="Package\Limpiar Datos de Ventas\Ventas a clientes.Inputs[OLE DB Destination Input].ExternalColumns[_Similarity_Cliente]"
+                      dataType="r4"
+                      name="_Similarity_Cliente" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Limpiar Datos de Ventas\Ventas a clientes.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Limpiar Datos de Ventas\Ventas a clientes.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Limpiar Datos de Ventas\Ventas a clientes.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Limpiar Datos de Ventas\Ventas a clientes.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Limpiar Datos de Ventas\Ventas a clientes.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Limpiar Datos de Ventas\Ventas a clientes.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Limpiar Datos de Ventas.Paths[Flat File Source Output]"
+              endId="Package\Limpiar Datos de Ventas\Corregir datos.Inputs[Fuzzy Lookup Input]"
+              name="Flat File Source Output"
+              startId="Package\Limpiar Datos de Ventas\Archivo de Ventas.Outputs[Flat File Source Output]" />
+            <path
+              refId="Package\Limpiar Datos de Ventas.Paths[Fuzzy Lookup Output]"
+              endId="Package\Limpiar Datos de Ventas\Ventas a clientes.Inputs[OLE DB Destination Input]"
+              name="Fuzzy Lookup Output"
+              startId="Package\Limpiar Datos de Ventas\Corregir datos.Outputs[Fuzzy Lookup Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="192.8,41.6"
+          Id="Package\Limpiar Datos de Ventas"
+          TopLeft="257.142861521974,97.8823543139395" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Limpiar Datos de Ventas">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="163.2,41.6"
+          Id="Package\Limpiar Datos de Ventas\Archivo de Ventas"
+          TopLeft="267.142861692273,27.5294121507955" />
+        <NodeLayout
+          Size="144.8,41.6"
+          Id="Package\Limpiar Datos de Ventas\Corregir datos"
+          TopLeft="275.000004683222,131.529413609356" />
+        <EdgeLayout
+          Id="Package\Limpiar Datos de Ventas.Paths[Flat File Source Output]"
+          TopLeft="348.071433187748,69.1294121507955">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,62.4000014585607"
+              Start="0,0"
+              End="0,54.9000014585607">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,54.9000014585607" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="157.6,41.6"
+          Id="Package\Limpiar Datos de Ventas\Ventas a clientes"
+          TopLeft="277.142861862572,216.411767740976" />
+        <EdgeLayout
+          Id="Package\Limpiar Datos de Ventas.Paths[Fuzzy Lookup Output]"
+          TopLeft="347.400004683222,173.129413609356">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="8.54285717934977,43.2823541316195"
+              Start="0,0"
+              End="8.54285717934977,35.7823541316195">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,17.6411770658097" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,17.6411770658097"
+                    Point2="0,21.6411770658097"
+                    Point3="4,21.6411770658097" />
+                  <mssgle:LineSegment
+                    End="4.54285717934977,21.6411770658097" />
+                  <mssgle:CubicBezierSegment
+                    Point1="4.54285717934977,21.6411770658097"
+                    Point2="8.54285717934977,21.6411770658097"
+                    Point3="8.54285717934977,25.6411770658097" />
+                  <mssgle:LineSegment
+                    End="8.54285717934977,35.7823541316195" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Limpiar Datos de Ventas\Corregir datos">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Limpiar Datos de Ventas\Ventas a clientes">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
